@@ -38,8 +38,8 @@ ITEM.functions._use = {
             end
 
             if item.speed then
-                client:SetWalkSpeed(nut.config.get("walkSpeed") * item.speed)
-                client:SetRunSpeed(nut.config.get("runSpeed") * item.speed)
+                client:SetWalkSpeed(lia.config.get("walkSpeed") * item.speed)
+                client:SetRunSpeed(lia.config.get("runSpeed") * item.speed)
             end
 
             local charID = char:getID()
@@ -65,8 +65,8 @@ ITEM.functions._use = {
                         end
 
                         if item.speed then
-                            client:SetWalkSpeed(nut.config.get("walkSpeed"))
-                            client:SetRunSpeed(nut.config.get("runSpeed"))
+                            client:SetWalkSpeed(lia.config.get("walkSpeed"))
+                            client:SetRunSpeed(lia.config.get("runSpeed"))
                         end
                     end
                 end

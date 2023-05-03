@@ -1,4 +1,4 @@
-local function nutApproveID(len, ply)
+local function liaApproveID(len, ply)
     local requester = ply.IDRequested
     if not requester then return end
     if not requester.IDRequested then return end
@@ -18,4 +18,4 @@ local function nutApproveID(len, ply)
     ply.IDRequested = nil
 end
 
-net.Receive("nutApproveID", nutApproveID)
+net.Receive("liaApproveID", liaApproveID)

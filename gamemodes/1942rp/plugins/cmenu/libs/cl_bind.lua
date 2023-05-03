@@ -30,14 +30,14 @@ function PLUGIN:PlayerBindPress(ply, bind, down)
         end
     end
 
-    if string.find(bind, "gm_showhelp") and IsValid(ply.nutRagdoll) then return true end
-    if string.find(bind, "+speed") and ply:getNetVar("restricted") or (string.find(bind, "gm_showhelp") and ply:getNetVar("restricted")) or (string.find(bind, "+jump") and ply:getNetVar("restricted") and not IsValid(ply.nutRagdoll)) or (string.find(bind, "+walk") and ply:getNetVar("restricted")) or (string.find(bind, "+use") and ply:getNetVar("restricted")) then return true end
+    if string.find(bind, "gm_showhelp") and IsValid(ply.liaRagdoll) then return true end
+    if string.find(bind, "+speed") and ply:getNetVar("restricted") or (string.find(bind, "gm_showhelp") and ply:getNetVar("restricted")) or (string.find(bind, "+jump") and ply:getNetVar("restricted") and not IsValid(ply.liaRagdoll)) or (string.find(bind, "+walk") and ply:getNetVar("restricted")) or (string.find(bind, "+use") and ply:getNetVar("restricted")) then return true end
 end
 
 netstream.Hook("startcmenu", function()
     vgui.Create("cmenu")
 end)
 
-netstream.Hook("startcmenutying", function()
+netstream.Hook("startcmeliaying", function()
     vgui.Create("cmenu_tying")
 end)

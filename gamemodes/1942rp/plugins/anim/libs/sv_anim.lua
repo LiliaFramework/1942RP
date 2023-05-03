@@ -191,47 +191,7 @@ function PLUGIN:SetupMove(ply, moveData, cmd)
     end
 end
 
---[[ LEGACY
-nut.command.add("anim", {
-    onRun = function(client, arguments)
-        if arguments[1] then
-            PLUGIN:GetAnimationID(client, arguments[1])
-        else
-            client:notify("You need to provide an animation!")
-        end
-    end
-})
-
-function PLUGIN:GetAnimationID(client, AnimationID)
-    if not client:GetNWBool("animationStatus") then
-        if not client:Crouching() and client:GetVelocity():Length() < 5 and not client:InVehicle() then
-            if AnimationID == "comlink_swep" then
-                self:ToggleAnimaton(client, true, "comlink_swep", 0)
-            elseif AnimationID == "cross_arms_infront_swep" then
-                self:ToggleAnimaton(client, true, "cross_arms_infront_swep", 0)
-            elseif AnimationID == "cross_arms_swep" then
-                self:ToggleAnimaton(client, true, "cross_arms_swep", 0)
-            elseif AnimationID == "high_five_swep" then
-                self:ToggleAnimaton(client, true, "high_five_swep", 0)
-            elseif AnimationID == "hololink_swep" then
-                self:ToggleAnimaton(client, true, "hololink_swep", 0)
-            elseif AnimationID == "middlefinger_animation_swep" then
-                self:ToggleAnimaton(client, true, "middlefinger_animation_swep", 0)
-            elseif AnimationID == "point_in_direction_swep" then
-                self:ToggleAnimaton(client, true, "point_in_direction_swep", 0)
-            elseif AnimationID == "salute_swep" then
-                self:ToggleAnimaton(client, true, "salute_swep", 0)
-            elseif AnimationID == "surrender_animation_swep" then
-                self:ToggleAnimaton(client, true, "surrender_animation_swep", 0)
-            else
-                client:notify("Unknown Anim!")
-            end
-        end
-    else
-        self:ToggleAnimaton(client, false)
-    end
-end]]
-nut.command.add("anim", {
+lia.command.add("anim", {
     onRun = function(client, arguments)
         if not client:GetNWBool("animationStatus") then
             if tonumber(arguments[1]) > 0 and tonumber(arguments[1]) < 4 then
@@ -251,7 +211,7 @@ nut.command.add("anim", {
                 client:ChatPrint("Valid Animations:")
                 client:ChatPrint("0 = Return to Normal Standing")
             else
-                PLUGIN:ToggleAnimaton(ply, false)
+                PLUGIN:ToggleAnimaton(client, false)
             end
         end
     end

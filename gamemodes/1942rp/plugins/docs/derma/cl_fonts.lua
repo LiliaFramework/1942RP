@@ -1,4 +1,4 @@
-surface.CreateFont("nut.docs.title", {
+surface.CreateFont("lia.docs.title", {
 	font = "Courier Prime",
 	extended = true,
 	size = 26,
@@ -16,7 +16,7 @@ surface.CreateFont("nut.docs.title", {
 	outline = false,
 })
 
-surface.CreateFont("nut.docs.contents", {
+surface.CreateFont("lia.docs.contents", {
 	font = "Courier Prime",
 	extended = true,
 	size = 18,

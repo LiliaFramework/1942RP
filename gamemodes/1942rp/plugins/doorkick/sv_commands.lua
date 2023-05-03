@@ -1,4 +1,4 @@
-nut.command.add("doorkick", {
+lia.command.add("doorkick", {
     syntax = "",
     onRun = function(client)
         local char = client:getChar()

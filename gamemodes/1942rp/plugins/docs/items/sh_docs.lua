@@ -10,7 +10,7 @@ ITEM.functions.read = {
 	tip = "equipTip",
 	icon = "icon16/tick.png",
 	onRun = function(item)
-		netstream.Start(item.player, 'nut.docs.read', item:getData("nut.docs.title", ""), item:getData("nut.docs.contents", ""))
+		netstream.Start(item.player, 'lia.docs.read', item:getData("lia.docs.title", ""), item:getData("lia.docs.contents", ""))
 
 		return false
 	end
@@ -21,7 +21,7 @@ ITEM.functions.edit = {
 	tip = "equipTip",
 	icon = "icon16/tick.png",
 	onRun = function(item)
-		netstream.Start(item.player, 'nut.docs.edit', item)
+		netstream.Start(item.player, 'lia.docs.edit', item)
 
 		return false
 	end

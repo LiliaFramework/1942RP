@@ -2,6 +2,6 @@
 {
 	"base"		"lilia"
 	"title"		"1942rp"
-	"author"	""
+	"author"	"Leonheart"
 	"menusystem" "1"
 }

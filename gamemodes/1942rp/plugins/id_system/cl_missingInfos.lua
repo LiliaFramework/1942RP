@@ -33,7 +33,7 @@ local function openMissingInfoMenu(title, fill)
 
     frame.what = frame.whatPanel:Add("DLabel")
     frame.what:SetText(title or "If you are in this menu, it means that you are missing some crucial information about your character. Please enter the needed informatin below.")
-    frame.what:SetFont("nutSmallFont")
+    frame.what:SetFont("liaSmallFont")
     frame.what:SetColor(color_white)
 
     function frame.what:LayoutNormal()
@@ -77,7 +77,7 @@ local function openMissingInfoMenu(title, fill)
         print(#k)
         val.title = val:Add("DLabel")
         val.title:SetText(k)
-        val.title:SetFont("nutSmallFont")
+        val.title:SetFont("liaSmallFont")
         val.title:SetColor(color_white)
         val.title:SetSize(val:GetWide() / 2 - 10, val:GetTall())
         val.title:SetPos(10, 0)
@@ -90,7 +90,7 @@ local function openMissingInfoMenu(title, fill)
                     draw.RoundedBox(4, 0, 0, w, h, Color(210, 210, 210))
                 end
 
-                self:DrawTextEntryText(color_black, nut.config.get("color"), color_black)
+                self:DrawTextEntryText(color_black, lia.config.get("color"), color_black)
             end
         end
 
@@ -148,7 +148,7 @@ local function openMissingInfoMenu(title, fill)
 
     local finish = frame:Add("DButton")
     finish:SetText("Finish")
-    finish:SetFont("nutSmallFont")
+    finish:SetFont("liaSmallFont")
     finish:SetColor(color_white)
     finish:SetSize(frame:GetWide(), frame:GetTall() - frame.whatPanel:GetTall() - frame.scroll:GetTall())
     finish:SetPos(0, frame:GetTall() - finish:GetTall())

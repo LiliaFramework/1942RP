@@ -29,11 +29,11 @@ function PANEL:Init()
     number:Dock(FILL)
 
     number.Paint = function(this, w, h)
-        draw.SimpleText(self.number, "nutDialFont", w / 2, h / 2, color_white, 1, 1)
+        draw.SimpleText(self.number, "liaDialFont", w / 2, h / 2, color_white, 1, 1)
     end
 end
 
-vgui.Register("nutRadioDial", PANEL, "DPanel")
+vgui.Register("liaRadioDial", PANEL, "DPanel")
 PANEL = {}
 
 function PANEL:Init()
@@ -66,7 +66,7 @@ function PANEL:Init()
 
     for i = 1, 5 do
         if i ~= 4 then
-            self.dial[i] = self:Add("nutRadioDial")
+            self.dial[i] = self:Add("liaRadioDial")
             self.dial[i]:Dock(LEFT)
 
             if i ~= 3 then
@@ -78,7 +78,7 @@ function PANEL:Init()
             dot:SetWide(30)
 
             dot.Paint = function(this, w, h)
-                draw.SimpleText(".", "nutDialFont", w / 2, h - 10, color_white, 1, 4)
+                draw.SimpleText(".", "liaDialFont", w / 2, h - 10, color_white, 1, 4)
             end
         end
     end
@@ -88,28 +88,28 @@ function PANEL:Think()
     self:MoveToFront()
 end
 
-vgui.Register("nutRadioMenu", PANEL, "DFrame")
+vgui.Register("liaRadioMenu", PANEL, "DFrame")
 
-surface.CreateFont("nutDialFont", {
+surface.CreateFont("liaDialFont", {
     font = "Agency FB",
     size = 100,
     weight = 1000
 })
 
-surface.CreateFont("nutRadioFont", {
+surface.CreateFont("liaRadioFont", {
     font = "Lucida Sans Typewriter",
     size = math.max(ScreenScale(7), 17),
     weight = 100
 })
 
-surface.CreateFont("nutRadioFont", {
+surface.CreateFont("liaRadioFont", {
     font = "Lucida Sans Typewriter",
     size = math.max(ScreenScale(7), 17),
     weight = 100
 })
 
 netstream.Hook("radioAdjust", function(freq, id)
-    local adjust = vgui.Create("nutRadioMenu")
+    local adjust = vgui.Create("liaRadioMenu")
 
     if id then
         adjust.itemID = id

@@ -38,7 +38,7 @@ NOT_ERROR = 1
 NOT_CORRECT = 5
 NOT_NORMAL = 7
 -- List of notice panels.
-nut.noticess = nut.noticess or {}
+lia.noticess = lia.noticess or {}
 --Enums
 local NORMAL_NOTICE_HEIGHT = 36
 local QUERY_NOTICE_HEIGHT = NORMAL_NOTICE_HEIGHT * 2.3
@@ -49,11 +49,11 @@ local DEFAULT_NOTICE_TYPE = 7
 local function OrganizeNotices()
     --Calculating every height of every panel BEFORE the one we need to rearrange
     --Panels to rearrange
-    for k, v in ipairs(nut.noticess) do
+    for k, v in ipairs(lia.noticess) do
         local topMargin = 0
 
         --All panels before (calculate margin)
-        for k2, v2 in pairs(nut.noticess) do
+        for k2, v2 in pairs(lia.noticess) do
             if k < k2 then
                 topMargin = topMargin + v2:GetTall() + NOTICE_MARGIN
             end
@@ -65,14 +65,14 @@ end
 
 function removeNotice(notice)
     -- Search for the notice to remove.
-    for k, v in ipairs(nut.noticess) do
+    for k, v in ipairs(lia.noticess) do
         if v == notice then
             notice:SizeTo(notice:GetWide(), 0, 0.2, 0, -1, function()
                 notice:Remove()
             end)
 
             -- Remove the notice from the list and move other notices.
-            table.remove(nut.noticess, k)
+            table.remove(lia.noticess, k)
             OrganizeNotices()
             break
         end
@@ -95,7 +95,7 @@ local function createNoticePanel(length, notimer)
 
         if self.notifType ~= nil and not isstring(self.notifType) and self.notifType > 0 then
             t = notifTypes[self.notifType]
-            mat = nut.util.getMaterial(t.icon)
+            mat = lia.util.getMaterial(t.icon)
         end
 
         draw.RoundedBox(4, 0, 0, w, h, Color(35, 35, 35, 200))
@@ -103,7 +103,7 @@ local function createNoticePanel(length, notimer)
         --Drawing time progress
         if self.start then
             local w2 = math.TimeFraction(self.start, self.endTime, CurTime()) * w
-            local col = (t and t.col) or nut.config.get("color")
+            local col = (t and t.col) or lia.config.get("color")
             draw.RoundedBox(4, w2, 0, w - w2, h, col)
         end
 
@@ -125,7 +125,7 @@ local function createNoticePanel(length, notimer)
     return notice
 end
 
-function nut.util.notifQuery(question, option1, option2, manualDismiss, notifType, callback)
+function lia.util.notifQuery(question, option1, option2, manualDismiss, notifType, callback)
     --Some basic variable needy statments
     if not callback or not isfunction(callback) then
         Error("A callback function must be specified")
@@ -149,7 +149,7 @@ function nut.util.notifQuery(question, option1, option2, manualDismiss, notifTyp
     end
 
     local notice = createNoticePanel(10, manualDismiss)
-    local i = table.insert(nut.noticess, notice)
+    local i = table.insert(lia.noticess, notice)
     notice.isQuery = true
     notice.text:SetText(question)
     notice:SetPos(0, (i - 1) * (notice:GetTall() + 4) + 4)
@@ -254,7 +254,7 @@ function nut.util.notifQuery(question, option1, option2, manualDismiss, notifTyp
             if not self.respondToKeys then return end
             local queries = {}
 
-            for k, v in pairs(nut.noticess) do
+            for k, v in pairs(lia.noticess) do
                 if v.isQuery then
                     queries[#queries + 1] = v
                 end
@@ -278,7 +278,7 @@ function nut.util.notifQuery(question, option1, option2, manualDismiss, notifTyp
 end
 
 --Receives a query
-netstream.Hook("notifyQuery", nut.util.notifQuery)
+netstream.Hook("notifyQuery", lia.util.notifQuery)
 --Overwriting the default NS notification derma element
 local PANEL = {}
 
@@ -289,7 +289,7 @@ function PANEL:Init()
     self.text = self:Add("DLabel")
     self.text:SetText("Unassigned")
     self.text:SetExpensiveShadow(1, Color(0, 0, 0, 150))
-    self.text:SetFont("nutMediumFont")
+    self.text:SetFont("liaMediumFont")
     self.text:SetTextColor(color_white)
     self.text:SetDrawOnTop(true)
 
@@ -305,13 +305,13 @@ function PANEL:CalcWidth(padding)
 end
 
 function PANEL:Paint(w, h)
-    nut.util.drawBlur(self, 10)
+    lia.util.drawBlur(self, 10)
     surface.SetDrawColor(230, 230, 230, 10)
     surface.DrawRect(0, 0, w, h)
 
     if self.start then
         local w2 = math.TimeFraction(self.start, self.endTime, CurTime()) * w
-        surface.SetDrawColor(nut.config.get("color"))
+        surface.SetDrawColor(lia.config.get("color"))
         surface.DrawRect(w2, 0, w - w2, h)
     end
 

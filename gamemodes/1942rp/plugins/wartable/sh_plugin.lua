@@ -6,7 +6,7 @@ PLUGIN.camMoveSpeed = 5
 
 PLUGIN.allowedImageTypes = {".PNG", ".JPG", ".JPEG"}
 
-nut.util.include("sv_plugin.lua")
+lia.util.include("sv_plugin.lua")
 
 if CLIENT then
     netstream.Hook("UseWarTable", function(tableEnt, shouldAct)

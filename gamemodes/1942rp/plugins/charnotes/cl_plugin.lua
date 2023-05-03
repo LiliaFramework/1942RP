@@ -1,6 +1,6 @@
 local PLUGIN = PLUGIN
 
-netstream.Hook("nut_charNoteOpen", function(charID, notes, edit)
+netstream.Hook("lia_charNoteOpen", function(charID, notes, edit)
     for k, v in pairs(notes) do
         local noteFrame = vgui.Create("DFrame")
         noteFrame:SetTitle(v.name)
@@ -14,7 +14,7 @@ netstream.Hook("nut_charNoteOpen", function(charID, notes, edit)
         notesGUI:DockMargin(0, 8, 0, 0)
         notesGUI:SetSize(160, ScrH() * 0.2)
         notesGUI:Dock(FILL)
-        notesGUI:SetFont("nutCharSubTitleFont")
+        notesGUI:SetFont("liaCharSubTitleFont")
         notesGUI:SetTextColor(Color(255, 255, 255))
         notesGUI:SetVerticalScrollbarEnabled(true)
         notesGUI:SetText(v.data or "")

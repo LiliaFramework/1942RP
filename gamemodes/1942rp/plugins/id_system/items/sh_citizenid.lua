@@ -58,7 +58,7 @@ ITEM.functions.showself = {
         end
 
         ply.NextDocumentCheck = SysTime() + 5
-        netstream.Start(ply, item.netUID, ply, item.additionalArg)
+        netstream.Start(ply, "openUpID", ply)
 
         return false
     end,

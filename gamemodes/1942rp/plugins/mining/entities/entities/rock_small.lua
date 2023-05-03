@@ -34,13 +34,13 @@ function ENT:OnTakeDamage(dmginfo)
 
         if hp == 0 then
             self:SetNoDraw(true)
-            self:Remove()
 
             timer.Create("respawn_rock_big_" .. self:EntIndex(), 120, 1, function()
                 local newent = ents.Create("rock_big")
                 newent:SetPos(self:GetPos())
                 newent:SetNoDraw(false)
                 newent:Spawn()
+                self:Remove()
             end)
         elseif hp == 30 then
             RockBreakSmall(self, ply)
@@ -59,35 +59,35 @@ function RockBreakSmall(ent, ply)
     if randnum >= 0 and randnum <= 50 then
         if not ply:getChar():getInv():add("coal_ore") then
             ply:notify("You have collected some Coal Ore!")
-            nut.item.spawn("coal_ore", position)
+            lia.item.spawn("coal_ore", position)
         else
             ply:notify("You have collected some Coal Ore!")
         end
     elseif randnum >= 51 and randnum <= 86 then
         if not ply:getChar():getInv():add("iron_ore") then
             ply:notify("You have collected some Iron Ore!")
-            nut.item.spawn("iron_ore", position)
+            lia.item.spawn("iron_ore", position)
         else
             ply:notify("You have collected some Iron Ore!")
         end
     elseif randnum >= 87 and randnum <= 97 then
         if not ply:getChar():getInv():add("silver_ore") then
             ply:notify("You have collected some Silver Ore!")
-            nut.item.spawn("silver_ore", position)
+            lia.item.spawn("silver_ore", position)
         else
             ply:notify("You have collected some Silver Ore!")
         end
     elseif randnum >= 98 and randnum <= 102 then
         if not ply:getChar():getInv():add("gold_ore") then
             ply:notify("You have collected some Gold Ore!")
-            nut.item.spawn("gold_ore", position)
+            lia.item.spawn("gold_ore", position)
         else
             ply:notify("You have collected some Gold Ore!")
         end
     else
         if not ply:getChar():getInv():add("diamond_ore") then
             ply:notify("You have collected some Diamond Ore!")
-            nut.item.spawn("diamond_ore", position)
+            lia.item.spawn("diamond_ore", position)
         else
             ply:notify("You have collected some Diamond Ore!")
         end

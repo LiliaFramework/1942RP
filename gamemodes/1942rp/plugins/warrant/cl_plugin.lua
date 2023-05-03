@@ -6,6 +6,6 @@ function PLUGIN:DrawCharInfo(client, character, info)
     end
 end
 
-nut.command.add("warrant", {
+lia.command.add("warrant", {
     onRun = function(client, arguments) end
 })

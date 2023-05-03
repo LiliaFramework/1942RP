@@ -19,13 +19,13 @@ function PANEL:InitChildren()
 	self.title = vgui.Create("DLabel", self)
 	self.title:Dock(TOP)
 	self.title:DockMargin(20, 0, 20, 0)
-	self.title:SetFont("nut.docs.title")
+	self.title:SetFont("lia.docs.title")
 	self.title:SetColor(Color(0, 0, 0, 255))
 	
 	self.contents = vgui.Create("DLabel", self)
 	self.contents:Dock(FILL)
 	self.contents:DockMargin(20, 20, 20, 0)
-	self.contents:SetFont("nut.docs.contents")
+	self.contents:SetFont("lia.docs.contents")
 	self.contents:SetColor(Color(0, 0, 0, 255))
 	self.contents:SetAutoStretchVertical(true)
 	self.contents:SetWrap(true)
@@ -47,12 +47,12 @@ function PANEL:Paint(w, h)
 	surface.DrawTexturedRect(0, 0, w, h)
 end
 
-vgui.Register("nut.docs.read", PANEL, "DFrame")
+vgui.Register("lia.docs.read", PANEL, "DFrame")
 
 local PANEL = {}
 
 function PANEL:Init()
-	self:SetFont("nut.docs.contents")
+	self:SetFont("lia.docs.contents")
 	self:SetTextColor(Color(0, 0, 0, 255))
 	self:SetPlaceholderColor(Color(255, 255, 255, 255))
 end
@@ -61,7 +61,7 @@ function PANEL:Paint(w, h)
 	self:DrawTextEntryText(self:GetTextColor(), Color(0, 0, 255), self:GetCursorColor())
 end
 
-vgui.Register("nut.docs.input", PANEL, "DTextEntry")
+vgui.Register("lia.docs.input", PANEL, "DTextEntry")
 
 local PANEL = {}
 
@@ -79,16 +79,16 @@ function PANEL:InitSelf()
 end
 
 function PANEL:InitChildren()
-	self.title = vgui.Create("nut.docs.input", self)
+	self.title = vgui.Create("lia.docs.input", self)
 	self.title:Dock(TOP)
 	self.title:DockMargin(20, 0, 20, 0)
-	self.title:SetFont("nut.docs.title")
+	self.title:SetFont("lia.docs.title")
 	self.title:SetValue("Title...")
 	self.title:SetPlaceholderText("Enter title...")
 
 	local width, height = self:GetSize()
 
-	self.contents = vgui.Create("nut.docs.input", self)
+	self.contents = vgui.Create("lia.docs.input", self)
 	self.contents:Dock(TOP)
 	self.contents:DockMargin(20, 20, 20, 0)
 	self.contents:SetSize(width, height * 0.89)
@@ -106,15 +106,15 @@ function PANEL:GetContents()
 end
 
 function PANEL:SetItem(item)
-	self.item = nut.item.instances[item.id]
+	self.item = lia.item.instances[item.id]
 
-	self.title:SetValue(self.item:getData("nut.docs.title", self:GetHeader()))
-	self.contents:SetValue(self.item:getData("nut.docs.contents", self:GetContents()))
+	self.title:SetValue(self.item:getData("lia.docs.title", self:GetHeader()))
+	self.contents:SetValue(self.item:getData("lia.docs.contents", self:GetContents()))
 end
 
 function PANEL:OnClose()
 	if self.item then
-		netstream.Start("nut.docs.edit", self.item, self.title:GetValue(), self.contents:GetValue())
+		netstream.Start("lia.docs.edit", self.item, self.title:GetValue(), self.contents:GetValue())
 	end
 end
 
@@ -124,7 +124,7 @@ function PANEL:Paint(w, h)
 	surface.DrawTexturedRect(0, 0, w, h)
 end
 
-vgui.Register("nut.docs.edit", PANEL, "DFrame")
+vgui.Register("lia.docs.edit", PANEL, "DFrame")
 
 local PANEL = {}
 
@@ -156,11 +156,11 @@ function PANEL:SetMessages(messages)
 		button:SetTextColor(Color(255, 255, 255))
 
 		button.DoClick = function(arguments)
-			local messagePanel = vgui.Create("nut.docs.read")
+			local messagePanel = vgui.Create("lia.docs.read")
 			messagePanel:SetHeader(message.title)
 			messagePanel:SetContents(message.contents)
 		end
 	end
 end
 
-vgui.Register("nut.docs.list", PANEL, "DFrame")
+vgui.Register("lia.docs.list", PANEL, "DFrame")

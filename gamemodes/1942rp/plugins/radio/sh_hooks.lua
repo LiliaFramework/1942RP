@@ -11,15 +11,15 @@ local function endChatter(listener)
     end)
 end
 
-nut.chat.register("radio", {
+lia.chat.register("radio", {
     format = "%s says in radio: \"%s\"",
-    font = "nutRadioFont",
+    font = "liaRadioFont",
     onGetColor = function(speaker, text)
         return RADIO_CHATCOLOR
     end,
     onCanHear = function(speaker, listener)
         local dist = speaker:GetPos():Distance(listener:GetPos())
-        local speakRange = nut.config.get("chatRange", 280)
+        local speakRange = lia.config.get("chatRange", 280)
         local listenerEnts = ents.FindInSphere(listener:GetPos(), speakRange)
         local listenerInv = listener:getChar():getInv()
         local freq
@@ -48,7 +48,7 @@ nut.chat.register("radio", {
             for k, v in ipairs(listenerEnts) do
                 if freq then break end
 
-                if v:GetClass() == "nut_item" then
+                if v:GetClass() == "lia_item" then
                     local itemTable = v:getItemTable()
 
                     for id, far in pairs(find) do
@@ -68,7 +68,7 @@ nut.chat.register("radio", {
     end,
     onCanSay = function(speaker, text)
         local schar = speaker:getChar()
-        local speakRange = nut.config.get("chatRange", 280)
+        local speakRange = lia.config.get("chatRange", 280)
         local speakEnts = ents.FindInSphere(speaker:GetPos(), speakRange)
         local speakerInv = schar:getInv()
         local freq
@@ -92,7 +92,7 @@ nut.chat.register("radio", {
             for k, v in ipairs(speakEnts) do
                 if freq then break end
 
-                if v:GetClass() == "nut_item" then
+                if v:GetClass() == "lia_item" then
                     local itemTable = v:getItemTable()
 
                     for id, far in pairs(find) do
@@ -134,5 +134,5 @@ local langTable = {
 }
 
 function PLUGIN:PluginLoaded()
-    table.Merge(nut.lang.stored[langkey], langTable)
+    table.Merge(lia.lang.stored[langkey], langTable)
 end

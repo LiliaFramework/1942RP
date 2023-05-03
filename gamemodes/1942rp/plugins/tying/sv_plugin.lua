@@ -51,12 +51,12 @@ function PLUGIN:ns2SetupInventorySearch(client, target)
     end
 
     target:getChar():getInv():addAccessRule(searcherCanAccess)
-    target.nutSearchAccessRule = searcherCanAccess
+    target.liaSearchAccessRule = searcherCanAccess
     target:getChar():getInv():sync(client)
 end
 
 function PLUGIN:ns2RemoveInventorySearchPermissions(client, target)
-    local rule = target.nutSearchAccessRule
+    local rule = target.liaSearchAccessRule
 
     if rule then
         target:getChar():getInv():removeAccessRule(rule)
@@ -64,7 +64,7 @@ function PLUGIN:ns2RemoveInventorySearchPermissions(client, target)
 end
 
 function PLUGIN:searchPlayer(client, target)
-    if IsValid(target:getNetVar("searcher")) or IsValid(client.nutSearchTarget) then
+    if IsValid(target:getNetVar("searcher")) or IsValid(client.liaSearchTarget) then
         client:notifyLocalized("This person is already being searched.")
 
         return false
@@ -76,7 +76,7 @@ function PLUGIN:searchPlayer(client, target)
         return false
     end
 
-    if nut.version then
+    if lia.version then
         self:ns2SetupInventorySearch(client, target)
     else
         self:ns1SetupInventorySearch(client, target)
@@ -84,7 +84,7 @@ function PLUGIN:searchPlayer(client, target)
 
     -- Show the inventory menu to the searcher.
     netstream.Start(client, "searchPly", target, target:getChar():getInv():getID())
-    client.nutSearchTarget = target
+    client.liaSearchTarget = target
     target:setNetVar("searcher", client)
 
     return true
@@ -96,17 +96,17 @@ function PLUGIN:CanPlayerInteractItem(client, action, item)
 end
 
 function PLUGIN:stopSearching(client)
-    local target = client.nutSearchTarget
+    local target = client.liaSearchTarget
 
     if IsValid(target) and target:getNetVar("searcher") == client then
-        if nut.version then
+        if lia.version then
             PLUGIN:ns2RemoveInventorySearchPermissions(client, target)
         else
             PLUGIN:ns1RemoveInventorySearchPermissions(client, target)
         end
 
         target:setNetVar("searcher", nil)
-        client.nutSearchTarget = nil
+        client.liaSearchTarget = nil
         netstream.Start(client, "searchExit")
     end
 end

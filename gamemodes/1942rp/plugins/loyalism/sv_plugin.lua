@@ -11,12 +11,12 @@ function PLUGIN:PlayerLoadedChar(client)
     end
 end
 
-nut.command.add("partytier", {
+lia.command.add("partytier", {
     syntax = "<string name> <string number>",
     onRun = function(client, arguments)
         local char = client:getChar()
         if not char then return "You must be on a character to use this" end
-        local target = nut.command.findPlayer(client, arguments[1])
+        local target = lia.command.findPlayer(client, arguments[1])
 
         if not char:hasFlags("T") then
             client:notify("You don't have permissions for that.")

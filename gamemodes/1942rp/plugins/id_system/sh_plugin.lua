@@ -1,8 +1,8 @@
 PLUGIN.name = "ID System"
 PLUGIN.desc = "Adds an important document with all the information about the player."
 PLUGIN.author = "Leonheart#7476"
-nut.util.include("cl_missingInfos.lua")
-nut.util.include("sv_networking.lua")
+lia.util.include("cl_missingInfos.lua")
+lia.util.include("sv_networking.lua")
 
 charCharacteristics = {
     ["Age(+18)"] = "number",
@@ -30,7 +30,7 @@ charCharacteristics = {
     },
 }
 
-nut.command.add("chareditpapers", {
+lia.command.add("chareditpapers", {
     syntax = "",
     onRun = function(ply, args)
         netstream.Start(ply, "missingCharacteristics", "Edit your information", true)

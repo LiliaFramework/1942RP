@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------
-nut.command.add("requestsearch", {
+lia.command.add("requestsearch", {
     onRun = function(client, arguments)
         if (client.LastSearchRequest or 0) > CurTime() - 30 then return "You can't send search requests this quickly!" end
         local data = {}
@@ -32,7 +32,7 @@ nut.command.add("requestsearch", {
 
             return
         elseif not target:getNetVar("restricted") and not target.SearchRequested and not client.SearchRequested then
-            net.Start("nutRequestSearch")
+            net.Start("liaRequestSearch")
             net.Send(target)
             client:notify("Request to search sent.")
             target.SearchRequested = client
@@ -45,7 +45,7 @@ nut.command.add("requestsearch", {
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("tieplayer", {
+lia.command.add("tieplayer", {
     onRun = function(client, arguments)
         local data = {}
         data.start = client:GetShootPos()
@@ -81,7 +81,7 @@ nut.command.add("tieplayer", {
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("cmenugivemoney", {
+lia.command.add("cmenugivemoney", {
     onRun = function(client, arguments)
         local data = {}
         data.start = client:GetShootPos()
@@ -110,7 +110,7 @@ nut.command.add("cmenugivemoney", {
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("requestid", {
+lia.command.add("requestid", {
     onRun = function(client, arguments)
         local data = {}
         data.start = client:GetShootPos()
@@ -140,7 +140,7 @@ nut.command.add("requestid", {
         end
 
         if IsValid(target) and target:IsPlayer() and not target:getNetVar("restricted") and not target.IDRequested and not client.IDRequested then
-            net.Start("nutRequestID")
+            net.Start("liaRequestID")
             net.Send(target)
             client:notify("Request to view sent.")
             target.IDRequested = client
@@ -153,7 +153,7 @@ nut.command.add("requestid", {
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("showid", {
+lia.command.add("showid", {
     onRun = function(client, arguments)
         local data = {}
         data.start = client:GetShootPos()
@@ -191,7 +191,7 @@ nut.command.add("showid", {
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("cmenumedkit", {
+lia.command.add("cmenumedkit", {
     onRun = function(client, arguments)
         local data = {}
         data.start = client:GetShootPos()
@@ -224,7 +224,7 @@ nut.command.add("cmenumedkit", {
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("cmenubandage", {
+lia.command.add("cmenubandage", {
     onRun = function(client, arguments)
         local data = {}
         data.start = client:GetShootPos()
@@ -257,7 +257,7 @@ nut.command.add("cmenubandage", {
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("forceid", {
+lia.command.add("forceid", {
     onRun = function(client, arguments)
         local data = {}
         data.start = client:GetShootPos()

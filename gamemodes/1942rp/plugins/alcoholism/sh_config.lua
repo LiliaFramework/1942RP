@@ -1,4 +1,4 @@
-nut.config.add("alcoholism_ticktime", 30, "The amount of seconds in between think updates.", nil, {
+lia.config.add("alcoholism_ticktime", 30, "The amount of seconds in between think updates.", nil, {
     data = {
         min = 1,
         max = 60
@@ -6,7 +6,7 @@ nut.config.add("alcoholism_ticktime", 30, "The amount of seconds in between thin
     category = "alcoholism"
 })
 
-nut.config.add("alcoholism_degraderate", 5, "The percentage that is removed from a character's blood alcohol content per think.", nil, {
+lia.config.add("alcoholism_degraderate", 5, "The percentage that is removed from a character's blood alcohol content per think.", nil, {
     data = {
         min = 1,
         max = 100
@@ -14,7 +14,7 @@ nut.config.add("alcoholism_degraderate", 5, "The percentage that is removed from
     category = "alcoholism"
 })
 
-nut.config.add("alcoholism_effect_addalpha", 0.03, "How much alpha to change per frame for motion blur effects.", nil, {
+lia.config.add("alcoholism_effect_addalpha", 0.03, "How much alpha to change per frame for motion blur effects.", nil, {
     data = {
         form = "Float",
         min = 0.01,
@@ -23,7 +23,7 @@ nut.config.add("alcoholism_effect_addalpha", 0.03, "How much alpha to change per
     category = "alcoholism"
 })
 
-nut.config.add("alcoholism_effect_delay", 0, "Determines the amount of time between frames to capture for motion blur.", nil, {
+lia.config.add("alcoholism_effect_delay", 0, "Determines the amount of time between frames to capture for motion blur.", nil, {
     data = {
         form = "Float",
         min = 0,

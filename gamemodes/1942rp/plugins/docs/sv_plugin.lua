@@ -1,9 +1,9 @@
-netstream.Hook("nut.docs.edit", function(ply, item, title, contents)
-	item = nut.item.instances[item.id]
+netstream.Hook("lia.docs.edit", function(ply, item, title, contents)
+	item = lia.item.instances[item.id]
 
-	if not nut.item.isItem(item) then return end
+	if not lia.item.isItem(item) then return end
 	if item:getOwner() ~= ply then return end
 
-	item:setData("nut.docs.title", title)
-	item:setData("nut.docs.contents", contents)
+	item:setData("lia.docs.title", title)
+	item:setData("lia.docs.contents", contents)
 end)

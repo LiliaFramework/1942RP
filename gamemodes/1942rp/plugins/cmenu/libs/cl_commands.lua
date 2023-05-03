@@ -1,34 +1,34 @@
 ----------------------------------------------------------------------------------------------
-nut.command.add("requestsearch", {
+lia.command.add("requestsearch", {
     onRun = function(client, arguments) end
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("tieplayer", {
+lia.command.add("tieplayer", {
     onRun = function(client, arguments) end
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("cmenugivemoney", {
+lia.command.add("cmenugivemoney", {
     onRun = function(client, arguments) end
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("requestid", {
+lia.command.add("requestid", {
     onRun = function(client, arguments) end
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("showid", {
+lia.command.add("showid", {
     onRun = function(client, arguments) end
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("cmenumedkit", {
+lia.command.add("cmenumedkit", {
     onRun = function(client, arguments) end
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("cmenubandage", {
+lia.command.add("cmenubandage", {
     onRun = function(client, arguments) end
 })

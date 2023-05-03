@@ -11,8 +11,8 @@ ITEM.functions.use = {
     onRun = function(item)
         local client = item.player
         client:getChar():setData("leg_broken", false)
-        client:SetWalkSpeed(nut.config.get("walkSpeed", 130))
-        client:SetRunSpeed(nut.config.get("runSpeed", 235))
+        client:SetWalkSpeed(lia.config.get("walkSpeed", 130))
+        client:SetRunSpeed(lia.config.get("runSpeed", 235))
 
         return true
     end
@@ -29,8 +29,8 @@ ITEM.functions.usef = {
 
         if target and target:IsValid() and target:IsPlayer() and target:Alive() then
             target:getChar():setData("leg_broken", false)
-            target:SetWalkSpeed(nut.config.get("walkSpeed", 130))
-            target:SetRunSpeed(nut.config.get("runSpeed", 235))
+            target:SetWalkSpeed(lia.config.get("walkSpeed", 130))
+            target:SetRunSpeed(lia.config.get("runSpeed", 235))
 
             return true
         end

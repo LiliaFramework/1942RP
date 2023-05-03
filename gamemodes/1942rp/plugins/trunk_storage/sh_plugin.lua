@@ -3,7 +3,7 @@ PLUGIN.author = "Leonheart#7476"
 PLUGIN.desc = "Implements storage for vehicle trunks"
 PLUGIN.vehicles = PLUGIN.vehicles or {}
 VEHICLE_DEFINITIONS = PLUGIN.vehicles
-nut.util.include("sh_definitions.lua")
+lia.util.include("sh_definitions.lua")
 
 -- Miscellanous functions for easy interaction
 local function LockTrunk(self, locked)
@@ -27,13 +27,13 @@ local function IsTrunkLocked(self)
 end
 
 local function getInv(self)
-    if IsValid(self) and self:IsVehicle() and VEHICLE_DEFINITIONS[self:GetModel():lower()] then return nut.inventory.instances[self:getNetVar("trunk_id", self.trunk_id or 0)] end
+    if IsValid(self) and self:IsVehicle() and VEHICLE_DEFINITIONS[self:GetModel():lower()] then return lia.inventory.instances[self:getNetVar("trunk_id", self.trunk_id or 0)] end
 end
 
 --[[
 for k, v in pairs(PLUGIN.vehicles) do
 	if (k and v.width and v.height) then
-		nut.item.registerInv("trunk_"..k, v.width, v.height)
+		lia.item.registerInv("trunk_"..k, v.width, v.height)
 	else
 		ErrorNoHalt("[NutScript] Trunk storage for '"..k.."' is missing all inventory information!\n")
 		PLUGIN.vehicles[k] = nil
@@ -60,7 +60,7 @@ if SERVER then
 
             --load the old inventory if it exists
             if old_inventory then
-                nut.inventory.loadByID(old_inventory):next(function(inventory)
+                lia.inventory.loadByID(old_inventory):next(function(inventory)
                     if inventory then
                         inventory.isStorage = true
                         ent:setNetVar("trunk_id", inventory:getID())
@@ -69,7 +69,7 @@ if SERVER then
                     end
                 end)
             else --create a new inventory
-                nut.inventory.instance("grid", {
+                lia.inventory.instance("grid", {
                     w = def.width,
                     h = def.height
                 }):next(function(inventory)
@@ -128,7 +128,7 @@ if SERVER then
 			local old_inventory = wcd_trunks[entity:GetModel():lower()]
 			if (old_inventory) then return end
 
-			nut.inventory.loadByID(old_inventory)
+			lia.inventory.loadByID(old_inventory)
 			:next(function(inventory)
 				if (inventory) then
 					inventory.isStorage = true
@@ -142,9 +142,9 @@ if SERVER then
 	end)
 	--]]
 else
-    -- "Inspired" by nutscript's storage addon
+    -- "Inspired" by liascript's storage addon
     netstream.Hook("trunkOpen", function(entity, index)
-        local inventory = nut.inventory.instances[index]
+        local inventory = lia.inventory.instances[index]
 
         if IsValid(entity) and entity:IsVehicle() and inventory then
             local data = VEHICLE_DEFINITIONS[entity:GetModel():lower()]
@@ -155,7 +155,7 @@ else
                 -- Get the inventory for the player and storage.
                 local localInv = LocalPlayer():getChar() and LocalPlayer():getChar():getInv()
                 local storageInv = inventory
-                if not localInv or not storageInv then return false end --return nutStorageBase:exitStorage()
+                if not localInv or not storageInv then return false end --return liaStorageBase:exitStorage()
                 -- Show both the storage and inventory.
                 local localInvPanel = localInv:show()
                 local storageInvPanel = storageInv:show()
@@ -177,7 +177,7 @@ else
                 local function exitStorageOnRemove(panel)
                     if firstToRemove then
                         firstToRemove = false
-                        nutStorageBase:exitStorage()
+                        liaStorageBase:exitStorage()
                         local otherPanel = panel == localInvPanel and storageInvPanel or localInvPanel
 
                         if IsValid(otherPanel) then
@@ -195,7 +195,7 @@ else
     end)
 end
 
-nut.command.add("trunk", {
+lia.command.add("trunk", {
     adminOnly = false,
     syntax = "",
     onRun = function(client, arguments)
@@ -225,7 +225,7 @@ nut.command.add("trunk", {
                 ent.receivers = {}
             end
 
-            client.nutStorageEntity = ent
+            client.liaStorageEntity = ent
             ent.receivers[client] = true
             inventory:sync(client)
             netstream.Start(client, "trunkOpen", ent, inventory:getID())
@@ -234,7 +234,7 @@ nut.command.add("trunk", {
     end
 })
 
-nut.command.add("locktrunk", {
+lia.command.add("locktrunk", {
     adminOnly = false,
     syntax = "",
     onRun = function(client, arguments)
@@ -256,7 +256,7 @@ nut.command.add("locktrunk", {
     end
 })
 
-nut.command.add("unlocktrunk", {
+lia.command.add("unlocktrunk", {
     adminOnly = false,
     syntax = "",
     onRun = function(client, arguments)

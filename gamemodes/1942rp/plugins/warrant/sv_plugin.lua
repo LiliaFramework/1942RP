@@ -4,9 +4,9 @@ local owner2 = {
     superadmin = true,
 }
 
-nut.command.add("warrant", {
+lia.command.add("warrant", {
     onRun = function(client, arguments)
-        local target = nut.command.findPlayer(client, arguments[1])
+        local target = lia.command.findPlayer(client, arguments[1])
         local uniqueID = client:GetUserGroup()
 
         if not (client:getChar():hasFlags("W") or owner2[uniqueID]) then

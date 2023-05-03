@@ -50,8 +50,8 @@ else
     local TEXT_OFFSET = Vector(0, 0, 20)
     local toScreen = FindMetaTable("Vector").ToScreen
     local colorAlpha = ColorAlpha
-    local drawText = nut.util.drawText
-    local configGet = nut.config.get
+    local drawText = lia.util.drawText
+    local configGet = lia.config.get
     ENT.DrawEntityInfo = true
 
     function ENT:onDrawEntityInfo(alpha)
