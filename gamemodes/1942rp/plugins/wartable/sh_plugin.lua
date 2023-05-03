@@ -1,6 +1,6 @@
 local PLUGIN = PLUGIN
 PLUGIN.name = "War Table"
-PLUGIN.author = "Zoephix"
+PLUGIN.author = "Zoephix Alias: 'Sissy Cuck'"
 PLUGIN.desc = "Adds a interactive War Table"
 PLUGIN.camMoveSpeed = 5
 

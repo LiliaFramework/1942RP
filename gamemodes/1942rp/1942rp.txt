@@ -1,6 +1,6 @@
 "1942rp"
 {
-	"base"		"nutscript"
+	"base"		"lilia"
 	"title"		"1942rp"
 	"author"	""
 	"menusystem" "1"
