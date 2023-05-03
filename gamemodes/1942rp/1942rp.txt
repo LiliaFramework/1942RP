@@ -1,7 +1,0 @@
-"1942rp"
-{
-	"base"		"lilia"
-	"title"		"1942rp"
-	"author"	"Leonheart"
-	"menusystem" "1"
-}
