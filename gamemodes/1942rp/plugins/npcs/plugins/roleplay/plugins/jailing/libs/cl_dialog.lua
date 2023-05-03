@@ -1,0 +1,16 @@
+net.Receive("jailer_npc", function()
+    talkablenpcs.dialog("Anwärter Jail Guard", "models/brot/prometheus/mattimodels/orpo/en6.mdl", "Jailer", "Ordnungspolizei", function(ply)
+        talkablenpcs.dialogframe("Anwärter Jail Guard", "models/brot/prometheus/mattimodels/orpo/en6.mdl", "Jailer", "Ordnungspolizei")
+        talkablenpcs.dialogtext("What are you looking to do?")
+
+        talkablenpcs.dialogbutton("Release a Player", 40, function()
+            vgui.Create("release_player_menu")
+            self:Remove()
+        end)
+
+        talkablenpcs.dialogbutton("Arrest a Player", 40, function()
+            vgui.Create("arrest_player_menu")
+            self:Remove()
+        end)
+    end)
+end)

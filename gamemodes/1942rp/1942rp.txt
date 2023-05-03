@@ -1,0 +1,7 @@
+"1942rp"
+{
+	"base"		"nutscript"
+	"title"		"1942rp"
+	"author"	""
+	"menusystem" "1"
+}
