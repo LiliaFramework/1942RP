@@ -1,6 +1,6 @@
 PLUGIN.name = "Item Maker"
 PLUGIN.author = "Leonheart#7476"
-PLUGIN.desc = "Allows creating custom items in-game
+PLUGIN.desc = "Allows creating custom items in-game"
 NSForgedItems = NSForgedItems or {}
 NSForgedItems.List = NSForgedItems.List or {}
 lia.util.include("sv_plugin.lua")

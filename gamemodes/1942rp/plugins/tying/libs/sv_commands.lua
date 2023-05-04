@@ -12,7 +12,7 @@ local modRanks = {
 }
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("allowcarentry", {
+lia.command.add("allowcarentry", {
     onRun = function(client, arguments)
         local data = {}
         data.start = client:GetShootPos()
@@ -54,7 +54,7 @@ nut.command.add("allowcarentry", {
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("gagplayer", {
+lia.command.add("gagplayer", {
     onRun = function(client, arguments)
         local data = {}
         data.start = client:GetShootPos()
@@ -96,7 +96,7 @@ nut.command.add("gagplayer", {
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("blindplayer", {
+lia.command.add("blindplayer", {
     onRun = function(client, arguments)
         local data = {}
         data.start = client:GetShootPos()
@@ -138,7 +138,7 @@ nut.command.add("blindplayer", {
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("dragplayer", {
+lia.command.add("dragplayer", {
     onRun = function(client, arguments)
         local tr = util.TraceLine(util.GetPlayerTrace(client))
         local target = tr.Entity
@@ -162,9 +162,9 @@ nut.command.add("dragplayer", {
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("setrestricted", {
+lia.command.add("setrestricted", {
     onRun = function(client, arguments)
-        local target = nut.command.findPlayer(client, arguments[1])
+        local target = lia.command.findPlayer(client, arguments[1])
         local uniqueID = client:GetUserGroup()
 
         if not modRanks[uniqueID] then
@@ -178,9 +178,9 @@ nut.command.add("setrestricted", {
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("setblinded", {
+lia.command.add("setblinded", {
     onRun = function(client, arguments)
-        local target = nut.command.findPlayer(client, arguments[1])
+        local target = lia.command.findPlayer(client, arguments[1])
         local uniqueID = client:GetUserGroup()
 
         if not modRanks[uniqueID] then
@@ -200,9 +200,9 @@ nut.command.add("setblinded", {
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("setallowcar", {
+lia.command.add("setallowcar", {
     onRun = function(client, arguments)
-        local target = nut.command.findPlayer(client, arguments[1])
+        local target = lia.command.findPlayer(client, arguments[1])
         local uniqueID = client:GetUserGroup()
 
         if not modRanks[uniqueID] then
@@ -222,9 +222,9 @@ nut.command.add("setallowcar", {
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("setgagged", {
+lia.command.add("setgagged", {
     onRun = function(client, arguments)
-        local target = nut.command.findPlayer(client, arguments[1])
+        local target = lia.command.findPlayer(client, arguments[1])
         local uniqueID = client:GetUserGroup()
 
         if not modRanks[uniqueID] then
@@ -244,7 +244,7 @@ nut.command.add("setgagged", {
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("charsearch", {
+lia.command.add("charsearch", {
     onRun = function(client, arguments)
         local data = {}
         data.start = client:GetShootPos()
@@ -299,7 +299,7 @@ nut.command.add("charsearch", {
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("admincharsearch", {
+lia.command.add("admincharsearch", {
     syntax = "<string target>",
     onRun = function(client, arguments)
         local uniqueID = client:GetUserGroup()
@@ -310,7 +310,7 @@ nut.command.add("admincharsearch", {
             return false
         end
 
-        local target = nut.command.findPlayer(client, arguments[1])
+        local target = lia.command.findPlayer(client, arguments[1])
 
         if IsValid(target) and target:IsPlayer() then
             PLUGIN:searchPlayer(client, target)

@@ -1,3 +1,4 @@
+local playerMeta = FindMetaTable("Player")
 function table.fixkeys(input)
     local outputTable = {}
 

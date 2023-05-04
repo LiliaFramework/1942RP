@@ -31,19 +31,19 @@ end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function PLUGIN:PlayerUse(client, entity)
-    if not client:getNetVar("restricted") and entity:IsPlayer() and entity:getNetVar("restricted") and not entity.nutBeingUnTied then
-        entity.nutBeingUnTied = true
+    if not client:getNetVar("restricted") and entity:IsPlayer() and entity:getNetVar("restricted") and not entity.liaBeingUnTied then
+        entity.liaBeingUnTied = true
         entity:setAction("@beingUntied", 5)
         client:setAction("@unTying", 5)
 
         client:doStaredAction(entity, function()
             entity:setRestricted(false)
-            entity.nutBeingUnTied = false
+            entity.liaBeingUnTied = false
             client:EmitSound("npc/roller/blade_in.wav")
             entity:FreeTies()
         end, 5, function()
             if IsValid(entity) then
-                entity.nutBeingUnTied = false
+                entity.liaBeingUnTied = false
                 entity:setAction()
             end
 
@@ -63,7 +63,7 @@ end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 local PLUGIN = PLUGIN
 
-local function nutApproveSearch(len, ply)
+local function liaApproveSearch(len, ply)
     local requester = ply.SearchRequested
     if not requester then return end
     if not requester.SearchRequested then return end
@@ -83,4 +83,4 @@ local function nutApproveSearch(len, ply)
     ply.SearchRequested = nil
 end
 
-net.Receive("nutApproveSearch", nutApproveSearch)
+net.Receive("liaApproveSearch", liaApproveSearch)

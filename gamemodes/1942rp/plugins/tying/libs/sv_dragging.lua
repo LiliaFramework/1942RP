@@ -3,7 +3,7 @@ DRAGGING_TARGETRADIUS = 50 * 50 -- SQUARED FOR PERFORMANCE The distance the drag
 DRAGGING_MOVE_SPEED = 160 -- Dragged players always walk, so put this between 0 and walk speed (160 by default)
 DRAGGING_MAX_DISTANCE = 300 * 300 -- SQUARED FOR PERFORMANCE When the drag gets interrupted
 DRAGGING_START_RANGE = 100
-DRAGGING_SWEP = "nut_keys"
+DRAGGING_SWEP = "lia_keys"
 Dragging = {}
 Draggers = {}
 
