@@ -15,3 +15,7 @@ It has come to my attention that a fairly known individual, Logan, that goes by 
 Regardless of this being a stripped version, it contains most of the core systems. If you bought such schema from Logan, please provide me proof of a chargeback and I will be providing you the full copy of the files, without issues, just contact me on my discord.
 
 ![image](https://user-images.githubusercontent.com/33399712/236051550-4147b1de-d116-4043-acf3-20c99b86af93.png)
+
+## Collection
+
+https://steamcommunity.com/sharedfiles/filedetails/?id=2833616414
