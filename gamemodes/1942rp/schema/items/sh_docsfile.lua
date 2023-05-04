@@ -75,17 +75,17 @@ if (SERVER) then
         local overrideName = net.ReadString()
         local findString = "https://docs.google.com/"
         if (not ply:getChar()) then return end
-        if (not nut.item.instances[itemID]) then return end
+        if (not lia.item.instances[itemID]) then return end
         if (str:sub(1, #findString) ~= findString) then return end
-        local invID = nut.item.instances[itemID].invID
+        local invID = lia.item.instances[itemID].invID
         if (not invID) then return end
-        local charID = nut.item.inventories[invID].owner
+        local charID = lia.item.inventories[invID].owner
         if (not charID) then return end
-        local char = nut.char.loaded[charID]
+        local char = lia.char.loaded[charID]
         if (not char or char.id ~= ply:getChar().id) then return end -- down the rabbit hole, neo
-        nut.item.instances[itemID].docLink = str
-        nut.item.instances[itemID].overrideName = overrideName
-        nut.item.instances[itemID].overrideDesc = str
+        lia.item.instances[itemID].docLink = str
+        lia.item.instances[itemID].overrideName = overrideName
+        lia.item.instances[itemID].overrideDesc = str
         net.Start("SpecialDocumentsSetItemName")
         net.WriteDouble(itemID)
         net.WriteString(overrideName or "")
@@ -100,7 +100,7 @@ else
             local findString = "https://docs.google.com/"
 
             if (str:sub(1, #findString) ~= findString) then
-                nut.util.notify("The link must start with https://docs.google.com/")
+                lia.util.notify("The link must start with https://docs.google.com/")
 
                 return
             end
@@ -112,16 +112,16 @@ else
                 net.WriteString(str)
                 net.WriteString(titleName or "No Title")
                 net.SendToServer()
-                nut.item.instances[itemID].overrideDesc = str
-                nut.item.instances[itemID].overrideName = titleName
+                lia.item.instances[itemID].overrideDesc = str
+                lia.item.instances[itemID].overrideName = titleName
 
-                if (nut.gui.menu and nut.gui.inv1) then
-                    local oldPosX, oldPosY = nut.gui.inv1:GetPos()
-                    nut.gui.inv1:Remove()
-                    nut.gui.inv1 = nut.gui.menu.tabs:Add("nutInventory")
-                    nut.gui.inv1.childPanels = {}
-                    nut.gui.inv1:setInventory(LocalPlayer():getChar():getInv())
-                    nut.gui.inv1:SetPos(oldPosX, oldPosY)
+                if (lia.gui.menu and lia.gui.inv1) then
+                    local oldPosX, oldPosY = lia.gui.inv1:GetPos()
+                    lia.gui.inv1:Remove()
+                    lia.gui.inv1 = lia.gui.menu.tabs:Add("liaInventory")
+                    lia.gui.inv1.childPanels = {}
+                    lia.gui.inv1:setInventory(LocalPlayer():getChar():getInv())
+                    lia.gui.inv1:SetPos(oldPosX, oldPosY)
                 end
             end)
         end)
@@ -159,9 +159,9 @@ else
         local setName = net.ReadString()
         local setDesc = net.ReadString()
 
-        if (nut.item.instances[itemID]) then
-            nut.item.instances[itemID].overrideName = setName
-            nut.item.instances[itemID].overrideDesc = setDesc
+        if (lia.item.instances[itemID]) then
+            lia.item.instances[itemID].overrideName = setName
+            lia.item.instances[itemID].overrideDesc = setDesc
         end
     end)
 end

@@ -20,14 +20,14 @@ if not CustomizableWeaponry then return end
 
 
 ]]
-nut.util.include("sh_configs.lua")
-nut.util.include("sh_languages.lua")
-nut.util.include("cl_cw3d2d.lua")
-nut.util.include("sh_attachments.lua")
+lia.util.include("sh_configs.lua")
+lia.util.include("sh_languages.lua")
+lia.util.include("cl_cw3d2d.lua")
+lia.util.include("sh_attachments.lua")
 
 function PLUGIN:InitializedPlugins()
-    table.Merge(nut.lang.stored["korean"], self.koreanTranslation)
-    table.Merge(nut.lang.stored["english"], self.englishTranslation)
+    table.Merge(lia.lang.stored["korean"], self.koreanTranslation)
+    table.Merge(lia.lang.stored["english"], self.englishTranslation)
 
     -- Create Items with Lua
     do
@@ -35,7 +35,7 @@ function PLUGIN:InitializedPlugins()
         for name, data in pairs(self.ammoInfo) do
             local uniqueID = "ammo_" .. name:lower()
             local ammoInfo = data
-            local ITEM = nut.item.register(uniqueID, "base_ammo", nil, nil, true)
+            local ITEM = lia.item.register(uniqueID, "base_ammo", nil, nil, true)
             ITEM.name = ammoInfo.name
             ITEM.desc = ammoInfo.desc
             ITEM.ammo = name
@@ -198,7 +198,7 @@ function PLUGIN:InitializedPlugins()
                 local uniqueID = string.Replace(class, prefix, ""):lower()
                 local dat = self.gunData[prefix .. uniqueID] or {}
                 v.Slot = dat.slot or 2
-                local ITEM = nut.item.register(class:lower(), "base_weapons", nil, nil, true)
+                local ITEM = lia.item.register(class:lower(), "base_weapons", nil, nil, true)
                 ITEM.name = uniqueID
                 ITEM.desc = dat.desc
                 ITEM.price = dat.price or 4000
@@ -327,10 +327,10 @@ function PLUGIN:InitializedPlugins()
 
                 -- Register Language name for the gun.
                 if CLIENT then
-                    if nut.lang.stored["english"] and nut.lang.stored["korean"] then
+                    if lia.lang.stored["english"] and lia.lang.stored["korean"] then
                         ITEM.name = v.PrintName
-                        nut.lang.stored["english"][prefix .. uniqueID] = v.PrintName
-                        nut.lang.stored["korean"][prefix .. uniqueID] = v.PrintName
+                        lia.lang.stored["english"][prefix .. uniqueID] = v.PrintName
+                        lia.lang.stored["korean"][prefix .. uniqueID] = v.PrintName
                     end
                 end
             end
@@ -390,7 +390,7 @@ function PLUGIN:InitializedPlugins()
         end
 
         do
-            CustomizableWeaponry.callbacks:addNew("finishReload", "nutExperience", function(weapon)
+            CustomizableWeaponry.callbacks:addNew("finishReload", "liaExperience", function(weapon)
                 if CLIENT then return end
                 local owner = weapon.Owner
 
@@ -406,7 +406,7 @@ function PLUGIN:InitializedPlugins()
             end)
 
             if CLIENT then
-                netstream.Hook("nutUpdateWeapon", function(weapon)
+                netstream.Hook("liaUpdateWeapon", function(weapon)
                     if weapon and weapon:IsValid() and weapon.recalculateStats then
                         weapon:recalculateStats()
                     end
@@ -424,7 +424,7 @@ function PLUGIN:InitializedPlugins()
                     if IsValid(weapon) then
                         if weapon.recalculateStats then
                             weapon:recalculateStats()
-                            netstream.Start(weapon.Owner, "nutUpdateWeapon", weapon)
+                            netstream.Start(weapon.Owner, "liaUpdateWeapon", weapon)
                         end
                     end
                 end)

@@ -1,49 +1,49 @@
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("allowcarentry", {
+lia.command.add("allowcarentry", {
     onRun = function(client, arguments) end
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("gagplayer", {
+lia.command.add("gagplayer", {
     onRun = function(client, arguments) end
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("blindplayer", {
+lia.command.add("blindplayer", {
     onRun = function(client, arguments) end
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("tieplayer", {
+lia.command.add("tieplayer", {
     onRun = function(client, arguments) end
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("dragplayer", {
+lia.command.add("dragplayer", {
     onRun = function(client, arguments) end
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("setrestricted", {
+lia.command.add("setrestricted", {
     onRun = function(client, arguments) end
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("setblinded", {
+lia.command.add("setblinded", {
     onRun = function(client, arguments) end
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("setallowcar", {
+lia.command.add("setallowcar", {
     onRun = function(client, arguments) end
 })
 
 ------------------------------------------------------------------------------------------------------------------------
-nut.command.add("setgagged", {
+lia.command.add("setgagged", {
     onRun = function(client, arguments) end
 })
 
 ----------------------------------------------------------------------------------------------
-nut.command.add("charsearch", {
+lia.command.add("charsearch", {
     onRun = function(client, arguments) end
 })

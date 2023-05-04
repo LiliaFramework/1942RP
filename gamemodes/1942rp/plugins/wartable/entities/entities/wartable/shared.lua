@@ -2,7 +2,7 @@ DEFINE_BASECLASS("base_gmodentity")
 ENT.PrintName = "War Table"
 ENT.Spawnable = true
 ENT.AdminOnly = true
-ENT.Category = "Nutscript"
+ENT.Category = "Lilia"
 ENT.RenderGroup = RENDERGROUP_BOTH
 
 function ENT:Clear()

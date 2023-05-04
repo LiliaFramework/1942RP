@@ -23,7 +23,7 @@ netstream.Hook("radioAdjust", function(client, freq, id)
         local item
 
         if id then
-            item = nut.item.instances[id]
+            item = lia.item.instances[id]
         else
             item = inv:hasItem("radio")
         end

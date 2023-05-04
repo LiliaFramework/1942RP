@@ -35,7 +35,7 @@ for k, v in pairs(PLUGIN.vehicles) do
 	if (k and v.width and v.height) then
 		lia.item.registerInv("trunk_"..k, v.width, v.height)
 	else
-		ErrorNoHalt("[NutScript] Trunk storage for '"..k.."' is missing all inventory information!\n")
+		ErrorNoHalt("[Lilia] Trunk storage for '"..k.."' is missing all inventory information!\n")
 		PLUGIN.vehicles[k] = nil
 	end
 end

@@ -42,7 +42,7 @@ ITEM.functions.FishBait = {
                 local inventory = client:getChar():getInv()
                 local bait = inventory:hasItem("fishing_bait")
                 local char = client:getChar()
-                --nut.chat.send(client, "it", "The hook is cast into the water.")		
+                --lia.chat.send(client, "it", "The hook is cast into the water.")		
                 item:setData("producing2", CurTime())
                 local oldPos = client:GetPos()
 
@@ -60,37 +60,37 @@ ITEM.functions.FishBait = {
                             client:notify("You found a(n) " .. "Lake Trout" .. "!")
 
                             if (not inventory:add("Lake Trout", 1)) then
-                                nut.item.spawn("Lake Trout", position)
+                                lia.item.spawn("Lake Trout", position)
                             end
                         elseif randnum <= 40 and randnum > 20 then
                             client:notify("You found a(n) " .. "Bull Trout" .. "!")
 
                             if (not inventory:add("Bull Trout", 1)) then
-                                nut.item.spawn("Bull Trout", position)
+                                lia.item.spawn("Bull Trout", position)
                             end
                         elseif randnum <= 90 and randnum > 40 then
                             client:notify("You found a(n) " .. "Brown Trout" .. "!")
 
                             if (not inventory:add("Brown Trout", 1)) then
-                                nut.item.spawn("Brown Trout", position)
+                                lia.item.spawn("Brown Trout", position)
                             end
                         elseif randnum <= 110 and randnum > 90 then
                             client:notify("You found a(n) " .. "Brook Trout" .. "!")
 
                             if (not inventory:add("Brook Trout", 1)) then
-                                nut.item.spawn("Brook Trout", position)
+                                lia.item.spawn("Brook Trout", position)
                             end
                         elseif randnum <= 120 and randnum > 110 then
                             client:notify("You found a(n) " .. "Tiger Trout" .. "!")
 
                             if (not inventory:add("Tiger Trout", 1)) then
-                                nut.item.spawn("Tiger Trout", position)
+                                lia.item.spawn("Tiger Trout", position)
                             end
                         elseif randnum <= 130 and randnum > 120 then
                             client:notify("You found a(n) " .. "Rainbow Trout" .. "!")
 
                             if (not inventory:add("Rainbow Trout", 1)) then
-                                nut.item.spawn("Rainbow Trout", position)
+                                lia.item.spawn("Rainbow Trout", position)
                             end
                         end
                     end

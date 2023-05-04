@@ -1,7 +1,7 @@
 local PLUGIN = PLUGIN
 ENT.Type = "anim"
 ENT.PrintName = "Perma Weapons NPCs"
-ENT.Category = "NutScript"
+ENT.Category = "Lilia"
 ENT.Spawnable = true
 ENT.AdminOnly = true
 

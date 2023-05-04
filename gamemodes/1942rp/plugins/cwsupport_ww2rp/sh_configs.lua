@@ -205,6 +205,6 @@ PLUGIN.ammoInfo["sniperround"] = {
     }
 }
 
---nut.util.include("presets/sh_defcw.lua")
-nut.util.include("presets/sh_customweapons.lua")
-nut.util.include("presets/sh_atow.lua")
+--lia.util.include("presets/sh_defcw.lua")
+lia.util.include("presets/sh_customweapons.lua")
+lia.util.include("presets/sh_atow.lua")

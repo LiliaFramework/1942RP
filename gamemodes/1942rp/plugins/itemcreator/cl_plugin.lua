@@ -85,7 +85,7 @@ netstream.Hook("ItemMakerGUI", function()
     submitButton.DoClick = function()
         for k, v in pairs({txtUniqueID, txtName, txtDesc, txtModel}) do
             if (not v:GetValue() or type(v:GetValue()) ~= "string" or v:GetValue() == "") then
-                nut.util.notify("You have to specify a Unique ID, Name, Description and Model")
+                lia.util.notify("You have to specify a Unique ID, Name, Description and Model")
 
                 return
             end

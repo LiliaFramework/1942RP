@@ -517,7 +517,7 @@ local function attachment(item, data, combine)
 end
 
 for className, v in pairs(attItems) do
-    local ITEM = nut.item.register(className, nil, nil, nil, true)
+    local ITEM = lia.item.register(className, nil, nil, nil, true)
     ITEM.name = v.name
     ITEM.desc = v.desc
     ITEM.price = v.price
@@ -569,7 +569,7 @@ for className, v in pairs(attItems) do
 
     ITEM.functions.combine = {
         onCanRun = function(item, data)
-            local targetItem = nut.item.instances[data]
+            local targetItem = lia.item.instances[data]
 
             if data and targetItem then
                 if not IsValid(item.entity) and targetItem.isWeapon and targetItem.isCW then

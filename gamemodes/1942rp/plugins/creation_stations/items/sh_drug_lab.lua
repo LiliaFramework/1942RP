@@ -45,10 +45,10 @@ ITEM.functions.Opium = {
                 if not IsValid(item:getEntity()) then
                     --if the inventory has space, put it in the inventory
                     if not inventory:add("opium") then
-                        nut.item.spawn("opium", client:getItemDropPos()) --if not, drop it on the ground
+                        lia.item.spawn("opium", client:getItemDropPos()) --if not, drop it on the ground
                     end
                 else --if the item it on the ground
-                    nut.item.spawn("opium", item:getEntity():GetPos() + item:getEntity():GetUp() * 50) --spawn the grow item above the item
+                    lia.item.spawn("opium", item:getEntity():GetPos() + item:getEntity():GetUp() * 50) --spawn the grow item above the item
                 end
 
                 client:notify("The opium is ready.")
@@ -106,10 +106,10 @@ ITEM.functions.Heroin = {
                 if not IsValid(item:getEntity()) then
                     --if the inventory has space, put it in the inventory
                     if not inventory:add("heroin") then
-                        nut.item.spawn("heroin", client:getItemDropPos()) --if not, drop it on the ground
+                        lia.item.spawn("heroin", client:getItemDropPos()) --if not, drop it on the ground
                     end
                 else --if the item it on the ground
-                    nut.item.spawn("heroin", item:getEntity():GetPos() + item:getEntity():GetUp() * 50) --spawn the grow item above the item
+                    lia.item.spawn("heroin", item:getEntity():GetPos() + item:getEntity():GetUp() * 50) --spawn the grow item above the item
                 end
 
                 client:notify("The heroin is ready.")
@@ -174,10 +174,10 @@ ITEM.functions.Cocaine = {
                 if not IsValid(item:getEntity()) then
                     --if the inventory has space, put it in the inventory
                     if not inventory:add("cocaine") then
-                        nut.item.spawn("cocaine", client:getItemDropPos()) --if not, drop it on the ground
+                        lia.item.spawn("cocaine", client:getItemDropPos()) --if not, drop it on the ground
                     end
                 else --if the item it on the ground
-                    nut.item.spawn("cocaine", item:getEntity():GetPos() + item:getEntity():GetUp() * 50) --spawn the grow item above the item
+                    lia.item.spawn("cocaine", item:getEntity():GetPos() + item:getEntity():GetUp() * 50) --spawn the grow item above the item
                 end
 
                 client:notify("The cocaine has finished cooking.")

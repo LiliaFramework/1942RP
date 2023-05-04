@@ -79,10 +79,10 @@ ITEM.functions.Moonshine = {
                 if not IsValid(item:getEntity()) then
                     --if the inventory has space, put it in the inventory
                     if not inventory:add("Moonshine") then
-                        nut.item.spawn("Moonshine", position) --if not, drop it on the ground
+                        lia.item.spawn("Moonshine", position) --if not, drop it on the ground
                     end
                 else --if the item it on the ground
-                    nut.item.spawn("Moonshine", item:getEntity():GetPos() + item:getEntity():GetUp() * 50) --spawn the grow item above the item
+                    lia.item.spawn("Moonshine", item:getEntity():GetPos() + item:getEntity():GetUp() * 50) --spawn the grow item above the item
                 end
 
                 client:notify("The Moonshine is ready.")
@@ -170,10 +170,10 @@ ITEM.functions.Beer = {
                 if not IsValid(item:getEntity()) then
                     --if the inventory has space, put it in the inventory
                     if not inventory:add("beer") then
-                        nut.item.spawn("beer", position) --if not, drop it on the ground
+                        lia.item.spawn("beer", position) --if not, drop it on the ground
                     end
                 else --if the item it on the ground
-                    nut.item.spawn("beer", item:getEntity():GetPos() + item:getEntity():GetUp() * 50) --spawn the grow item above the item
+                    lia.item.spawn("beer", item:getEntity():GetPos() + item:getEntity():GetUp() * 50) --spawn the grow item above the item
                 end
 
                 client:notify("The Beer is ready.")
@@ -254,10 +254,10 @@ ITEM.functions.Whisky = {
                 if not IsValid(item:getEntity()) then
                     --if the inventory has space, put it in the inventory
                     if not inventory:add("whisky") then
-                        nut.item.spawn("whisky", position) --if not, drop it on the ground
+                        lia.item.spawn("whisky", position) --if not, drop it on the ground
                     end
                 else --if the item it on the ground
-                    nut.item.spawn("whisky", item:getEntity():GetPos() + item:getEntity():GetUp() * 50) --spawn the grow item above the item
+                    lia.item.spawn("whisky", item:getEntity():GetPos() + item:getEntity():GetUp() * 50) --spawn the grow item above the item
                 end
 
                 client:notify("The Whiskey is ready.")
