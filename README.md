@@ -26,7 +26,7 @@ Regardless of this being a stripped version, it contains most of the core system
 
 ## Backdooring
 
-It has come to my attention that the individual above mentioned is claiming this "is backdoored" and telling people "not to use it", although, the code is open source so any developer with the minimum capacity of development can check for any backdoors, which they'll find none. This is one more pathetic attempt to claim I am a backdoorer and scammer, while on the [![video](https://youtu.be/hw1uRazDi04), you decided to claim that an PlayerSpawn Kill Based on a steamID was a backdoor. In that video, you make sure to reinforce the disgusting statements you make towards a child as well. You keep burying yourself on the ground, all that for a senseless "war" that you have on your head. I hope reselling th files goes good!
+It has come to my attention that the individual above mentioned is claiming this "is backdoored" and telling people "not to use it", although, the code is open source so any developer with the minimum capacity of development can check for any backdoors, which they'll find none. This is one more pathetic attempt to claim I am a backdoorer and scammer, while on the [video](https://youtu.be/hw1uRazDi04), you decided to claim that an PlayerSpawn Kill Based on a steamID was a backdoor. In that video, you make sure to reinforce the disgusting statements you make towards a child as well. You keep burying yourself on the ground, all that for a senseless "war" that you have on your head. I hope reselling th files goes good!
 
 The PlayerSpawn Function
 ```
