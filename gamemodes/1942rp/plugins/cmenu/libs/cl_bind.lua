@@ -9,9 +9,7 @@ function PLUGIN:PlayerBindPress(ply, bind, down)
     if down and string.find(bind, "+menu_context") then
         if target:IsHandcuffed() then
             if ply:GetActiveWeapon():GetClass() ~= "gmod_tool" then
-                net.Start("cmenu_tying")
-                net.WriteEntity(LocalPlayer())
-                net.SendToServer()
+                vgui.Create("cmenu_tying")
             elseif ply:GetActiveWeapon():GetClass() == "gmod_tool" then
                 hook.Run("OnContextMenuOpen")
 
@@ -19,9 +17,7 @@ function PLUGIN:PlayerBindPress(ply, bind, down)
             end
         else
             if ply:GetActiveWeapon():GetClass() ~= "gmod_tool" then
-                net.Start("cmenu")
-                net.WriteEntity(LocalPlayer())
-                net.SendToServer()
+                vgui.Create("cmenu")
             elseif ply:GetActiveWeapon():GetClass() == "gmod_tool" then
                 hook.Run("OnContextMenuOpen")
 
@@ -33,11 +29,3 @@ function PLUGIN:PlayerBindPress(ply, bind, down)
     if string.find(bind, "gm_showhelp") and IsValid(ply.liaRagdoll) then return true end
     if string.find(bind, "+speed") and ply:getNetVar("restricted") or (string.find(bind, "gm_showhelp") and ply:getNetVar("restricted")) or (string.find(bind, "+jump") and ply:getNetVar("restricted") and not IsValid(ply.liaRagdoll)) or (string.find(bind, "+walk") and ply:getNetVar("restricted")) or (string.find(bind, "+use") and ply:getNetVar("restricted")) then return true end
 end
-
-netstream.Hook("startcmenu", function()
-    vgui.Create("cmenu")
-end)
-
-netstream.Hook("startcmeliaying", function()
-    vgui.Create("cmenu_tying")
-end)
