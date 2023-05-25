@@ -114,24 +114,6 @@ lia.command.add("flagpet", {
     end
 })
 
-lia.command.add("namechange", {
-    syntax = "[character name]",
-    onRun = function(client, arguments)
-        local uniqueID = client:GetUserGroup()
-        local target = lia.command.findPlayer(client, arguments[1])
-
-        if not UserGroups.modRanks[uniqueID] then
-            client:notify("Your rank is not high enough to use this command.")
-
-            return false
-        end
-
-        net.Start("namechange")
-        net.WriteEntity(target)
-        net.Send(client)
-    end
-})
-
 lia.command.add("charkick", {
     syntax = "<string name>",
     onRun = function(client, arguments)
