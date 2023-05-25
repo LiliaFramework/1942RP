@@ -60,7 +60,7 @@ ITEM.functions.changeFreq = {
     name = "Change Frequency",
     icon = "icon16/transmit_blue.png",
     onRun = function(item)
-        netstream.Start(item.player, "radioAdjust", item:getData("freq", 000, 0), item.id)
+        netstream.Start(item.player, "radioAdjust", item:getData("freq", "000.0"), item.id)
 
         return false
     end,
