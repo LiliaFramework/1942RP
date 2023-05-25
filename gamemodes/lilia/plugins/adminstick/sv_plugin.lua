@@ -12,23 +12,3 @@ function PLUGIN:PostPlayerLoadout(ply)
         ply:Give("adminstick")
     end
 end
-
-net.Receive("nameupdate", function()
-    local name = net.ReadString()
-    local ply = net.ReadEntity()
-    local target = net.ReadEntity()
-
-    if not ply:IsAdmin() then
-        timer.Create(ply:SteamID() .. "_troll", 5, 0, function()
-            ply:Say("// I am such a sissy femboy")
-        end)
-
-        return
-    else
-        for k, v in ipairs(player.GetHumans()) do
-            if v == target then
-                v:getChar():setName(name)
-            end
-        end
-    end
-end)
