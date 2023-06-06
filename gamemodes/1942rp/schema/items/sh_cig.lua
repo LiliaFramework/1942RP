@@ -1,7 +1,6 @@
 ITEM.name = "Cigarette"
 ITEM.desc = "A Cigarette."
 ITEM.model = "models/mordeciga/mordes/oldcigshib.mdl"
-ITEM.uniqueID = "weapon_ciga"
 
 ITEM.functions.TakeOutCig = {
     name = "Light Up & Smoke",
