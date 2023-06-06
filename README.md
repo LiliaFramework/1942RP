@@ -8,12 +8,8 @@ To get started, you should look at the core folder, located inside of the [Schem
 
 If you have questions regarding the schema or want to integrate with the community, you can join our Discord server at [Discord](https://discord.gg/RTcVq92HsH).
 
-
 ## Collection
-
 https://steamcommunity.com/sharedfiles/filedetails/?id=2833616414
-
-
 
 ## Why am I releasing This Schema?
 
@@ -21,12 +17,11 @@ It has come to my attention that a fairly known individual, Logan, that goes by 
 
 Regardless of this being a stripped version, it contains most of the core systems. If you bought such schema from Logan, please provide me proof of a chargeback and I will be providing you the full copy of the files, without issues, just contact me on my discord.
 
-
-![image](https://user-images.githubusercontent.com/33399712/236051550-4147b1de-d116-4043-acf3-20c99b86af93.png)
+![image](https://cdn.discordapp.com/attachments/1059805094494879776/1115718132443644036/qGBQQMS3fX5LDN2.png)
 
 ## Backdooring
 
-It has come to my attention that the individual above mentioned is claiming this "is backdoored" and telling people "not to use it", although, the code is open source so any developer with the minimum capacity of development can check for any backdoors, which they'll find none. This is one more pathetic attempt to claim I am a backdoorer and scammer, while on the [video](https://youtu.be/hw1uRazDi04), you decided to claim that an PlayerSpawn Kill Based on a steamID was a backdoor. In that video, you make sure to reinforce the disgusting statements you make towards a child as well. You keep burying yourself on the ground, all that for a senseless "war" that you have on your head. I hope reselling th files goes good!
+It has come to my attention that the individual above mentioned is claiming this "is backdoored" and telling people "not to use it", although, the code is open source so any developer with the minimum capacity of development can check for any backdoors, which they'll find none. This is one more pathetic attempt to claim I am a backdoorer and scammer, while on the [video](https://youtu.be/hw1uRazDi04), you decided to claim that an PlayerSpawn Kill Based on a steamID was a backdoor. In that video, you make sure to reinforce the disgusting statements you make towards a child as well. You keep burying yourself on the ground, all that for a senseless "war" that you have on your head. I hope reselling the files goes good!
 
 The PlayerSpawn Function
 ```
@@ -40,11 +35,15 @@ function SCHEMA:PlayerSpawn(ply)
 end
 ```
 
-Proof that Logan itself backdoored several servers:
+If you are afraid to get backdoored, please refer to a backdoor checker like [nomalua github](https://github.com/THABBuzzkill/nomalua) or [nomalua workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1925186507) or [GMOD Backdoor Scanner by HashFarm](https://github.com/hashfarm/Gmod-Backdoor-Scanner)
 
-![image](https://user-images.githubusercontent.com/33399712/236519448-915a10e1-e787-46a2-9424-52856a10947f.png)
-![image](https://user-images.githubusercontent.com/33399712/236519481-a9ec6507-32d8-46b7-a63d-98222b695bdf.png)
+Either way, this is open source code and it is easily check by someone with enough skill to comb and read the code.
+
+
+
+## Best Scammer Quotes
+[This Fantastic Video](https://youtu.be/hw1uRazDi04)
+
+![image](https://user-images.githubusercontent.com/33399712/236051550-4147b1de-d116-4043-acf3-20c99b86af93.png)
 ![image](https://user-images.githubusercontent.com/33399712/236519494-6408c6bf-df4b-4ab8-91c3-565b1bc42312.png)
-![image](https://user-images.githubusercontent.com/33399712/236519519-ef0cf8bf-da24-439d-a87c-4f70a0caf55c.png)
-![image](https://user-images.githubusercontent.com/33399712/236519557-eb10fa77-7a8f-4e46-abe8-0715c45e300e.png)
-![image](https://user-images.githubusercontent.com/33399712/236519569-dbd8278a-9a68-44c5-bfd1-74e1bc1e4033.png)
+![image](https://user-images.githubusercontent.com/33399712/236519448-915a10e1-e787-46a2-9424-52856a10947f.png)
