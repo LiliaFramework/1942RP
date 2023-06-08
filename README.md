@@ -8,6 +8,8 @@ To get started, you should look at the core folder, located inside of the [Schem
 
 If you have questions regarding the schema or want to integrate with the community, you can join our Discord server at [Discord](https://discord.gg/RTcVq92HsH).
 
+MAKE SURE TO REMOVE MULTICHAR OFF LILIA
+
 ## Collection
 https://steamcommunity.com/sharedfiles/filedetails/?id=2833616414
 
