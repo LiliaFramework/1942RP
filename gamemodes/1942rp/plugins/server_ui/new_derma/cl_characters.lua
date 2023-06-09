@@ -1,5 +1,5 @@
 local PANEL = {}
-local logo = lia.util.getMaterial('ui/logo.png')
+local eagle = lia.util.getMaterial('external_g/eagle.png')
 local WHITE = Color(255, 255, 255, 150)
 local SELECTED = Color(255, 255, 255, 230)
 PANEL.WHITE = WHITE

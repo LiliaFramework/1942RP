@@ -1,5 +1,5 @@
 local PANEL = {}
-local logo = lia.util.getMaterial('ui/logo.png')
+local eagle = lia.util.getMaterial('external_g/eagle.png')
 
 function PANEL:Init()
     if IsValid(lia.gui.newCreateCharMenu) then
