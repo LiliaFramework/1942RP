@@ -1,11 +1,11 @@
 local PLUGIN = PLUGIN
-PLUGIN.name = 'UI'
+PLUGIN.name = '1942RP Server UI'
 PLUGIN.author = 'Bilwin/Leonheart#7476'
 PLUGIN.websiteURL = ''
 PLUGIN.discordURL = ''
 PLUGIN.contentURL = ''
 
-PLUGIN.backgrounds = {lia.util.getMaterial('ui/bg1.png'), lia.util.getMaterial('ui/bg2.png'), lia.util.getMaterial('ui/bg3.png'), lia.util.getMaterial('ui/bg4.png'), lia.util.getMaterial('ui/bg5.png')}
+PLUGIN.backgrounds = {nut.util.getMaterial('external_g/bg1.png'), nut.util.getMaterial('external_g/bg2.png'), nut.util.getMaterial('external_g/bg3.png'), nut.util.getMaterial('external_g/bg4.png')}
 
 lia.util.includeDir(PLUGIN.path .. '/derma/steps', true)
 lia.util.includeDir(PLUGIN.path .. '/new_derma', true)
