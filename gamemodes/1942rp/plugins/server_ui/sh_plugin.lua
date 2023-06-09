@@ -5,7 +5,7 @@ PLUGIN.websiteURL = ''
 PLUGIN.discordURL = ''
 PLUGIN.contentURL = ''
 
-PLUGIN.backgrounds = {nut.util.getMaterial('external_g/bg1.png'), nut.util.getMaterial('external_g/bg2.png'), nut.util.getMaterial('external_g/bg3.png'), nut.util.getMaterial('external_g/bg4.png')}
+PLUGIN.backgrounds = {lia.util.getMaterial('external_g/bg1.png'), lia.util.getMaterial('external_g/bg2.png'), lia.util.getMaterial('external_g/bg3.png'), lia.util.getMaterial('external_g/bg4.png')}
 
 lia.util.includeDir(PLUGIN.path .. '/derma/steps', true)
 lia.util.includeDir(PLUGIN.path .. '/new_derma', true)
