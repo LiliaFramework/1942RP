@@ -2,7 +2,7 @@ local PLUGIN = PLUGIN
 local PANEL = {}
 DEFINE_BASECLASS('EditablePanel')
 local BGs = PLUGIN.backgrounds
-local eagle = lia.util.getMaterial('external_g/eagle.png')
+local logo = lia.util.getMaterial('external_g/eagle.png')
 local click_sound = 'weapons/grenade/tick1.wav'
 
 local function playClickSound()
