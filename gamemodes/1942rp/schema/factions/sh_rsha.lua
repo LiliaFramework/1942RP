@@ -1,6 +1,6 @@
 FACTION.name = "Reichssicherheitshauptamt"
 FACTION.desc = "The Security Office of Berlin."
-FACTION.color = Color(51,117,232)
+FACTION.color = Color(255,0,0)
 FACTION.isDefault = false
 FACTION.pay = 40
 FACTION.isGloballyRecognized = false
