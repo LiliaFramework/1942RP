@@ -1,5 +1,5 @@
-PLUGIN.name = "Perma Weapons"
-PLUGIN.desc = "Adds Perma Weapons"
+PLUGIN.name = "Warrants"
+PLUGIN.desc = "Adds Warrants"
 PLUGIN.author = "Leonheart#7476"
 lia.util.include("sv_plugin.lua")
 lia.util.include("cl_plugin.lua")

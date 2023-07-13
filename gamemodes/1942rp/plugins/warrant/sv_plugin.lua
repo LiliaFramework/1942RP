@@ -1,7 +1,6 @@
 local owner2 = {
-    root = true,
-    communitymanager = true,
     superadmin = true,
+    upperadmin = true
 }
 
 lia.command.add("warrant", {
@@ -10,7 +9,7 @@ lia.command.add("warrant", {
         local uniqueID = client:GetUserGroup()
 
         if not (client:getChar():hasFlags("W") or owner2[uniqueID]) then
-            client:notify("No permissions to run this command!")
+            client:notify("No permission to run this command!")
 
             return
         end
@@ -18,10 +17,10 @@ lia.command.add("warrant", {
         if IsValid(target) and target:getChar() then
             if target:IsWanted() then
                 target:SetWanted()
-                client:notify("You Removed This Person's Wanted State!")
+                client:notify("This person no longer has active warrants.")
             else
                 target:SetWanted()
-                client:notify("You Set This Person's as Wanted!")
+                client:notify("You have issued this person an active warrant.")
             end
         end
     end
