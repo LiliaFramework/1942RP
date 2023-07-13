@@ -2,91 +2,83 @@ UserGroups = UserGroups or {}
 
 -- DEFINE YOUR USERGROUPS
 UserGroups.founderRanks = {
-    ["superadmin"] = true
+    ["superadmin"] = true,
+    ["manager"] = true,
+    ["headadmin"] = true,
 }
 
 UserGroups.superRanks = {
-    ["superadmin"] = true
+    ["superadmin"] = true,
+    ["manager"] = true,
+    ["headadmin"] = true,
 }
 
 UserGroups.uaRanks = {
     ["superadmin"] = true,
-    ["Upper Administration"] = true
+    ["manager"] = true,
+    ["headadmin"] = true,
+    ["senioradmin"] = true,
 }
 
 UserGroups.adminRanks = {
     ["superadmin"] = true,
-    ["Upper Administration"] = true,
-    ["Senior Administrator"] = true,
-    ["Administrator"] = true,
-    ["Junior Administrator"] = true
+    ["manager"] = true,
+    ["headadmin"] = true,
+    ["senioradmin"] = true,
+    ["admin"] = true,
 }
 
 UserGroups.modRanks = {
     ["superadmin"] = true,
-    ["Upper Administration"] = true,
-    ["Senior Administrator"] = true,
-    ["Administrator"] = true,
-    ["Junior Administrator"] = true,
-    ["Senior Moderator"] = true,
-    ["Moderator"] = true,
-    ["Junior Moderator"] = true
+    ["manager"] = true,
+    ["headadmin"] = true,
+    ["senioradmin"] = true,
+    ["admin"] = true,
+    ["seniormoderator"] = true,
+    ["moderator"] = true,
+    ["trialmoderator"] = true,
 }
 
 UserGroups.vipRanks = {
     ["superadmin"] = true,
-    ["Upper Administration"] = true,
-    ["Senior Administrator"] = true,
-    ["Administrator"] = true,
-    ["Junior Administrator"] = true,
-    ["Senior Moderator"] = true,
-    ["Moderator"] = true,
-    ["Junior Moderator"] = true,
-    ["Senior Gamemaster"] = true,
-    ["Gamemaster"] = true,
-    ["Junior Gamemaster"] = true,
-    ["VIP"] = true,
+    ["manager"] = true,
+    ["headadmin"] = true,
+    ["senioradmin"] = true,
+    ["admin"] = true,
+    ["seniormoderator"] = true,
+    ["moderator"] = true,
+    ["trialmoderator"] = true,
 }
 
 UserGroups.trustedRanks = {
     ["superadmin"] = true,
-    ["Upper Administration"] = true,
-    ["Senior Administrator"] = true,
-    ["Administrator"] = true,
-    ["Junior Administrator"] = true,
-    ["Senior Moderator"] = true,
-    ["Moderator"] = true,
-    ["Junior Moderator"] = true,
-    ["Senior Gamemaster"] = true,
-    ["Gamemaster"] = true,
-    ["Junior Gamemaster"] = true,
-    ["Trusted"] = true,
+    ["manager"] = true,
+    ["headadmin"] = true,
+    ["senioradmin"] = true,
+    ["admin"] = true,
+    ["seniormoderator"] = true,
+    ["moderator"] = true,
+    ["trialmoderator"] = true,
 }
 
 UserGroups.Gamemasters = {
     ["superadmin"] = true,
-    ["Upper Administration"] = true,
-    ["Senior Administrator"] = true,
-    ["Administrator"] = true,
-    ["Junior Administrator"] = true,
-    ["Senior Moderator"] = true,
-    ["Moderator"] = true,
-    ["Junior Moderator"] = true,
-    ["Senior Gamemaster"] = true,
-    ["Gamemaster"] = true,
-    ["Junior Gamemaster"] = true
+    ["manager"] = true,
+    ["headadmin"] = true,
+    ["senioradmin"] = true,
+    ["admin"] = true,
+    ["seniormoderator"] = true,
+    ["moderator"] = true,
+    ["trialmoderator"] = true,
 }
 
 UserGroups.StaffRanks = {
     ["superadmin"] = true,
-    ["Upper Administration"] = true,
-    ["Senior Administrator"] = true,
-    ["Administrator"] = true,
-    ["Junior Administrator"] = true,
-    ["Senior Moderator"] = true,
-    ["Moderator"] = true,
-    ["Junior Moderator"] = true,
-    ["Senior Gamemaster"] = true,
-    ["Gamemaster"] = true,
-    ["Junior Gamemaster"] = true
+    ["manager"] = true,
+    ["headadmin"] = true,
+    ["senioradmin"] = true,
+    ["admin"] = true,
+    ["seniormoderator"] = true,
+    ["moderator"] = true,
+    ["trialmoderator"] = true,
 }
