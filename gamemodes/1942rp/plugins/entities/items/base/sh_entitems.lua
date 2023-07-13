@@ -16,7 +16,7 @@ ITEM.functions.Use = {
         local delay = 0
 
         if delay > CurTime() then
-            client:notify("This item is in cooldown!")
+            client:notify("This item is on cooldown!")
 
             return false
         else
@@ -25,40 +25,35 @@ ITEM.functions.Use = {
             if item.limits == true then
                 local NumEnts = 0
 
-                for k, v in pairs(ents.FindByClass(item.entdrop)) do
+                for _, v in pairs(ents.FindByClass(item.entdrop)) do
                     if v.SteamID == client:SteamID() then
                         NumEnts = NumEnts + 1
                     end
                 end
 
                 if NumEnts >= item.limit then
-                    client:notify("You have reached maximum amount of " .. item.name .. "s.")
+                    client:notify("You have reached the maximum amount of " .. item.name .. "s.")
 
                     return false
                 end
-
-                item.player:EmitSound("physics/flesh/flesh_bloody_break.wav", 75, 200)
-                local ent = ents.Create(item.entdrop)
-                ent:SetPos(item.player:EyePos() + (item.player:GetAimVector() * 50))
-                ent:Spawn()
-                ent.Owner = client
-                ent.SteamID = client:SteamID()
-                --ent:Activate()
-                --mayoritem:SetPos( ply:EyePos() + ( ply:GetAimVector() * 50) )
-
-                return true
-            else
-                item.player:EmitSound("physics/flesh/flesh_bloody_break.wav", 75, 200)
-                local ent = ents.Create(item.entdrop)
-                ent:SetPos(item.player:EyePos() + (item.player:GetAimVector() * 50))
-                ent:Spawn()
-                ent.Owner = client
-                ent.SteamID = client:SteamID()
-                --ent:Activate()
-                --mayoritem:SetPos( ply:EyePos() + ( ply:GetAimVector() * 50) )
-
-                return true
             end
+
+            client:EmitSound("physics/flesh/flesh_bloody_break.wav", 75, 200)
+            local ent = ents.Create(item.entdrop)
+            ent:SetPos(client:EyePos() + (client:GetAimVector() * 50))
+            ent:Spawn()
+            ent.Owner = client
+            ent.SteamID = client:SteamID()
+            ent:SetMoveType(MOVETYPE_VPHYSICS)
+            local phys = ent:GetPhysicsObject()
+
+            if IsValid(phys) then
+                phys:EnableMotion(true)
+            end
+
+            ent:SetCollisionGroup(COLLISION_GROUP_WORLD)
+
+            return true
         end
     end
 }

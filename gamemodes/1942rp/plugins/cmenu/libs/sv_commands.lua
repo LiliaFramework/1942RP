@@ -7,8 +7,9 @@ lia.command.add("requestsearch", {
         data.endpos = data.start + client:GetAimVector() * 96
         data.filter = client
         local target = util.TraceLine(data).Entity
+        local delay = 0
 
-        if client.delay and CurTime() < client.delay then
+        if delay and CurTime() < delay then
             client:notify("You need to wait a few seconds before using that command again!")
 
             return
@@ -40,7 +41,7 @@ lia.command.add("requestsearch", {
             client.LastSearchRequest = CurTime()
         end
 
-        client.delay = CurTime() + 5
+        delay = CurTime() + 5
     end
 })
 
@@ -52,6 +53,7 @@ lia.command.add("tieplayer", {
         data.endpos = data.start + client:GetAimVector() * 96
         data.filter = client
         local target = util.TraceLine(data).Entity
+        local delay = 0
 
         if not target:IsPlayer() then
             client:notify("Invalid Target!!")
@@ -117,8 +119,9 @@ lia.command.add("requestid", {
         data.endpos = data.start + client:GetAimVector() * 96
         data.filter = client
         local target = util.TraceLine(data).Entity
+        local delay = 0
 
-        if client.delay and CurTime() < client.delay then
+        if delay and CurTime() < delay then
             client:notify("You need to wait a few seconds before using that command again!")
 
             return
@@ -148,7 +151,7 @@ lia.command.add("requestid", {
             client.LastIDRequest = CurTime()
         end
 
-        client.delay = CurTime() + 5
+        delay = CurTime() + 5
     end
 })
 
@@ -160,8 +163,9 @@ lia.command.add("showid", {
         data.endpos = data.start + client:GetAimVector() * 96
         data.filter = client
         local target = util.TraceLine(data).Entity
+        local delay = 0
 
-        if client.delay and CurTime() < client.delay then
+        if delay and CurTime() < delay then
             client:notify("You need to wait a few seconds before using that command again!")
 
             return
@@ -183,10 +187,10 @@ lia.command.add("showid", {
         end
 
         if target:IsPlayer() and client:getChar():getInv():hasItem("citizenid") then
-            netstream.Start(target, "openUpID", client)
+            netstream.Start(target, "OpenID", client)
         end
 
-        client.delay = CurTime() + 5
+        delay = CurTime() + 5
     end
 })
 
@@ -268,28 +272,23 @@ lia.command.add("forceid", {
         local TargetPos = target:GetPos()
         local myPos = client:GetPos()
         local dist2Sqr = (TargetPos.x - myPos.x) ^ 2 + (TargetPos.y - myPos.y) ^ 2
+        local delay = 0
 
-        if client.delay and CurTime() < client.delay then
+        if CurTime() < delay then
             client:notify("You need to wait a few seconds before using that command again!")
 
             return
-        end
-
-        if not target:IsPlayer() then
+        elseif not target:IsPlayer() then
             client:notify("Invalid Target!!")
 
             return
-        end
-
-        if dist2Sqr > MAXDISTANCE_TARGET then
+        elseif dist2Sqr > MAXDISTANCE_TARGET then
             client:notify("You can't use this from this distance!")
         end
 
         if target:IsHandcuffed() then
-            if target:IsPlayer() and target:getChar() then
-                netstream.Start(client, "openUpID", target)
-                client.delay = CurTime() + 5
-            end
+            netstream.Start(client, "OpenID", target)
+            delay = CurTime() + 5
         else
             client:notify("This Character Isn't Handcuffed!")
         end
