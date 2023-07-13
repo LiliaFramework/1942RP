@@ -26,19 +26,6 @@ function PANEL:Init()
     self.list = self:Add('DScrollPanel')
     self.list:SetSize(ScrW() * .24, ScrH() * .5)
     self.list:SetPos(ScrW() * .082, (ScrH() * .635) - (ScrH() * .5) / 2)
-    self.logo = self:Add('EditablePanel')
-    self.logo:SetSize(ScrW() * .35, ScrH() * .30)
-    self.logo:SetPos(ScrW() * .15 - 230, ScrH() * .15 - 100)
-
-    self.logo.Paint = function(me, w, h)
-        -- placeholder image
-        surface.SetMaterial(logo)
-        surface.SetDrawColor(0, 0, 0)
-        surface.DrawTexturedRect((w / 2) - w / 4 + 1, 1, w / 2, h)
-        surface.SetDrawColor(255, 255, 255)
-        surface.DrawTexturedRect((w / 2) - w / 4, 0, w / 2, h)
-    end
-
     self.selected = self:Add('EditablePanel')
     self.selected:SetSize(ScrW() * .5, ScrH() * .05)
     self.selected:SetPos((ScrW() * .5) - (ScrW() * .25) / 2, ScrH() - (ScrH() * .1))
@@ -113,7 +100,7 @@ function PANEL:Init()
 
     self:CreateButton('Content Pack', 'Our Content', function()
         gui.OpenURL(PLUGIN.contentURL)
-    end)    
+    end)
 
     self:CreateButton('Exit', 'Disconnect from server', function(me)
         vgui.Create('liaNewCharacterConfirm'):setTitle(L('disconnect'):upper() .. '?'):setMessage(L('You will disconnect from the server.'):upper()):onConfirm(function()
@@ -236,6 +223,7 @@ function PANEL:CreateBG()
     if self.bg_initialized then
         bg:SetPos(0, 0)
         bg:SetAlpha(0)
+
         bg:AlphaTo(255, 1, 0, function()
             timer.Simple(10, function()
                 if not IsValid(self) then return end
@@ -250,6 +238,7 @@ function PANEL:CreateBG()
     else
         bg:SetPos(0, 0)
         bg:SetAlpha(0)
+
         bg:AlphaTo(255, 1, 0, function()
             timer.Simple(10, function()
                 if not IsValid(self) then return end

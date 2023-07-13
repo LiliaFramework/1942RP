@@ -149,10 +149,6 @@ end
 local gradient = lia.util.getMaterial('gui/gradient_up')
 
 function PANEL:Paint(w, h)
-    surface.SetDrawColor(28, 28, 28)
-    surface.DrawRect(0, 0, w, h)
-    surface.SetDrawColor(255, 255, 255)
-    surface.SetMaterial(logo)
     surface.DrawTexturedRect((w / 2) - ((h * 1.5) * .2) / 2, 10, (h * 1.5) * .2, h * .28)
     surface.SetDrawColor(0, 0, 0)
     surface.SetMaterial(gradient)
