@@ -1,7 +1,6 @@
-ITEM.name = "Important Documents"
-ITEM.flag = "Y"
+ITEM.name = "Citizen ID"
 ITEM.model = "models/props_lab/clipboard.mdl"
-ITEM.uniqueID = "citizenid"
+ITEM.desc = "This is your Citizen ID."
 
 ITEM.functions.show = {
     icon = "icon16/user.png",
@@ -13,13 +12,13 @@ ITEM.functions.show = {
         data.endpos = data.start + ply:GetAimVector() * 96
         data.filter = ply
         local target = util.TraceLine(data).Entity
-        local MAXDISTANCE_TARGET = 50 * 50 -- SQUARED FOR PERFORMANCE The distance the dragged player will try to achieve
+        local MAXDISTANCE_TARGET = 50 * 50
         local TargetPos = target:GetPos()
         local myPos = ply:GetPos()
         local dist2Sqr = (TargetPos.x - myPos.x) ^ 2 + (TargetPos.y - myPos.y) ^ 2
 
         if ply.NextDocumentCheck and ply.NextDocumentCheck > SysTime() then
-            ply:notify("You can't show documents that quickly...")
+            ply:notify("You must wait to show your Passport again.")
 
             return false
         end
@@ -33,8 +32,7 @@ ITEM.functions.show = {
         end
 
         ply.NextDocumentCheck = SysTime() + 5
-        netstream.Start(target, "openUpID", ply)
-        ply:ChatPrint("USED!")
+        netstream.Start(target, "OpenID", ply)
 
         return false
     end,
@@ -52,13 +50,13 @@ ITEM.functions.showself = {
         local ply = item.player
 
         if ply.NextDocumentCheck and ply.NextDocumentCheck > SysTime() then
-            ply:notify("You can't see documents that quickly...")
+            ply:notify("You must wait to look at your Passport again.")
 
             return false
         end
 
         ply.NextDocumentCheck = SysTime() + 5
-        netstream.Start(ply, "openUpID", ply)
+        netstream.Start(ply, "OpenID", ply)
 
         return false
     end,

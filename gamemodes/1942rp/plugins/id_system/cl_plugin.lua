@@ -1,3 +1,5 @@
+local PLUGIN = PLUGIN
+
 local function openMissingInfoMenu(title, fill)
     title = title or nil
     fill = fill or false
@@ -63,7 +65,7 @@ local function openMissingInfoMenu(title, fill)
     local values = {}
     local characs = LocalPlayer():getChar():getData("charCharacteristics", {})
 
-    for k, v in SortedPairs(charCharacteristics) do
+    for k, v in SortedPairs(PLUGIN.charCharacteristics) do
         local val = frame.list:Add("DPanel")
         val:SetSize(frame.list:GetWide(), 40)
         val.alt = alt
@@ -200,3 +202,8 @@ local function openMissingInfoMenu(title, fill)
 end
 
 netstream.Hook("missingCharacteristics", openMissingInfoMenu)
+
+lia.command.add("chareditpapers", {
+    syntax = "",
+    onRun = function(ply, args) end
+})
