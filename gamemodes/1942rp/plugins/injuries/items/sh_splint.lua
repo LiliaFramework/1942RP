@@ -1,6 +1,7 @@
 ITEM.name = "Splint"
-ITEM.desc = "Splint."
-ITEM.model = "models/props_c17/BriefCase001a.mdl"
+ITEM.desc = "This is a splint."
+ITEM.category = "Medical"
+ITEM.model = "models/Gibs/wood_gib01e.mdl"
 ITEM.width = 1
 ITEM.height = 1
 

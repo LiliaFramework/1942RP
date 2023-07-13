@@ -13,24 +13,15 @@ function PLUGIN:PlayerSpawn(client)
 end
 
 function PLUGIN:ScalePlayerDamage(client, hitGroup, dmgInfo)
-    local chance = math.random(0, 100)
-    if client:getChar():getData("leg_broken", false) then return end
+    local chance = math.random(1, 100)
 
-    if LEG_GROUPS[hitGroup] and chance < 50 then
+    if LEG_GROUPS[hitGroup] and chance <= 35 then
         client:getChar():setData("leg_broken", true)
-        client:SetWalkSpeed(lia.config.get("walkSpeed", 130) * 0.50)
-        client:SetRunSpeed(lia.config.get("runSpeed", 235) * 0.50)
-        client:notify("You got injuried in your leg!")
-    end
-end
-
-function PLUGIN:EntityTakeDamage(client, dmgInfo)
-    if not client:IsPlayer() or client:getChar():getData("leg_broken", false) then return end
-
-    if dmgInfo:GetDamageType() == DMG_FALL and dmgInfo:GetDamage() >= 3 then
+        client:SetWalkSpeed(lia.config.get("walkSpeed", 130) * 0.1)
+        client:SetRunSpeed(lia.config.get("runSpeed", 235) * 0.1)
+    elseif dmgInfo:GetDamageType() == DMG_FALL and dmgInfo:GetDamage() >= 10 then
         client:getChar():setData("leg_broken", true)
-        client:SetWalkSpeed(lia.config.get("walkSpeed", 130) * 0.50)
-        client:SetRunSpeed(lia.config.get("runSpeed", 235) * 0.50)
-        client:notify("You fell too hard and broke your leg!")
+        client:SetWalkSpeed(lia.config.get("walkSpeed", 130) * 0.1)
+        client:SetRunSpeed(lia.config.get("runSpeed", 235) * 0.1)
     end
 end
