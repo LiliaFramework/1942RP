@@ -25,34 +25,37 @@ function ENT:OnTakeDamage(dmginfo)
     local ply = dmginfo:GetAttacker()
     local wep = ply:GetActiveWeapon():GetClass()
     local hp = self:GetNWInt("HP", 0)
+    if hp <= 0 then return end
 
     if wep == "weapon_hl2axe" then
         self:SetNWInt("HP", hp - 10)
 
         if hp == 50 then
-            BreakTree(self, ply)
+            self:BreakTree(self, ply)
         elseif hp == 30 then
-            BreakTree(self, ply)
+            self:BreakTree(self, ply)
         elseif hp >= 0 and hp < 30 then
-            BreakTree(self, ply)
+            self:BreakTree(self, ply)
             self:SetNoDraw(true)
-            self:Remove()
+            self:SetNotSolid(true)
+            self:SetCollisionGroup(COLLISION_GROUP_NONE)
 
             timer.Create("respawn_tree" .. self:EntIndex(), 120, 1, function()
                 local newent = ents.Create("beechtree")
                 newent:SetPos(self:GetPos())
                 newent:SetNoDraw(false)
                 newent:Spawn()
+                self:Remove()
             end)
         end
     end
 end
 
-function BreakTree(ent, ply)
+function ENT:BreakTree(ent, ply)
+    local position = ply:getItemDropPos()
+
     if not ply:getChar():getInv():add("beech") then
-        local hp = ent:GetNWInt("HP", 0)
-        ent:SetNWInt("HP", hp + 10)
-        ply:notify("You have no space in your inventory!")
+        lia.item.spawn("beech", position)
     else
         ply:notify("You have harvested some Beech Wood!")
     end
