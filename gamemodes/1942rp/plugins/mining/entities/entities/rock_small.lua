@@ -30,7 +30,6 @@ function ENT:OnTakeDamage(dmginfo)
     if wep == "weapon_hl2pickaxe" then
         self:SetNWFloat("HP", hp - 10)
         self:EmitSound("physics/concrete/boulder_impact_hard" .. math.random(1, 4) .. ".wav", 75)
-        ply:notify("Times that Barata has fucked my sister: " .. tostring(hp))
 
         if hp == 0 then
             self:SetNoDraw(true)
