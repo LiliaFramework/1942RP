@@ -8,7 +8,7 @@ ITEM.TimePerTick = 0
 ITEM.HealPerTick = 0
 
 ITEM.functions.use = {
-    sound = "items/medshot4.wav",
+    name = "Heal",
     onRun = function(item)
         local client = item.player
 
@@ -23,7 +23,7 @@ ITEM.functions.use = {
 }
 
 ITEM.functions.target = {
-    sound = "items/medshot4.wav",
+    name = "Target Heal",
     onRun = function(item)
         local client = item.player
         local target = client:GetEyeTrace().Entity
