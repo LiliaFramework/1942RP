@@ -5,6 +5,6 @@ FACTION.isDefault = true
 FACTION.pay = 5
 FACTION.isGloballyRecognized = false
 
-FACTION.models = {"models/player/Suits/male_02_shirt.mdl", "models/player/Suits/male_04_shirt.mdl", "models/player/Suits/male_04_shirt.mdl", "models/player/Suits/male_06_shirt.mdl", "models/player/Suits/male_07_shirt.mdl", "models/player/Suits/male_08_shirt.mdl", "models/player/Suits/male_09_shirt.mdl"}
+FACTION.models = {"models/suits/male_04_shirt_tie.mdl", "models/suits/male_02_shirt_tie.mdl", "models/suits/male_06_shirt_tie.mdl", "models/suits/male_05_shirt_tie.mdl", "models/suits/male_09_shirt_tie.mdl",}
 
 FACTION_CITIZEN = FACTION.index
