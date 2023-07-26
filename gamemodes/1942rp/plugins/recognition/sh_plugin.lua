@@ -3,7 +3,7 @@ PLUGIN.author = "Leonheart#7476/Cheesenot"
 PLUGIN.desc = "Adds the ability to recognize people / You can also allow auto faction recognition."
 lia.util.include("sv_plugin.lua")
 lia.util.include("cl_plugin.lua")
-lia.config.set("FactionAutoRecognize", true)
+lia.config.set("FactionAutoRecognize", false)
 PLUGIN.noRecognise = { // if true, the faction will not be recognizable by own faction
     [FACTION_ALLG] = false,
     [FACTION_CITIZEN] = true,
