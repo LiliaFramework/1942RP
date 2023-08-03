@@ -44,8 +44,6 @@ Either way, this is open source code and it is easily check by someone with enou
 
 
 ## Best Scammer Quotes
-[This Fantastic Video](https://youtu.be/hw1uRazDi04)
-
 ![image](https://user-images.githubusercontent.com/33399712/236051550-4147b1de-d116-4043-acf3-20c99b86af93.png)
 ![image](https://user-images.githubusercontent.com/33399712/236519494-6408c6bf-df4b-4ab8-91c3-565b1bc42312.png)
 ![image](https://user-images.githubusercontent.com/33399712/236519448-915a10e1-e787-46a2-9424-52856a10947f.png)
