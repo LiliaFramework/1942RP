@@ -11,8 +11,8 @@ ITEM.functions.use = {
     onRun = function(item)
         local client = item.player
         client:getChar():setData("leg_broken", false)
-        client:SetWalkSpeed(lia.config.get("walkSpeed", 130))
-        client:SetRunSpeed(lia.config.get("runSpeed", 235))
+        client:SetWalkSpeed(lia.config.WalkSpeed)
+        client:SetRunSpeed(lia.config.RunSpeed)
 
         return true
     end
@@ -28,8 +28,8 @@ ITEM.functions.usef = {
         local target = trace.Entity
         if target and target:IsValid() and target:IsPlayer() and target:Alive() then
             target:getChar():setData("leg_broken", false)
-            target:SetWalkSpeed(lia.config.get("walkSpeed", 130))
-            target:SetRunSpeed(lia.config.get("runSpeed", 235))
+            target:SetWalkSpeed(lia.config.WalkSpeed)
+            target:SetRunSpeed(lia.config.RunSpeed)
 
             return true
         end

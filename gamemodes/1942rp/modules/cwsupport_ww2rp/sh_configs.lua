@@ -1,6 +1,5 @@
 MODULE.gunData = {}
 MODULE.modelCam = {}
-
 MODULE.slotCategory = {
     [1] = "primary",
     [2] = "secondary",
@@ -45,7 +44,6 @@ local AMMO_BIGBOX = "models/Items/BoxMRounds.mdl"
 local AMMO_BUCKSHOT = "models/Items/BoxBuckshot.mdl"
 local AMMO_GREN = "models/Items/AR2_Grenade.mdl"
 MODULE.ammoInfo = {}
-
 MODULE.ammoInfo[".45 ACP"] = {
     name = ".45 ACP",
     desc = "Designed by John Browning in 1905, this small arms cartridge combines accuracy and stopping power.",

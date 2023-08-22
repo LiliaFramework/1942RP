@@ -1,4 +1,6 @@
+--------------------------------------------------------------------------------------------------------
 local playerMeta = FindMetaTable("Player")
+--------------------------------------------------------------------------------------------------------
 function playerMeta:SetWanted()
     if self:IsWanted() then
         self:setNetVar("wanted", false)
@@ -6,3 +8,4 @@ function playerMeta:SetWanted()
         self:setNetVar("wanted", true)
     end
 end
+--------------------------------------------------------------------------------------------------------

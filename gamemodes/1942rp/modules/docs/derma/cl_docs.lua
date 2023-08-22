@@ -7,6 +7,7 @@ function PANEL:Init()
 	self:InitSelf()
 	self:InitChildren()
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:InitSelf()
 	self:SetTitle("")
@@ -15,6 +16,7 @@ function PANEL:InitSelf()
 	self:SetDraggable(false)
 	self:MakePopup()
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:InitChildren()
 	self.title = vgui.Create("DLabel", self)
@@ -22,7 +24,6 @@ function PANEL:InitChildren()
 	self.title:DockMargin(20, 0, 20, 0)
 	self.title:SetFont("lia.docs.title")
 	self.title:SetColor(Color(0, 0, 0, 255))
-	
 	self.contents = vgui.Create("DLabel", self)
 	self.contents:Dock(FILL)
 	self.contents:DockMargin(20, 20, 20, 0)
@@ -32,21 +33,25 @@ function PANEL:InitChildren()
 	self.contents:SetWrap(true)
 	self.contents:SizeToContents()
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:SetHeader(text)
 	self.title:SetText(text)
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:SetContents(text)
 	self.contents:SetText(text)
 	self.contents:SizeToContents()
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:Paint(w, h)
-	surface.SetDrawColor(255, 255, 255, 255) 
+	surface.SetDrawColor(255, 255, 255, 255)
 	surface.SetMaterial(pageMat)
 	surface.DrawTexturedRect(0, 0, w, h)
 end
+
 --------------------------------------------------------------------------------------------------------
 vgui.Register("lia.docs.read", PANEL, "DFrame")
 --------------------------------------------------------------------------------------------------------
@@ -57,10 +62,12 @@ function PANEL:Init()
 	self:SetTextColor(Color(0, 0, 0, 255))
 	self:SetPlaceholderColor(Color(255, 255, 255, 255))
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:Paint(w, h)
 	self:DrawTextEntryText(self:GetTextColor(), Color(0, 0, 255), self:GetCursorColor())
 end
+
 --------------------------------------------------------------------------------------------------------
 vgui.Register("lia.docs.input", PANEL, "DTextEntry")
 --------------------------------------------------------------------------------------------------------
@@ -70,6 +77,7 @@ function PANEL:Init()
 	self:InitSelf()
 	self:InitChildren()
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:InitSelf()
 	self:SetTitle("")
@@ -78,6 +86,7 @@ function PANEL:InitSelf()
 	self:SetDraggable(false)
 	self:MakePopup()
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:InitChildren()
 	self.title = vgui.Create("lia.docs.input", self)
@@ -86,9 +95,7 @@ function PANEL:InitChildren()
 	self.title:SetFont("lia.docs.title")
 	self.title:SetValue("Title...")
 	self.title:SetPlaceholderText("Enter title...")
-
 	local width, height = self:GetSize()
-
 	self.contents = vgui.Create("lia.docs.input", self)
 	self.contents:Dock(TOP)
 	self.contents:DockMargin(20, 20, 20, 0)
@@ -97,33 +104,38 @@ function PANEL:InitChildren()
 	self.contents:SetValue("Contents...")
 	self.contents:SetPlaceholderText("Enter contents...")
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:GetHeader()
 	return self.title:GetValue()
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:GetContents()
 	return self.contents:GetValue()
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:SetItem(item)
 	self.item = lia.item.instances[item.id]
-
 	self.title:SetValue(self.item:getData("lia.docs.title", self:GetHeader()))
 	self.contents:SetValue(self.item:getData("lia.docs.contents", self:GetContents()))
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:OnClose()
 	if self.item then
 		netstream.Start("lia.docs.edit", self.item, self.title:GetValue(), self.contents:GetValue())
 	end
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:Paint(w, h)
-	surface.SetDrawColor(255, 255, 255, 255) 
+	surface.SetDrawColor(255, 255, 255, 255)
 	surface.SetMaterial(pageMat)
 	surface.DrawTexturedRect(0, 0, w, h)
 end
+
 --------------------------------------------------------------------------------------------------------
 vgui.Register("lia.docs.edit", PANEL, "DFrame")
 --------------------------------------------------------------------------------------------------------
@@ -133,6 +145,7 @@ function PANEL:Init()
 	self:InitSelf()
 	self:InitChildren()
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:InitSelf()
 	self:SetTitle("")
@@ -141,13 +154,14 @@ function PANEL:InitSelf()
 	self:SetDraggable(false)
 	self:MakePopup()
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:InitChildren()
 	self.scrollable = vgui.Create("DScrollPanel", self)
 	self.scrollable:Dock(FILL)
-
 	self.messages = {}
 end
+
 --------------------------------------------------------------------------------------------------------
 function PANEL:SetMessages(messages)
 	for _, message in pairs(messages) do
@@ -155,7 +169,6 @@ function PANEL:SetMessages(messages)
 		button:Dock(TOP)
 		button:SetText(string.format("%s - %s", message.title, os.date("%H:%M:%S", message.time)))
 		button:SetTextColor(Color(255, 255, 255))
-
 		button.DoClick = function(arguments)
 			local messagePanel = vgui.Create("lia.docs.read")
 			messagePanel:SetHeader(message.title)
@@ -163,6 +176,7 @@ function PANEL:SetMessages(messages)
 		end
 	end
 end
+
 --------------------------------------------------------------------------------------------------------
 vgui.Register("lia.docs.list", PANEL, "DFrame")
 --------------------------------------------------------------------------------------------------------

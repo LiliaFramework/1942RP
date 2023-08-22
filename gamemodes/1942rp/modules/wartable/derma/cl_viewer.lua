@@ -1,6 +1,5 @@
 local MODULE = MODULE
 local PANEL = {}
-
 function PANEL:Init()
     local pWidth, pHeight = ScrW() * 0.75, ScrH() * 0.75
     self:SetSize(pWidth, pHeight)
@@ -19,10 +18,8 @@ function PANEL:Display(target, pos)
     self.saveButton:Dock(BOTTOM)
     self.saveButton:DockMargin(0, 4, 0, 0)
     self.saveButton:SetText("Submit")
-
     self.saveButton.DoClick = function()
         local bodygroups = {}
-
         for _, v in pairs(self.bodygroupIndex) do
             table.insert(bodygroups, v.index, v.value)
         end
@@ -49,7 +46,6 @@ function PANEL:PopulateBodygroupOptions()
     self.bodygroupNext = {}
     self.bodygroupIndex = {}
     self.bodygroups:Dock(FILL)
-
     for k, v in pairs(self.target:GetBodyGroups()) do
         if not (v.id == 0) then
             local index = v.id
@@ -68,7 +64,6 @@ function PANEL:PopulateBodygroupOptions()
             self.bodygroupNext[v.id].index = v.id
             self.bodygroupNext[v.id]:Dock(RIGHT)
             self.bodygroupNext[v.id]:SetText("Next")
-
             self.bodygroupNext[v.id].DoClick = function()
                 local index = v.id
                 if (self.model.Entity:GetBodygroupCount(index) - 1) <= self.bodygroupIndex[index].value then return end
@@ -88,7 +83,6 @@ function PANEL:PopulateBodygroupOptions()
             self.bodygroupPrevious[v.id].index = v.id
             self.bodygroupPrevious[v.id]:Dock(RIGHT)
             self.bodygroupPrevious[v.id]:SetText("Previous")
-
             self.bodygroupPrevious[v.id].DoClick = function()
                 local index = v.id
                 if 0 == self.bodygroupIndex[index].value then return end

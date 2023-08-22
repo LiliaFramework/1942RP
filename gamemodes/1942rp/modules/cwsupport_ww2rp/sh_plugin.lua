@@ -31,7 +31,6 @@ lia.util.include("sh_attachments.lua")
 function MODULE:Initializedmodules()
     table.Merge(lia.lang.stored["korean"], self.koreanTranslation)
     table.Merge(lia.lang.stored["english"], self.englishTranslation)
-
     -- Create Items with Lua
     do
         -- ammunition
@@ -64,7 +63,6 @@ function MODULE:Initializedmodules()
         for k, v in ipairs(weapons.GetList()) do
             local class = v.ClassName
             local prefix
-
             if class:find("cw_") then
                 prefix = "cw_"
             elseif class:find("doi_") then
@@ -79,7 +77,6 @@ function MODULE:Initializedmodules()
 				v.canRicochet = function() return false end--]]
                 --v.MuzzleEffect = "muzzleflash_ak74" -- lol jk
                 v.Primary.DefaultClip = 0
-
                 --[[if (self.changeAmmo[v.Primary.Ammo]) then
 					v.Primary.Ammo = self.changeAmmo[v.Primary.Ammo]
 				end
@@ -211,7 +208,6 @@ function MODULE:Initializedmodules()
                 ITEM.holsterDrawInfo = dat.holster
                 ITEM.isCW = true
                 ITEM.isWeapon = true
-
                 if dat.holster then
                     ITEM.holsterDrawInfo.model = v.WorldModel
                 end
@@ -221,13 +217,11 @@ function MODULE:Initializedmodules()
                 ITEM.width = dat.width or 1
                 ITEM.height = dat.height or 1
                 ITEM.weaponCategory = slot or "primary"
-
                 function ITEM:onEquipWeapon(client, weapon)
                 end
 
                 function ITEM:paintOver(item, w, h)
                     local x, y = w - 14, h - 14
-
                     if item:getData("equip") then
                         surface.SetDrawColor(110, 255, 110, 100)
                         surface.DrawRect(x, y, 8, 8)
@@ -267,12 +261,14 @@ function MODULE:Initializedmodules()
                     isMulti = true,
                     multiOptions = function(item, client)
                         local targets = {}
-
                         for k, v in pairs(item:getData("mod", {})) do
-                            table.insert(targets, {
-                                name = L(v[1] or "ERROR"),
-                                data = k,
-                            })
+                            table.insert(
+                                targets,
+                                {
+                                    name = L(v[1] or "ERROR"),
+                                    data = k,
+                                }
+                            )
                         end
 
                         return targets
@@ -284,27 +280,21 @@ function MODULE:Initializedmodules()
                     end,
                     onRun = function(item, data)
                         local client = item.player
-
                         if data then
                             local char = client:getChar()
-
                             if char then
                                 local inv = char:getInv()
-
                                 if inv then
                                     local mods = item:getData("mod", {})
                                     local attData = mods[data]
-
                                     if attData then
                                         inv:add(attData[1])
                                         local wepon = client:GetActiveWeapon()
-
                                         if IsValid(wepon) and wepon:GetClass() == item.class then
                                             wepon:detachSpecificAttachment(attData[2])
                                         end
 
                                         mods[data] = nil
-
                                         if table.Count(mods) == 0 then
                                             item:setData("mod", nil)
                                         else
@@ -327,7 +317,6 @@ function MODULE:Initializedmodules()
                 }
 
                 HOLSTER_DRAWINFO[ITEM.class] = ITEM.holsterDrawInfo
-
                 -- Register Language name for the gun.
                 if CLIENT then
                     if lia.lang.stored["english"] and lia.lang.stored["korean"] then
@@ -351,12 +340,10 @@ function MODULE:Initializedmodules()
         CustomizableWeaponry.quickGrenade.canDropLiveGrenadeIfKilled = false
         CustomizableWeaponry.quickGrenade.unthrownGrenadesGiveWeapon = false
         CustomizableWeaponry.physicalBulletsEnabled = false
-
         if CLIENT then
             local up = Vector(0, 0, -100)
             local shellMins, shellMaxs = Vector(-0.5, -0.15, -0.5), Vector(0.5, 0.15, 0.5)
             local angleVel = Vector(0, 0, 0)
-
             function CustomizableWeaponry.shells:finishMaking(pos, ang, velocity, soundTime, removeTime)
                 velocity = velocity or up
                 velocity.x = velocity.x + math.Rand(-5, 5)
@@ -381,92 +368,105 @@ function MODULE:Initializedmodules()
                 angleVel.y = math.random(-500, 500)
                 angleVel.z = math.random(-500, 500)
                 phys:AddAngleVelocity(ang:Right() * 100 + angleVel + VectorRand() * 50000)
-
-                timer.Simple(time, function()
-                    if t.s and IsValid(ent) then
-                        sound.Play(t.s, ent:GetPos())
+                timer.Simple(
+                    time,
+                    function()
+                        if t.s and IsValid(ent) then
+                            sound.Play(t.s, ent:GetPos())
+                        end
                     end
-                end)
+                )
 
                 SafeRemoveEntityDelayed(ent, removetime)
             end
         end
 
         do
-            CustomizableWeaponry.callbacks:addNew("finishReload", "liaExperience", function(weapon)
-                if CLIENT then return end
-                local owner = weapon.Owner
-
-                if IsValid(owner) and owner:IsPlayer() then
-                    local char = owner:getChar()
-
-                    if char then
-                        if char:getAttrib("gunskill", 0) < 5 then
-                            char:updateAttrib("gunskill", 0.003)
+            CustomizableWeaponry.callbacks:addNew(
+                "finishReload",
+                "liaExperience",
+                function(weapon)
+                    if CLIENT then return end
+                    local owner = weapon.Owner
+                    if IsValid(owner) and owner:IsPlayer() then
+                        local char = owner:getChar()
+                        if char then
+                            if char:getAttrib("gunskill", 0) < 5 then
+                                char:updateAttrib("gunskill", 0.003)
+                            end
                         end
                     end
                 end
-            end)
+            )
 
             if CLIENT then
-                netstream.Hook("liaUpdateWeapon", function(weapon)
-                    if weapon and weapon:IsValid() and weapon.recalculateStats then
-                        weapon:recalculateStats()
+                netstream.Hook(
+                    "liaUpdateWeapon",
+                    function(weapon)
+                        if weapon and weapon:IsValid() and weapon.recalculateStats then
+                            weapon:recalculateStats()
+                        end
                     end
-                end)
+                )
             end
 
             function CustomizableWeaponry:hasAttachment(ply, att, lookIn)
                 return true
             end
 
-            CustomizableWeaponry.callbacks:addNew("deployWeapon", "uploadAttachments", function(weapon)
-                if CLIENT then return end
-
-                timer.Simple(.1, function()
-                    if IsValid(weapon) then
-                        if weapon.recalculateStats then
-                            weapon:recalculateStats()
-                            netstream.Start(weapon.Owner, "liaUpdateWeapon", weapon)
-                        end
-                    end
-                end)
-
-                local class = weapon:GetClass():lower()
-                local client = weapon.Owner
-                if not client then return end
-                if weapon.attLoaded then return end
-                local char = client:getChar()
-
-                if char then
-                    local inv = char:getInv()
-                    local attList = {}
-
-                    for k, v in pairs(inv:getItems()) do
-                        if v.isWeapon and v.class == class then
-                            local attachments = v:getData("mod")
-
-                            if attachments then
-                                for k, v in pairs(attachments) do
-                                    table.insert(attList, v[2])
+            CustomizableWeaponry.callbacks:addNew(
+                "deployWeapon",
+                "uploadAttachments",
+                function(weapon)
+                    if CLIENT then return end
+                    timer.Simple(
+                        .1,
+                        function()
+                            if IsValid(weapon) then
+                                if weapon.recalculateStats then
+                                    weapon:recalculateStats()
+                                    netstream.Start(weapon.Owner, "liaUpdateWeapon", weapon)
                                 end
                             end
-
-                            break
                         end
-                    end
+                    )
 
-                    timer.Simple(0.2, function()
-                        if IsValid(weapon) and weapon:GetClass() == class and weapon.attachSpecificAttachment then
-                            for _, b in ipairs(attList) do
-                                weapon:attachSpecificAttachment(b)
+                    local class = weapon:GetClass():lower()
+                    local client = weapon.Owner
+                    if not client then return end
+                    if weapon.attLoaded then return end
+                    local char = client:getChar()
+                    if char then
+                        local inv = char:getInv()
+                        local attList = {}
+                        for k, v in pairs(inv:getItems()) do
+                            if v.isWeapon and v.class == class then
+                                local attachments = v:getData("mod")
+                                if attachments then
+                                    for k, v in pairs(attachments) do
+                                        table.insert(attList, v[2])
+                                    end
+                                end
+
+                                break
                             end
                         end
-                    end)
 
-                    weapon.attLoaded = true
+                        timer.Simple(
+                            0.2,
+                            function()
+                                if IsValid(weapon) and weapon:GetClass() == class and weapon.attachSpecificAttachment then
+                                    for _, b in ipairs(attList) do
+                                        weapon:attachSpecificAttachment(b)
+                                    end
+                                end
+                            end
+                        )
+
+                        weapon.attLoaded = true
+                    end
                 end
-            end)
+            )
         end
     end
 end

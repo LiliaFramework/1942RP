@@ -1,9 +1,10 @@
+--------------------------------------------------------------------------------------------------------
 local notifTypes = {
     [1] = {
         col = Color(200, 60, 60),
         icon = "icon16/exclamation.png"
     },
-«    [2] = {
+    [2] = {
         col = Color(255, 100, 100),
         icon = "icon16/cross.png"
     },
@@ -29,6 +30,7 @@ local notifTypes = {
     }
 }
 
+--------------------------------------------------------------------------------------------------------
 -- NORMAL
 NOT_COULDBECANCELLED = 2
 NOT_WILLBECANCELLED = 3
@@ -43,14 +45,12 @@ local NORMAL_NOTICE_HEIGHT = 36
 local QUERY_NOTICE_HEIGHT = NORMAL_NOTICE_HEIGHT * 2.3
 local NOTICE_MARGIN = 5
 local DEFAULT_NOTICE_TYPE = 7
-
 -- Move all notices to their proper positions.
 local function OrganizeNotices()
     --Calculating every height of every panel BEFORE the one we need to rearrange
     --Panels to rearrange
     for k, v in ipairs(lia.noticess) do
         local topMargin = 0
-
         --All panels before (calculate margin)
         for k2, v2 in pairs(lia.noticess) do
             if k < k2 then
@@ -62,13 +62,21 @@ local function OrganizeNotices()
     end
 end
 
+--------------------------------------------------------------------------------------------------------
 function removeNotice(notice)
     -- Search for the notice to remove.
     for k, v in ipairs(lia.noticess) do
         if v == notice then
-            notice:SizeTo(notice:GetWide(), 0, 0.2, 0, -1, function()
-                notice:Remove()
-            end)
+            notice:SizeTo(
+                notice:GetWide(),
+                0,
+                0.2,
+                0,
+                -1,
+                function()
+                    notice:Remove()
+                end
+            )
 
             -- Remove the notice from the list and move other notices.
             table.remove(lia.noticess, k)
@@ -78,6 +86,7 @@ function removeNotice(notice)
     end
 end
 
+--------------------------------------------------------------------------------------------------------
 local function createNoticePanel(length, notimer)
     if not notimer then
         notimer = false
@@ -87,22 +96,19 @@ local function createNoticePanel(length, notimer)
     notice.start = CurTime() + 0.25
     notice.endTime = CurTime() + length
     notice.oh = notice:GetTall()
-
     function notice:Paint(w, h)
         local t = notifTypes[7]
         local mat
-
         if self.notifType ~= nil and not isstring(self.notifType) and self.notifType > 0 then
             t = notifTypes[self.notifType]
             mat = lia.util.getMaterial(t.icon)
         end
 
         draw.RoundedBox(4, 0, 0, w, h, Color(35, 35, 35, 200))
-
         --Drawing time progress
         if self.start then
             local w2 = math.TimeFraction(self.start, self.endTime, CurTime()) * w
-            local col = (t and t.col) or lia.config.get("color")
+            local col = (t and t.col) or lia.config.Color
             draw.RoundedBox(4, w2, 0, w - w2, h, col)
         end
 
@@ -116,14 +122,18 @@ local function createNoticePanel(length, notimer)
     end
 
     if not notimer then
-        timer.Simple(length, function()
-            removeNotice(notice)
-        end)
+        timer.Simple(
+            length,
+            function()
+                removeNotice(notice)
+            end
+        )
     end
 
     return notice
 end
 
+--------------------------------------------------------------------------------------------------------
 function lia.util.notifQuery(question, option1, option2, manualDismiss, notifType, callback)
     --Some basic variable needy statments
     if not callback or not isfunction(callback) then
@@ -156,7 +166,6 @@ function lia.util.notifQuery(question, option1, option2, manualDismiss, notifTyp
     notice:CalcWidth(120)
     notice:CenterHorizontal()
     notice.notifType = notifType or DEFAULT_NOTICE_TYPE
-
     if manualDismiss then
         notice.start = nil
     end
@@ -169,118 +178,124 @@ function lia.util.notifQuery(question, option1, option2, manualDismiss, notifTyp
     notice.oh = notice:GetTall()
     OrganizeNotices()
     notice:SetTall(0)
-
-    notice:SizeTo(notice:GetWide(), QUERY_NOTICE_HEIGHT, 0.2, 0, -1, function()
-        notice.text:SetPos(0, 0)
-
-        local function styleOpt(o)
-            o.color = Color(0, 0, 0, 30)
-            AccessorFunc(o, "color", "Color")
-
-            function o:Paint(w, h)
-                if self.left then
-                    draw.RoundedBoxEx(4, 0, 0, w + 2, h, self.color, false, false, true, false)
-                else
-                    draw.RoundedBoxEx(4, 0, 0, w + 2, h, self.color, false, false, false, true)
-                end
-            end
-        end
-
-        --Creates first option
-        if notice.opt1 and IsValid(notice.opt1) then
-            notice.opt1:SetAlpha(255)
-            notice.opt1:SetSize(notice:GetWide() / 2, 25)
-            notice.opt1:SetText(option1 .. " (F8)")
-            notice.opt1:SetPos(0, notice:GetTall() - notice.opt1:GetTall())
-            notice.opt1:CenterHorizontal(0.25)
-            notice.opt1:SetAlpha(0)
-            notice.opt1:AlphaTo(255, 0.2)
-            notice.opt1:SetTextColor(color_white)
-            notice.opt1.left = true
-            styleOpt(notice.opt1)
-
-            function notice.opt1:keyThink()
-                if input.IsKeyDown(KEY_F8) and (CurTime() - notice.lastKey) >= 0.5 then
-                    self:ColorTo(Color(24, 215, 37), 0.2, 0)
-                    notice.respondToKeys = false
-                    callback(1, notice)
-
-                    timer.Simple(1, function()
-                        if notice and IsValid(notice) then
-                            removeNotice(notice)
-                        end
-                    end)
-
-                    notice.lastKey = CurTime()
-                end
-            end
-        end
-
-        --Creates second option
-        if notice.opt2 and IsValid(notice.opt2) then
-            notice.opt2:SetAlpha(255)
-            notice.opt2:SetSize(notice:GetWide() / 2, 25)
-            notice.opt2:SetText(option2 .. " (F9)")
-            notice.opt2:SetPos(0, notice:GetTall() - notice.opt2:GetTall())
-            notice.opt2:CenterHorizontal(0.75)
-            notice.opt2:SetAlpha(0)
-            notice.opt2:AlphaTo(255, 0.2)
-            notice.opt2:SetTextColor(color_white)
-            styleOpt(notice.opt2)
-
-            function notice.opt2:keyThink()
-                if input.IsKeyDown(KEY_F9) and (CurTime() - notice.lastKey) >= 0.5 then
-                    self:ColorTo(Color(24, 215, 37), 0.2, 0)
-                    notice.respondToKeys = false
-                    callback(2, notice)
-
-                    timer.Simple(1, function()
-                        if notice and IsValid(notice) then
-                            removeNotice(notice)
-                        end
-                    end)
-
-                    notice.lastKey = CurTime()
-                end
-            end
-        end
-
-        --Key mapping
-        notice.lastKey = CurTime()
-        notice.respondToKeys = true
-
-        function notice:Think()
-            if not self.respondToKeys then return end
-            local queries = {}
-
-            for k, v in pairs(lia.noticess) do
-                if v.isQuery then
-                    queries[#queries + 1] = v
+    notice:SizeTo(
+        notice:GetWide(),
+        QUERY_NOTICE_HEIGHT,
+        0.2,
+        0,
+        -1,
+        function()
+            notice.text:SetPos(0, 0)
+            local function styleOpt(o)
+                o.color = Color(0, 0, 0, 30)
+                AccessorFunc(o, "color", "Color")
+                function o:Paint(w, h)
+                    if self.left then
+                        draw.RoundedBoxEx(4, 0, 0, w + 2, h, self.color, false, false, true, false)
+                    else
+                        draw.RoundedBoxEx(4, 0, 0, w + 2, h, self.color, false, false, false, true)
+                    end
                 end
             end
 
-            for k, v in pairs(queries) do
-                if v == self and k > 1 then return end
+            --Creates first option
+            if notice.opt1 and IsValid(notice.opt1) then
+                notice.opt1:SetAlpha(255)
+                notice.opt1:SetSize(notice:GetWide() / 2, 25)
+                notice.opt1:SetText(option1 .. " (F8)")
+                notice.opt1:SetPos(0, notice:GetTall() - notice.opt1:GetTall())
+                notice.opt1:CenterHorizontal(0.25)
+                notice.opt1:SetAlpha(0)
+                notice.opt1:AlphaTo(255, 0.2)
+                notice.opt1:SetTextColor(color_white)
+                notice.opt1.left = true
+                styleOpt(notice.opt1)
+                function notice.opt1:keyThink()
+                    if input.IsKeyDown(KEY_F8) and (CurTime() - notice.lastKey) >= 0.5 then
+                        self:ColorTo(Color(24, 215, 37), 0.2, 0)
+                        notice.respondToKeys = false
+                        callback(1, notice)
+                        timer.Simple(
+                            1,
+                            function()
+                                if notice and IsValid(notice) then
+                                    removeNotice(notice)
+                                end
+                            end
+                        )
+
+                        notice.lastKey = CurTime()
+                    end
+                end
             end
 
-            if self.opt1 and IsValid(self.opt1) then
-                self.opt1:keyThink()
+            --Creates second option
+            if notice.opt2 and IsValid(notice.opt2) then
+                notice.opt2:SetAlpha(255)
+                notice.opt2:SetSize(notice:GetWide() / 2, 25)
+                notice.opt2:SetText(option2 .. " (F9)")
+                notice.opt2:SetPos(0, notice:GetTall() - notice.opt2:GetTall())
+                notice.opt2:CenterHorizontal(0.75)
+                notice.opt2:SetAlpha(0)
+                notice.opt2:AlphaTo(255, 0.2)
+                notice.opt2:SetTextColor(color_white)
+                styleOpt(notice.opt2)
+                function notice.opt2:keyThink()
+                    if input.IsKeyDown(KEY_F9) and (CurTime() - notice.lastKey) >= 0.5 then
+                        self:ColorTo(Color(24, 215, 37), 0.2, 0)
+                        notice.respondToKeys = false
+                        callback(2, notice)
+                        timer.Simple(
+                            1,
+                            function()
+                                if notice and IsValid(notice) then
+                                    removeNotice(notice)
+                                end
+                            end
+                        )
+
+                        notice.lastKey = CurTime()
+                    end
+                end
             end
 
-            if self.opt2 and IsValid(self.opt2) then
-                self.opt2:keyThink()
+            --Key mapping
+            notice.lastKey = CurTime()
+            notice.respondToKeys = true
+            function notice:Think()
+                if not self.respondToKeys then return end
+                local queries = {}
+                for k, v in pairs(lia.noticess) do
+                    if v.isQuery then
+                        queries[#queries + 1] = v
+                    end
+                end
+
+                for k, v in pairs(queries) do
+                    if v == self and k > 1 then return end
+                end
+
+                if self.opt1 and IsValid(self.opt1) then
+                    self.opt1:keyThink()
+                end
+
+                if self.opt2 and IsValid(self.opt2) then
+                    self.opt2:keyThink()
+                end
             end
         end
-    end)
+    )
 
     return notice
 end
 
+--------------------------------------------------------------------------------------------------------
 --Receives a query
 netstream.Hook("notifyQuery", lia.util.notifQuery)
 --Overwriting the default NS notification derma element
+--------------------------------------------------------------------------------------------------------
 local PANEL = {}
-
+--------------------------------------------------------------------------------------------------------
 function PANEL:Init()
     self.padding = 60
     self:SetSize(256, 36)
@@ -291,26 +306,26 @@ function PANEL:Init()
     self.text:SetFont("liaMediumFont")
     self.text:SetTextColor(color_white)
     self.text:SetDrawOnTop(true)
-
     function self.text.Think(this)
         this:SizeToContents()
         this:Center()
     end
 end
 
+--------------------------------------------------------------------------------------------------------
 function PANEL:CalcWidth(padding)
     self.text:SizeToContents()
     self:SetWide(self.text:GetWide() + padding)
 end
 
+--------------------------------------------------------------------------------------------------------
 function PANEL:Paint(w, h)
     lia.util.drawBlur(self, 10)
     surface.SetDrawColor(230, 230, 230, 10)
     surface.DrawRect(0, 0, w, h)
-
     if self.start then
         local w2 = math.TimeFraction(self.start, self.endTime, CurTime()) * w
-        surface.SetDrawColor(lia.config.get("color"))
+        surface.SetDrawColor(lia.config.Color)
         surface.DrawRect(w2, 0, w - w2, h)
     end
 
@@ -318,4 +333,6 @@ function PANEL:Paint(w, h)
     surface.DrawOutlinedRect(0, 0, w, h)
 end
 
+--------------------------------------------------------------------------------------------------------
 vgui.Register("noticePanel", PANEL, "DPanel")
+--------------------------------------------------------------------------------------------------------

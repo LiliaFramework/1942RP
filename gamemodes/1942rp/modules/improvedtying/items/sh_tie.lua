@@ -4,7 +4,6 @@ ITEM.price = 1000
 ITEM.noBusiness = true
 ITEM.model = "models/items/crossbowrounds.mdl"
 ITEM.category = "Tools"
-
 ITEM.functions.Use = {
 	onRun = function(item)
 		if item.beingUsed then return false end
@@ -14,7 +13,6 @@ ITEM.functions.Use = {
 		data.endpos = data.start + client:GetAimVector() * 96
 		data.filter = client
 		local target = util.TraceLine(data).Entity
-
 		if target:Team() == FACTION_STAFF then
 			target:notify("You were just attempted to be restrained by " .. client:Name() .. ".")
 			client:notify("You can't tie a staff member!")
@@ -26,18 +24,22 @@ ITEM.functions.Use = {
 			item.beingUsed = true
 			client:EmitSound("physics/plastic/plastic_barrel_strain" .. math.random(1, 3) .. ".wav")
 			client:setAction("@tying", 3)
-
-			client:doStaredAction(target, function()
-				item:remove()
-				target:setRestrictedTying(true)
-				target:setNetVar("tying")
-				client:EmitSound("npc/barnacle/neck_snap1.wav", 100, 140)
-			end, 3, function()
-				client:setAction()
-				target:setAction()
-				target:setNetVar("tying")
-				item.beingUsed = false
-			end)
+			client:doStaredAction(
+				target,
+				function()
+					item:remove()
+					target:setRestrictedTying(true)
+					target:setNetVar("tying")
+					client:EmitSound("npc/barnacle/neck_snap1.wav", 100, 140)
+				end,
+				3,
+				function()
+					client:setAction()
+					target:setAction()
+					target:setNetVar("tying")
+					item.beingUsed = false
+				end
+			)
 
 			target:setNetVar("tying", true)
 			target:setAction("@beingTied", 3)
@@ -47,15 +49,17 @@ ITEM.functions.Use = {
 
 		return false
 	end,
-	onCanRun = function(item)
-		return not IsValid(item.entity)
-	end
+	onCanRun = function(item) return not IsValid(item.entity) end
 }
 
 if CLIENT then
-	hook.Add("PlayerBindPress", "DisableFeaturesWhileTied", function(ply, bind, pressed)
-		if string.find(bind, "+speed") and ply:getNetVar("restricted") or (string.find(bind, "gm_showhelp") and ply:getNetVar("restricted")) or (string.find(bind, "+jump") and ply:getNetVar("restricted")) or (string.find(bind, "+walk") and ply:getNetVar("restricted")) or (string.find(bind, "+use") and ply:getNetVar("restricted")) then return true end
-	end)
+	hook.Add(
+		"PlayerBindPress",
+		"DisableFeaturesWhileTied",
+		function(ply, bind, pressed)
+			if string.find(bind, "+speed") and ply:getNetVar("restricted") or (string.find(bind, "gm_showhelp") and ply:getNetVar("restricted")) or (string.find(bind, "+jump") and ply:getNetVar("restricted")) or (string.find(bind, "+walk") and ply:getNetVar("restricted")) or (string.find(bind, "+use") and ply:getNetVar("restricted")) then return true end
+		end
+	)
 end
 
 function ITEM:onCanBeTransfered(inventory, newInventory)

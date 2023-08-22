@@ -1,9 +1,7 @@
 local MODULE = MODULE
-
 function MODULE:DrawCharInfo(client, character, info)
     if client:IsHandcuffed() then
         info[#info + 1] = {"Handcuffed", Color(245, 215, 110)}
-
         if client:IsBlinded() then
             info[#info + 1] = {"Blindfolded", Color(245, 215, 110)}
         end

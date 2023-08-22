@@ -4,7 +4,6 @@ function MODULE:PlayerBindPress(ply, bind, down)
     local target = tr.Entity
     if not target:IsPlayer() then return end
     if target == ply then return end
-
     if down and string.find(bind, "+menu_context") then
         if target:IsHandcuffed() then
             if ply:GetActiveWeapon():GetClass() ~= "gmod_tool" then

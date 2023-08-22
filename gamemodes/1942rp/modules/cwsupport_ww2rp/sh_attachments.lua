@@ -8,7 +8,6 @@ ATTACHMENT_STOCK = 7
 ATTACHMENT_BIPOD = 8
 ATTACHMENT_CONVERSION = 9
 local attItems = {}
-
 attItems.att_flechette = {
     name = "Flechette Conversion",
     desc = "Allows shotguns to fire flechettes.",
@@ -431,7 +430,6 @@ local function attachment(item, data, combine)
     local inv = char:getInv()
     local items = inv:getItems()
     local target = data
-
     -- This is the only way, ffagot
     for k, invItem in pairs(items) do
         if data then
@@ -454,12 +452,10 @@ local function attachment(item, data, combine)
     else
         local class = target.class
         local SWEP = weapons.Get(class)
-
         if target.isCW then
             -- Insert Weapon Filter here if you just want to create weapon specific shit. 
             local atts = SWEP.Attachments
             local mods = target:getData("mod", {})
-
             if atts then
                 -- Is the Weapon Slot Filled?
                 if mods[item.slot] then
@@ -469,13 +465,10 @@ local function attachment(item, data, combine)
                 end
 
                 local pokemon
-
                 for atcat, data in pairs(atts) do
                     if pokemon then break end
-
                     for k, name in pairs(data.atts) do
                         if pokemon then break end
-
                         for _, doAtt in pairs(item.attSearch) do
                             if name == doAtt then
                                 pokemon = doAtt
@@ -492,10 +485,8 @@ local function attachment(item, data, combine)
                 end
 
                 mods[item.slot] = {item.uniqueID, pokemon}
-
                 target:setData("mod", mods)
                 local wepon = client:GetActiveWeapon()
-
                 -- If you're holding right weapon, just mod it out.
                 if IsValid(wepon) and wepon:GetClass() == target.class then
                     wepon:attachSpecificAttachment(pokemon)
@@ -528,7 +519,6 @@ for className, v in pairs(attItems) do
     ITEM.category = "Attachments"
     ITEM.attSearch = v.attSearch
     ITEM.slot = v.slot
-
     ITEM.functions.use = {
         name = "Attach",
         tip = "useTip",
@@ -537,19 +527,19 @@ for className, v in pairs(attItems) do
         multiOptions = function(item, client)
             local targets = {}
             local char = client:getChar()
-
             if char then
                 local inv = char:getInv()
-
                 if inv then
                     local items = inv:getItems()
-
                     for k, v in pairs(items) do
                         if v.isWeapon and v.isCW then
-                            table.insert(targets, {
-                                name = L(v.name),
-                                data = v:getID(),
-                            })
+                            table.insert(
+                                targets,
+                                {
+                                    name = L(v.name),
+                                    data = v:getID(),
+                                }
+                            )
                         else
                             continue
                         end
@@ -559,18 +549,13 @@ for className, v in pairs(attItems) do
 
             return targets
         end,
-        onCanRun = function(item)
-            return not IsValid(item.entity)
-        end,
-        onRun = function(item, data)
-            return attachment(item, data, false)
-        end,
+        onCanRun = function(item) return not IsValid(item.entity) end,
+        onRun = function(item, data) return attachment(item, data, false) end,
     }
 
     ITEM.functions.combine = {
         onCanRun = function(item, data)
             local targetItem = lia.item.instances[data]
-
             if data and targetItem then
                 if not IsValid(item.entity) and targetItem.isWeapon and targetItem.isCW then
                     return true
@@ -579,9 +564,7 @@ for className, v in pairs(attItems) do
                 end
             end
         end,
-        onRun = function(item, data)
-            return attachment(item, data, true)
-        end,
+        onRun = function(item, data) return attachment(item, data, true) end,
     }
 end
 

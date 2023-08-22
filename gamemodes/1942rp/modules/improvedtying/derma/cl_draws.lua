@@ -1,6 +1,5 @@
 local MODULE = MODULE
 local ForceJump = {}
-
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function MODULE:Think()
     for ply, v in pairs(ForceJump) do
@@ -10,11 +9,13 @@ function MODULE:Think()
             return
         end
 
-        local tr = util.TraceLine({
-            start = ply:GetPos(),
-            endpos = ply:GetPos() + Vector(0, 0, 20),
-            filter = ply
-        })
+        local tr = util.TraceLine(
+            {
+                start = ply:GetPos(),
+                endpos = ply:GetPos() + Vector(0, 0, 20),
+                filter = ply
+            }
+        )
 
         if tr.Hit then return end
         ply:SetPos(ply:GetPos() + Vector(0, 0, 5))

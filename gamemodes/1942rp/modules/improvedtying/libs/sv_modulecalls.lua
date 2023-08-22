@@ -1,5 +1,4 @@
 local MODULE = MODULE
-
 function MODULE:PlayerLoadout(client)
     client:setNetVar("restricted")
 end
@@ -14,16 +13,19 @@ function MODULE:CanPlayerEnterVehicle(ply)
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-hook.Add("PlayerCanHearPlayersVoiceHookTying", "PlayerCanHearPlayersVoiceHookTying", function(listener, speaker)
-    if not speaker:getChar() then return false end
-    if not listener:getChar() then return false end
-    if speaker:IsHandcuffed() and speaker:IsGagged() then return false end
-end)
+hook.Add(
+    "PlayerCanHearPlayersVoiceHookTying",
+    "PlayerCanHearPlayersVoiceHookTying",
+    function(listener, speaker)
+        if not speaker:getChar() then return false end
+        if not listener:getChar() then return false end
+        if speaker:IsHandcuffed() and speaker:IsGagged() then return false end
+    end
+)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function MODULE:OnPlayerUnRestricted(client)
     local searcher = client:getNetVar("searcher")
-
     if IsValid(searcher) then
         self:stopSearching(searcher)
     end
@@ -36,17 +38,21 @@ function MODULE:PlayerUse(client, entity)
             entity.liaBeingUnTied = true
             entity:setAction("@beingUntied", 5)
             client:setAction("@unTying", 5)
-
-            client:doStaredAction(entity, function()
-                entity:setRestricted(false)
-                entity.liaBeingUnTied = false
-                client:EmitSound("npc/roller/blade_in.wav")
-                entity:FreeTies()
-            end, 5, function()
-                entity.liaBeingUnTied = false
-                entity:setAction()
-                client:setAction()
-            end)
+            client:doStaredAction(
+                entity,
+                function()
+                    entity:setRestricted(false)
+                    entity.liaBeingUnTied = false
+                    client:EmitSound("npc/roller/blade_in.wav")
+                    entity:FreeTies()
+                end,
+                5,
+                function()
+                    entity.liaBeingUnTied = false
+                    entity:setAction()
+                    client:setAction()
+                end
+            )
         end
     end
 end
@@ -63,7 +69,6 @@ local function liaApproveSearch(len, ply)
     if not requester then return end
     if not requester.SearchRequested then return end
     local approveSearch = net.ReadBool()
-
     if not approveSearch then
         requester:notify("Player denied your request to view their inventory.")
         requester.SearchRequested = nil

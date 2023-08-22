@@ -1,5 +1,4 @@
 NAME = "English"
-
 LANGUAGE = {
     lockTrunk = "Locked trunk.",
     unlockTrunk = "Unlocked trunk.",

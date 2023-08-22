@@ -1,10 +1,8 @@
 local MODULE = MODULE
-
 function MODULE:ns1SetupInventorySearch(client, target)
     local inventory = target:getChar():getInv(client, target)
     -- Permit the player to move items from their inventory to the target's inventory.
     inventory.oldOnAuthorizeTransfer = inventory.onAuthorizeTransfer
-
     inventory.onAuthorizeTransfer = function(inventory, client2, oldInventory, item)
         if IsValid(client2) and client2 == client then return true end
 
@@ -13,11 +11,7 @@ function MODULE:ns1SetupInventorySearch(client, target)
 
     inventory:sync(client)
     inventory.oldGetReceiver = inventory.getReceiver
-
-    inventory.getReceiver = function(inventory)
-        return {client, target}
-    end
-
+    inventory.getReceiver = function(inventory) return {client, target} end
     inventory.onCheckAccess = function(inventory, client2)
         if client2 == client then return true end
     end
@@ -25,7 +19,6 @@ function MODULE:ns1SetupInventorySearch(client, target)
     -- Permit the player to move items from the target's inventory back into their inventory.
     local inventory2 = client:getChar():getInv()
     inventory2.oldOnAuthorizeTransfer = inventory2.onAuthorizeTransfer
-
     inventory2.onAuthorizeTransfer = function(inventory3, client2, oldInventory, item)
         if oldInventory == inventory then return true end
 
@@ -57,7 +50,6 @@ end
 
 function MODULE:ns2RemoveInventorySearchPermissions(client, target)
     local rule = target.liaSearchAccessRule
-
     if rule then
         target:getChar():getInv():removeAccessRule(rule)
     end
@@ -97,7 +89,6 @@ end
 
 function MODULE:stopSearching(client)
     local target = client.liaSearchTarget
-
     if IsValid(target) and target:getNetVar("searcher") == client then
         if lia.version then
             MODULE:ns2RemoveInventorySearchPermissions(client, target)
@@ -111,6 +102,9 @@ function MODULE:stopSearching(client)
     end
 end
 
-netstream.Hook("searchExit", function(client)
-    MODULE:stopSearching(client)
-end)
+netstream.Hook(
+    "searchExit",
+    function(client)
+        MODULE:stopSearching(client)
+    end
+)

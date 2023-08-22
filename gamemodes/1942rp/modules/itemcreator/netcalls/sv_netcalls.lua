@@ -1,5 +1,4 @@
 local MODULE = MODULE
-
 netstream.Hook(
     "ItemMakerGUI",
     function(client, id, itemData)

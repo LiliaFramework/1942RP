@@ -1,6 +1,5 @@
 -- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 if true then return end -- IF YOU KNOW WHAT YOU'RE DOING, REMOVE THIS LINE BEFORE DO TEST!!!!!!!!!!!!!!!! PLEASE!
-
 -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 MODULE.gunData["<WEAPON CLASSNAME>"] = {
     -- Gun holster information
