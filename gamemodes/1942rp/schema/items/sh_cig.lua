@@ -1,7 +1,8 @@
+--------------------------------------------------------------------------------------------------------
 ITEM.name = "Cigarette"
 ITEM.desc = "A Cigarette."
 ITEM.model = "models/mordeciga/mordes/oldcigshib.mdl"
-
+--------------------------------------------------------------------------------------------------------
 ITEM.functions.TakeOutCig = {
     name = "Light Up & Smoke",
     onRun = function(item)
@@ -13,3 +14,4 @@ ITEM.functions.TakeOutCig = {
         end)
     end
 }
+--------------------------------------------------------------------------------------------------------

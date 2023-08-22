@@ -1,9 +1,10 @@
+--------------------------------------------------------------------------------------------------------
 ITEM.name = "Cigarette Pack"
 ITEM.desc = "A pack of cigarettes."
 ITEM.model = "models/unconid/props_pack/cigarette_pack.mdl"
 ITEM.price = 50
 ITEM.PackNum = 20
-
+--------------------------------------------------------------------------------------------------------
 ITEM.functions.TakeOutCig = {
     name = "Take out cigarette",
     onRun = function(item)
@@ -22,7 +23,7 @@ ITEM.functions.TakeOutCig = {
         return false
     end
 }
-
+--------------------------------------------------------------------------------------------------------
 function ITEM:getDesc()
     local cigLeft = self:getData("cigLeft") or 5
     local description = "A pack of " .. cigLeft .. " cigarettes."
@@ -33,3 +34,4 @@ function ITEM:getDesc()
 
     return description
 end
+--------------------------------------------------------------------------------------------------------
