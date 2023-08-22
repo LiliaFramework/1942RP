@@ -20,7 +20,7 @@ function MODULE:PlayerButtonDown(client, key)
     local radioItem = GetItemWithDataKeyValue(inventory, "radio", "enabled", true)
     local voice_enabled = client:GetNW2Bool("radio_voice", false)
 
-    if radioItem and key == bindKey and not voice_enabled then
+    if radioItem and key == lia.config.BindKey and not voice_enabled then
         client:EmitSound("ui/buttonclick.wav")
         net.Start("RadioTransmit")
         net.WriteEntity(client)
@@ -37,7 +37,7 @@ function MODULE:PlayerButtonUp(client, key)
     local radioItem = GetItemWithDataKeyValue(inventory, "radio", "enabled", true)
     local voice_enabled = client:GetNW2Bool("radio_voice")
 
-    if radioItem and key == bindKey and voice_enabled then
+    if radioItem and key == lia.config.BindKey and voice_enabled then
         client:EmitSound("ui/buttonclick.wav")
         net.Start("RadioTransmit")
         net.WriteEntity(client)
