@@ -2,6 +2,8 @@
 lia.command.add(
     "doorkick",
     {
+        adminOnly = false,
+        privilege = "Basic User Permissions",
         syntax = "",
         onRun = function(client)
             local char = client:getChar()

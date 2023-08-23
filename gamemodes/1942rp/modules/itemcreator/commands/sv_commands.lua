@@ -1,16 +1,10 @@
-local MODULE = MODULE
 lia.command.add(
     "ItemMaker",
     {
         adminOnly = true,
+        privilege = "Management - Use Item Maker",
         syntax = "",
         onRun = function(client, arguments)
-            if not MODULE.HasPermission[client:GetUserGroup()] then
-                client:notify("You do not have access to this command.")
-
-                return false
-            end
-
             netstream.Start(client, "ItemMakerGUI")
         end
     }
@@ -20,14 +14,9 @@ lia.command.add(
     "ItemMakerlist",
     {
         adminOnly = true,
+        privilege = "Management - Use Item Maker",
         syntax = "",
         onRun = function(client, arguments)
-            if not MODULE.HasPermission[client:GetUserGroup()] then
-                client:notify("You do not have access to this command.")
-
-                return false
-            end
-
             netstream.Start(client, "ItemMakerList", NSForgedItems.List)
         end
     }
@@ -37,14 +26,9 @@ lia.command.add(
     "ItemMakerdetails",
     {
         adminOnly = true,
+        privilege = "Management - Use Item Maker",
         syntax = "<uniqueID>",
         onRun = function(client, arguments)
-            if not MODULE.HasPermission[client:GetUserGroup()] then
-                client:notify("You do not have access to this command.")
-
-                return false
-            end
-
             local uniqueID = arguments[1]
             if not uniqueID or not NSForgedItems.List[uniqueID] then
                 client:notify("Unique ID is invalid. Consider using /ItemMakerlist")
@@ -61,14 +45,9 @@ lia.command.add(
     "ItemMakerdelete",
     {
         adminOnly = true,
+        privilege = "Management - Use Item Maker",
         syntax = "<uniqueID>",
         onRun = function(client, arguments)
-            if not MODULE.HasPermission[client:GetUserGroup()] then
-                client:notify("You do not have access to this command.")
-
-                return false
-            end
-
             local uniqueID = arguments[1]
             if not uniqueID then
                 client:notify("You have to specify a unique ID")

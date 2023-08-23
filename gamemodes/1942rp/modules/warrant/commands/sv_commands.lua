@@ -2,10 +2,12 @@
 lia.command.add(
     "warrant",
     {
+        adminOnly = false,
+        privilege = "Basic User Permissions",
         onRun = function(client, arguments)
             local target = lia.command.findPlayer(client, arguments[1])
             local uniqueID = client:GetUserGroup()
-            if not (client:getChar():hasFlags("W") or owner2[uniqueID]) then
+            if not client:getChar():hasFlags("W") then
                 client:notify("No permission to run this command!")
 
                 return

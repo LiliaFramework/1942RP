@@ -3,6 +3,8 @@ local MODULE = MODULE
 lia.command.add(
     "admincharbanksearch",
     {
+        adminOnly = true,
+        privilege = "Management - Search Banks",
         onRun = function(client, arguments)
             local target = lia.command.findPlayer(client, arguments[1])
             if not client:getChar() or not client:getChar():getInv() then return false end
@@ -29,6 +31,8 @@ lia.command.add(
 lia.command.add(
     "charbanksearch",
     {
+        adminOnly = false,
+        privilege = "Basic User Permissions",
         onRun = function(client, arguments)
             local data = {}
             data.start = client:GetShootPos()
@@ -89,6 +93,8 @@ lia.command.add(
 lia.command.add(
     "allowcarentry",
     {
+        adminOnly = false,
+        privilege = "Basic User Permissions",
         onRun = function(client, arguments)
             local data = {}
             data.start = client:GetShootPos()
@@ -132,6 +138,8 @@ lia.command.add(
 lia.command.add(
     "allowcarentry",
     {
+        adminOnly = false,
+        privilege = "Basic User Permissions",
         onRun = function(client, arguments)
             local data = {}
             data.start = client:GetShootPos()
@@ -175,6 +183,8 @@ lia.command.add(
 lia.command.add(
     "gagplayer",
     {
+        adminOnly = false,
+        privilege = "Basic User Permissions",
         onRun = function(client, arguments)
             local data = {}
             data.start = client:GetShootPos()
@@ -218,6 +228,8 @@ lia.command.add(
 lia.command.add(
     "blindplayer",
     {
+        adminOnly = false,
+        privilege = "Basic User Permissions",
         onRun = function(client, arguments)
             local data = {}
             data.start = client:GetShootPos()
@@ -261,6 +273,8 @@ lia.command.add(
 lia.command.add(
     "dragplayer",
     {
+        adminOnly = false,
+        privilege = "Basic User Permissions",
         onRun = function(client, arguments)
             local tr = util.TraceLine(util.GetPlayerTrace(client))
             local target = tr.Entity
@@ -287,6 +301,8 @@ lia.command.add(
 lia.command.add(
     "setrestricted",
     {
+        adminOnly = true,
+        privilege = "Management - Set Restricted",
         onRun = function(client, arguments)
             local target = lia.command.findPlayer(client, arguments[1])
             local uniqueID = client:GetUserGroup()
@@ -305,6 +321,8 @@ lia.command.add(
 lia.command.add(
     "setblinded",
     {
+        adminOnly = true,
+        privilege = "Management - Set Blinded",
         onRun = function(client, arguments)
             local target = lia.command.findPlayer(client, arguments[1])
             local uniqueID = client:GetUserGroup()
@@ -329,6 +347,8 @@ lia.command.add(
 lia.command.add(
     "setallowcar",
     {
+        adminOnly = true,
+        privilege = "Management - Set Allow Car",
         onRun = function(client, arguments)
             local target = lia.command.findPlayer(client, arguments[1])
             local uniqueID = client:GetUserGroup()
@@ -353,6 +373,8 @@ lia.command.add(
 lia.command.add(
     "setgagged",
     {
+        adminOnly = true,
+        privilege = "Management - Set Gagged",
         onRun = function(client, arguments)
             local target = lia.command.findPlayer(client, arguments[1])
             local uniqueID = client:GetUserGroup()
@@ -377,6 +399,8 @@ lia.command.add(
 lia.command.add(
     "charsearch",
     {
+        adminOnly = false,
+        privilege = "Basic User Permissions",
         onRun = function(client, arguments)
             local data = {}
             data.start = client:GetShootPos()
@@ -435,6 +459,8 @@ lia.command.add(
 lia.command.add(
     "admincharsearch",
     {
+        adminOnly = true,
+        privilege = "Management - Search Inventories",
         syntax = "<string target>",
         onRun = function(client, arguments)
             local uniqueID = client:GetUserGroup()
