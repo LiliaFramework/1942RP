@@ -4,11 +4,8 @@
 
 ## Support
 
-If you have questions regarding the schema or want to integrate with the community, you can join our Discord server at [Discord](https://discord.gg/RTcVq92HsH).
+If you have questions regarding the schema or want to integrate with the community, you can join our Discord server at [Discord](https://discord.gg/52MSnh39vw).
 
-## Collection
-
-https://steamcommunity.com/sharedfiles/filedetails/?id=2833616414
 
 ## Disclaimer
 
