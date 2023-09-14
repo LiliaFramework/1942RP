@@ -8,7 +8,6 @@ ICON.characters = {
     phone = "CALL",
     hamburger = "g"
 }
-
 --------------------------------------------------------------------------------------------------------
 function ICON:GetIconChar(iconDesc)
     return self.characters[iconDesc] or "nil"

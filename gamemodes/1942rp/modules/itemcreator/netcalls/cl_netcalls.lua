@@ -1,21 +1,22 @@
+--------------------------------------------------------------------------------------------------------
 netstream.Hook(
-    "NSForgedItemsLoad",
+    "ForgedItemsLoad",
     function(items)
-        NSForgedItems.List = items
-        for uniqueID, itemData in pairs(NSForgedItems.List) do
-            NSForgedItems.RegisterCustomItem(uniqueID, itemData)
+        ForgedItems.List = items
+        for uniqueID, itemData in pairs(ForgedItems.List) do
+            ForgedItems.RegisterCustomItem(uniqueID, itemData)
         end
     end
 )
-
+--------------------------------------------------------------------------------------------------------
 netstream.Hook(
-    "NSForgedItemsLoadSingle",
+    "ForgedItemsLoadSingle",
     function(id, itemData)
-        NSForgedItems.List[id] = item
-        NSForgedItems.RegisterCustomItem(id, itemData)
+        ForgedItems.List[id] = item
+        ForgedItems.RegisterCustomItem(id, itemData)
     end
 )
-
+--------------------------------------------------------------------------------------------------------
 netstream.Hook(
     "ItemMakerGUI",
     function()
@@ -117,7 +118,7 @@ netstream.Hook(
         end
     end
 )
-
+--------------------------------------------------------------------------------------------------------
 netstream.Hook(
     "ItemMakerDetails",
     function(uniqueID, items)
@@ -126,7 +127,7 @@ netstream.Hook(
         chat.AddText(color_white, "Details have been printed to your console.")
     end
 )
-
+--------------------------------------------------------------------------------------------------------
 netstream.Hook(
     "ItemMakerList",
     function(items)
@@ -137,3 +138,4 @@ netstream.Hook(
         chat.AddText(color_white, "A list of all custom item forge items has been printed to your console. Use /ItemMakerdetails <uniqueID> for details.")
     end
 )
+--------------------------------------------------------------------------------------------------------

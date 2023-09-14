@@ -1,16 +1,18 @@
+--------------------------------------------------------------------------------------------------------
 function MODULE:SaveData()
-    self:setData(NSForgedItems.List)
+    self:setData(ForgedItems.List)
 end
-
+--------------------------------------------------------------------------------------------------------
 function MODULE:LoadData()
-    NSForgedItems.List = self:getData() or {}
-    for uniqueID, itemData in pairs(NSForgedItems.List) do
-        NSForgedItems.RegisterCustomItem(uniqueID, itemData)
+    ForgedItems.List = self:getData() or {}
+    for uniqueID, itemData in pairs(ForgedItems.List) do
+        ForgedItems.RegisterCustomItem(uniqueID, itemData)
     end
 
-    netstream.Start(nil, "NSForgedItemsLoad", NSForgedItems.List)
+    netstream.Start(nil, "ForgedItemsLoad", ForgedItems.List)
 end
-
+--------------------------------------------------------------------------------------------------------
 function MODULE:PlayerInitialSpawn(client)
-    netstream.Start(client, "NSForgedItemsLoad", NSForgedItems.List)
+    netstream.Start(client, "ForgedItemsLoad", ForgedItems.List)
 end
+--------------------------------------------------------------------------------------------------------

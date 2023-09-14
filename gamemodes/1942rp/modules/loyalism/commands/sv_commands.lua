@@ -1,3 +1,6 @@
+--------------------------------------------------------------------------------------------------------
+local MODULE = MODULE
+--------------------------------------------------------------------------------------------------------
 lia.command.add(
     "partytier",
     {
@@ -8,14 +11,12 @@ lia.command.add(
             local char = client:getChar()
             if not char then return "You must be on a character to use this" end
             local target = lia.command.findPlayer(client, arguments[1])
-            if not char:hasFlags("T") then
-                client:notify("You don't have permissions for that.")
+            if not hook.Run("IsValidTarget", target) then
+                client:notify("Invalid target.")
 
                 return
-            end
-
-            if not target then
-                client:notify("Invalid target.")
+            elseif not char:hasFlags("T") then
+                client:notify("You don't have permissions for that.")
 
                 return
             end
@@ -30,6 +31,8 @@ lia.command.add(
                     target:notify(client:Name() .. " has removed your Party Tier!")
                 end
             end
+            MODULE:UpdatePartyTiers()
         end
     }
 )
+--------------------------------------------------------------------------------------------------------

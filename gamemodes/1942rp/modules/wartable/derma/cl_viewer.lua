@@ -1,5 +1,6 @@
-local MODULE = MODULE
+--------------------------------------------------------------------------------------------------------
 local PANEL = {}
+--------------------------------------------------------------------------------------------------------
 function PANEL:Init()
     local pWidth, pHeight = ScrW() * 0.75, ScrH() * 0.75
     self:SetSize(pWidth, pHeight)
@@ -11,7 +12,7 @@ function PANEL:Init()
     self.bodygroups = self:Add("DScrollPanel")
     self.bodygroups:Dock(RIGHT)
 end
-
+--------------------------------------------------------------------------------------------------------
 function PANEL:Display(target, pos)
     local pWidth, pHeight = ScrW() * 0.75, ScrH() * 0.75
     self.saveButton = self:Add("DButton")
@@ -38,7 +39,7 @@ function PANEL:Display(target, pos)
     self.target = target
     self:PopulateBodygroupOptions()
 end
-
+--------------------------------------------------------------------------------------------------------
 function PANEL:PopulateBodygroupOptions()
     self.bodygroupBox = {}
     self.bodygroupName = {}
@@ -95,5 +96,6 @@ function PANEL:PopulateBodygroupOptions()
         end
     end
 end
-
+--------------------------------------------------------------------------------------------------------
 vgui.Register("WarTableModelViewer", PANEL, "DFrame")
+--------------------------------------------------------------------------------------------------------

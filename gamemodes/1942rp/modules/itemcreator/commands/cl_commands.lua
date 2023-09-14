@@ -1,35 +1,41 @@
+--------------------------------------------------------------------------------------------------------
 lia.command.add(
-    "itemforge",
+    "ItemMaker",
     {
         adminOnly = true,
+        privilege = "Management - Use Item Maker",
         syntax = "",
         onRun = function(client, arguments) end
     }
 )
-
+--------------------------------------------------------------------------------------------------------
 lia.command.add(
-    "itemforgelist",
+    "ItemMakerlist",
     {
         adminOnly = true,
+        privilege = "Management - Use Item Maker",
         syntax = "",
         onRun = function(client, arguments) end
     }
 )
-
+--------------------------------------------------------------------------------------------------------
 lia.command.add(
-    "itemforgedetails",
+    "ItemMakerdetails",
     {
         adminOnly = true,
+        privilege = "Management - Use Item Maker",
         syntax = "<uniqueID>",
         onRun = function(client, arguments) end
     }
 )
-
+--------------------------------------------------------------------------------------------------------
 lia.command.add(
-    "itemforgedelete",
+    "ItemMakerdelete",
     {
         adminOnly = true,
+        privilege = "Management - Use Item Maker",
         syntax = "<uniqueID>",
         onRun = function(client, arguments) end
     }
 )
+--------------------------------------------------------------------------------------------------------

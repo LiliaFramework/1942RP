@@ -1,3 +1,4 @@
+--------------------------------------------------------------------------------------------------------
 netstream.Hook(
     "ClearWarTable",
     function(ply, tableEnt)
@@ -6,7 +7,7 @@ netstream.Hook(
         tableEnt:Clear()
     end
 )
-
+--------------------------------------------------------------------------------------------------------
 netstream.Hook(
     "SetWarTableMap",
     function(ply, tableEnt, text)
@@ -21,7 +22,7 @@ netstream.Hook(
         end
     end
 )
-
+--------------------------------------------------------------------------------------------------------
 netstream.Hook(
     "PlaceWarTableMarker",
     function(ply, pos, bodygroups)
@@ -47,7 +48,7 @@ netstream.Hook(
         marker:SetMoveType(MOVETYPE_NONE)
     end
 )
-
+--------------------------------------------------------------------------------------------------------
 netstream.Hook(
     "RemoveWarTableMarker",
     function(ply, ent)
@@ -56,3 +57,4 @@ netstream.Hook(
         ent:Remove()
     end
 )
+--------------------------------------------------------------------------------------------------------

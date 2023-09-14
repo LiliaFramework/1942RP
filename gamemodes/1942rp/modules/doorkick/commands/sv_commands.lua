@@ -7,7 +7,7 @@ lia.command.add(
         syntax = "",
         onRun = function(client)
             local char = client:getChar()
-            if char:getFaction() == FACTION_CITIZEN then
+            if table.HasValue(lia.config.KickDoorBlacklistedFactions, char:getFaction())  then
                 client:notify("You are too weak to kick this door in!")
 
                 return

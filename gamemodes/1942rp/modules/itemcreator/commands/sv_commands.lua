@@ -1,3 +1,4 @@
+--------------------------------------------------------------------------------------------------------
 lia.command.add(
     "ItemMaker",
     {
@@ -9,7 +10,7 @@ lia.command.add(
         end
     }
 )
-
+--------------------------------------------------------------------------------------------------------
 lia.command.add(
     "ItemMakerlist",
     {
@@ -17,11 +18,11 @@ lia.command.add(
         privilege = "Management - Use Item Maker",
         syntax = "",
         onRun = function(client, arguments)
-            netstream.Start(client, "ItemMakerList", NSForgedItems.List)
+            netstream.Start(client, "ItemMakerList", ForgedItems.List)
         end
     }
 )
-
+--------------------------------------------------------------------------------------------------------
 lia.command.add(
     "ItemMakerdetails",
     {
@@ -30,17 +31,17 @@ lia.command.add(
         syntax = "<uniqueID>",
         onRun = function(client, arguments)
             local uniqueID = arguments[1]
-            if not uniqueID or not NSForgedItems.List[uniqueID] then
+            if not uniqueID or not ForgedItems.List[uniqueID] then
                 client:notify("Unique ID is invalid. Consider using /ItemMakerlist")
 
                 return
             end
 
-            netstream.Start(client, "ItemMakerDetails", uniqueID, NSForgedItems.List[uniqueID])
+            netstream.Start(client, "ItemMakerDetails", uniqueID, ForgedItems.List[uniqueID])
         end
     }
 )
-
+--------------------------------------------------------------------------------------------------------
 lia.command.add(
     "ItemMakerdelete",
     {
@@ -55,13 +56,13 @@ lia.command.add(
                 return
             end
 
-            if not NSForgedItems.List[uniqueID] then
+            if not ForgedItems.List[uniqueID] then
                 client:notify("That is not an item-forge generated item ID.")
 
                 return
             end
 
-            NSForgedItems.List[uniqueID] = nil
+            ForgedItems.List[uniqueID] = nil
             local count = 0
             for k, v in pairs(lia.item.instances) do
                 if v and istable(v) and v.uniqueID and v.uniqueID == uniqueID then
@@ -76,3 +77,4 @@ lia.command.add(
         end
     }
 )
+--------------------------------------------------------------------------------------------------------
