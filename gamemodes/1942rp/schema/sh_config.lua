@@ -1,4 +1,5 @@
 lia.config.CarRagdoll = true
+lia.config.SchemaYear = 1942
 lia.config.HeadShotDamage = 2
 lia.config.TimeUntilDroppedSWEPRemoved = 15
 lia.config.PlayerSpawnVehicleDelay = 30
