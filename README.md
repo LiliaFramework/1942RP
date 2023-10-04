@@ -1,4 +1,4 @@
-# 1942RP-Lilia
+# Lilia - 1942RP
  
 1942RP is a roleplay schema for [Lilia 2.0](https://github.com/bleonheart/Lilia). Its aim is to provide a stable 1942RP schema to start your server creation with.
 
