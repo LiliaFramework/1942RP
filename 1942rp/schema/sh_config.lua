@@ -5,7 +5,7 @@ lia.config.TakeDelay = 1 -- Delay OnTake
 lia.config.SchemaYear = 2023 -- Year When Schema Happens
 lia.config.AmericanDates = true -- American Date Formatting?
 lia.config.AmericanTimeStamp = true -- American Time Formatting?
-lia.config.lia.config.CarRagdoll = true -- Enable car ragdolls
+lia.config.CarRagdoll = true -- Enable car ragdolls
 lia.config.HeadShotDamage = 2 -- Damage multiplier for headshots
 lia.config.TimeUntilDroppedSWEPRemoved = 15 -- Time until dropped weapons are removed (in seconds)
 lia.config.PlayerSpawnVehicleDelay = 30 -- Delay before players can spawn vehicles (in seconds)
@@ -16,7 +16,7 @@ lia.config.RunSpeed = 235 -- Player run speed
 lia.config.CharacterSwitchCooldownTimer = 5 -- Cooldown timer for character switching (in seconds)
 lia.config.CharacterSwitchCooldown = true -- Enable character switch cooldown
 lia.config.AutoRegen = false -- Enable automatic health regeneration
-lia.config.lia.config.HealingAmount = 10 -- Amount of health regenerated per tick when AutoRegen is enabled
+lia.config.HealingAmount = 10 -- Amount of health regenerated per tick when AutoRegen is enabled
 lia.config.HealingTimer = 60 -- Time interval between health regeneration ticks (in seconds)
 lia.config.PermaClass = true -- Enable permanent player classes
 -- Cleanup Settings
