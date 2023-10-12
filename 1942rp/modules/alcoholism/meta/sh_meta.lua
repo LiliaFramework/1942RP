@@ -1,13 +1,12 @@
 --------------------------------------------------------------------------------------------------------
 local playerMeta = FindMetaTable("Player")
 --------------------------------------------------------------------------------------------------------
-function playerMeta:ResetBAC()
-    self:SetNW2Int("lia_alcoholism_bac", 0)
+function playerMeta:IsDrunk()
+    return self:GetDrunkLevel() > lia.config.DrunkNotifyThreshold
 end
 
 --------------------------------------------------------------------------------------------------------
-function playerMeta:AddBAC(amt)
-    if not amt or not isnumber(amt) then return end
-    self:SetNW2Int("lia_alcoholism_bac", math.Clamp(self:GetDrunkLevel() + amt, 0, 100))
+function playerMeta:GetDrunkLevel()
+    return self:GetNW2Int("lia_alcoholism_bac", 0)
 end
 --------------------------------------------------------------------------------------------------------

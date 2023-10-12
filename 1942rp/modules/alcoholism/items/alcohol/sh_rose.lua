@@ -1,10 +1,9 @@
 --------------------------------------------------------------------------------------------------------
-ITEM.name = "Chatka Gin"
-ITEM.model = "models/hlvr/props/bottles/bottle_o_gin.mdl"
+ITEM.name = "Rosé"
+ITEM.model = "models/mark2580/gtav/barstuff/wine_rose.mdl"
+ITEM.uniqueID = "rose"
 ITEM.width = 1
-ITEM.height = 2
-ITEM.abv = 25
-ITEM.desc = "A popular of Russian Gin. Has an ABV of 25 Percent"
+ITEM.height = 1
+ITEM.abv = 20
 ITEM.sound = "eating_and_drinking/drinking.wav"
-ITEM.price = 30
 --------------------------------------------------------------------------------------------------------

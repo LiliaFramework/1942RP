@@ -1,10 +1,9 @@
 --------------------------------------------------------------------------------------------------------
-ITEM.name = "Pint of Beer"
-ITEM.model = "models/props_junk/pint_beer.mdl"
+ITEM.name = "White Wine"
+ITEM.model = "models/mark2580/gtav/barstuff/wine_white.mdl"
+ITEM.uniqueID = "whitewine"
 ITEM.width = 1
 ITEM.height = 1
-ITEM.abv = 13
-ITEM.desc = "A pint of beer in a glass tankard."
+ITEM.abv = 20
 ITEM.sound = "eating_and_drinking/drinking.wav"
-ITEM.price = 30
 --------------------------------------------------------------------------------------------------------
