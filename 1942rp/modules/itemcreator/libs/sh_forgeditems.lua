@@ -1,4 +1,8 @@
 --------------------------------------------------------------------------------------------------------
+ForgedItems = ForgedItems or {}
+--------------------------------------------------------------------------------------------------------
+ForgedItems.List = ForgedItems.List or {}
+--------------------------------------------------------------------------------------------------------
 function ForgedItems.RegisterCustomItem(id, itemData)
     if not id then return end
     local ITEM = lia.item.register(id, nil, false, nil, true)
