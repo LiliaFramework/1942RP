@@ -20,7 +20,7 @@ end
 local map = vgui.Create("HTML", mainBG)
 map:SetSize(mainBG:GetSize())
 map:SetMouseInputEnabled(false)
-map:OpenURL(lia.config.WarTableMapURL)
+map:OpenURL("https://cdn.discordapp.com/attachments/1059867063902019677/1073743159017885706/432b60eb74bc53305dc3a5ccc573335c1.png")
 --------------------------------------------------------------------------------------------------------
 function ENT:Draw()
     self:DrawModel()
