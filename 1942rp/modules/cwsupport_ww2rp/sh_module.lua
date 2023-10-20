@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------------------
 MODULE.name = "Macro Weapon Register"
-MODULE.author = "STEAM_0:1:176123778"
+MODULE.author = "@liliaplayer > Discord"
 MODULE.desc = "Gun Jesus have arrived."
 ----------------------------------------------------------------------------------------------
 if not CustomizableWeaponry then return end
