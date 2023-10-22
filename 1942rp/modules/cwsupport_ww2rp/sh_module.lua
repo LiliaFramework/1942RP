@@ -312,7 +312,6 @@ function MODULE:InitializedModules()
                     end,
                 }
 
-                HOLSTER_DRAWINFO[ITEM.class] = ITEM.holsterDrawInfo
                 -- Register Language name for the gun.
                 if CLIENT then
                     if lia.lang.stored["english"] and lia.lang.stored["korean"] then
