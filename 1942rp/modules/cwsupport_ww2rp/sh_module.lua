@@ -28,7 +28,7 @@ lia.util.include("sh_languages.lua")
 lia.util.include("cl_cw3d2d.lua")
 lia.util.include("sh_attachments.lua")
 ----------------------------------------------------------------------------------------------
-function MODULE:Initializedmodules()
+function MODULE:InitializedModules()
     table.Merge(lia.lang.stored["korean"], self.koreanTranslation)
     table.Merge(lia.lang.stored["english"], self.englishTranslation)
     -- Create Items with Lua
