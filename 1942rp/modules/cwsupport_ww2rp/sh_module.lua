@@ -24,14 +24,10 @@ if not CustomizableWeaponry then return end
 ]]
 ----------------------------------------------------------------------------------------------
 lia.util.include("sh_configs.lua")
-lia.util.include("sh_languages.lua")
 lia.util.include("cl_cw3d2d.lua")
 lia.util.include("sh_attachments.lua")
 ----------------------------------------------------------------------------------------------
 function MODULE:InitializedModules()
-    table.Merge(lia.lang.stored["korean"], self.koreanTranslation)
-    table.Merge(lia.lang.stored["english"], self.englishTranslation)
-    -- Create Items with Lua
     do
         -- ammunition
         for name, data in pairs(self.ammoInfo) do
