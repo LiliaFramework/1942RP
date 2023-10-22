@@ -1,10 +1,9 @@
-----------------------------------------------------------------------------------------------
 MODULE.name = "Macro Weapon Register"
-MODULE.author = "@liliaplayer > Discord"
+MODULE.author = "Black Tea"
 MODULE.desc = "Gun Jesus have arrived."
-----------------------------------------------------------------------------------------------
-if not CustomizableWeaponry then return end
---[[
+
+if (!CustomizableWeaponry) then return end
+/*
 	MODIFICATION TUTORIAL
 		- sh_config
 		 This file contains ammo structure.
@@ -21,63 +20,67 @@ if not CustomizableWeaponry then return end
 
 
 
-]]
-----------------------------------------------------------------------------------------------
+*/
+
 lia.util.include("sh_configs.lua")
 lia.util.include("sh_languages.lua")
 lia.util.include("cl_cw3d2d.lua")
 lia.util.include("sh_attachments.lua")
-----------------------------------------------------------------------------------------------
-function MODULE:Initializedmodules()
-    table.Merge(lia.lang.stored["korean"], self.koreanTranslation)
-    table.Merge(lia.lang.stored["english"], self.englishTranslation)
-    -- Create Items with Lua
-    do
-        -- ammunition
-        for name, data in pairs(self.ammoInfo) do
-            local uniqueID = "ammo_" .. name:lower()
-            local ammoInfo = data
-            local ITEM = lia.item.register(uniqueID, "base_ammo", nil, nil, true)
-            ITEM.name = ammoInfo.name
-            ITEM.desc = ammoInfo.desc
-            ITEM.ammo = name
-            ITEM.ammoAmount = ammoInfo.amount or 30
-            ITEM.price = ammoInfo.price or 200
-            ITEM.model = ammoInfo.model or AMMO_BOX
-            --[[function ITEM:getDesc()
+
+function MODULE:InitializedModuless()
+	table.Merge(lia.lang.stored["korean"], self.koreanTranslation)
+	table.Merge(lia.lang.stored["english"], self.englishTranslation)
+
+	-- Create Items with Lua
+	do
+		-- ammunition
+		for name, data in pairs(self.ammoInfo) do
+			local uniqueID = "ammo_"..name:lower()
+			local ammoInfo = data
+
+			local ITEM = lia.item.register(uniqueID, "base_ammo", nil, nil, true)
+			ITEM.name = ammoInfo.name
+			ITEM.ammo = name
+			ITEM.ammoAmount = ammoInfo.amount or 30
+			ITEM.price = ammoInfo.price or 200
+			ITEM.model = ammoInfo.model or AMMO_BOX
+
+			function ITEM:getDesc()
 				return L("ammoDesc", self.ammoAmount, L(self.ammo))
-			end--]]
-        end
+			end
+		end
 
-        -- they were ass.
-        local assWeapons = {
-            ["cw_ber_cz75"] = "muzzleflash_6",
-            ["cw_ber_deagletoast"] = "muzzleflash_6",
-            ["cw_ber_fnp45"] = "muzzleflash_6",
-            ["cw_ber_m9"] = "muzzleflash_6",
-            ["cw_ber_p220"] = "muzzleflash_6",
-            ["cw_ber_model620"] = "muzzleflash_6",
-            ["cw_ber_usp"] = "muzzleflash_6",
-        }
+		-- they were ass.
+		local assWeapons = {
+			["cw_ber_cz75"] = "muzzleflash_6",
+			["cw_ber_deagletoast"] = "muzzleflash_6",
+			["cw_ber_fnp45"] = "muzzleflash_6",
+			["cw_ber_m9"] = "muzzleflash_6",
+			["cw_ber_p220"] = "muzzleflash_6",
+			["cw_ber_model620"] = "muzzleflash_6",
+			["cw_ber_usp"] = "muzzleflash_6",
+		}
 
-        for k, v in ipairs(weapons.GetList()) do
-            local class = v.ClassName
-            local prefix
-            if class:find("cw_") then
-                prefix = "cw_"
-            elseif class:find("doi_") then
-                prefix = "doi_"
-            end
+		for k, v in ipairs(weapons.GetList()) do
+			local class = v.ClassName
+			local prefix
 
-            if prefix and not class:find("base") then
-                -- Configure Weapon's Variables
-                --[[v.CanRicochet = false
+			if (class:find("cw_")) then
+				prefix = "cw_"
+			elseif (class:find("ma85_")) then
+				prefix = "ma85_"
+			end
+			
+			if (prefix and !class:find("base")) then
+				-- Configure Weapon's Variables
+				v.CanRicochet = false
 				v.isGoodWeapon = true
 				v.canPenetrate = function() return false end
-				v.canRicochet = function() return false end--]]
-                --v.MuzzleEffect = "muzzleflash_ak74" -- lol jk
-                v.Primary.DefaultClip = 0
-                --[[if (self.changeAmmo[v.Primary.Ammo]) then
+				v.canRicochet = function() return false end
+				--v.MuzzleEffect = "muzzleflash_ak74" -- lol jk
+				v.Primary.DefaultClip = 0
+
+				if (self.changeAmmo[v.Primary.Ammo]) then
 					v.Primary.Ammo = self.changeAmmo[v.Primary.Ammo]
 				end
 
@@ -101,21 +104,22 @@ function MODULE:Initializedmodules()
 						v.SpreadCooldown = (v.FireDelay or 0)*0.3
 					end
 					v.AddSpreadSpeed = v.SpreadPerShot*5
-				end--]]
-                -- lol fuck you 
-                function v:detachSpecificAttachment(attachmentName)
-                    -- since we don't know the category, we'll just have to iterate over all attachments, find the one we want, and attach it there
-                    for category, data in pairs(self.Attachments) do
-                        for key, attachment in ipairs(data.atts) do
-                            if attachment == attachmentName then
-                                self:detach(category, key - 1, false)
-                            end
-                        end
-                    end
-                end
+				end
 
-                -- A code to get rid of fucking movement/sway disability.
-                --[[function v:getFinalSpread(vel, maxMultiplier)
+				-- lol fuck you 
+				function v:detachSpecificAttachment(attachmentName)
+					-- since we don't know the category, we'll just have to iterate over all attachments, find the one we want, and attach it there
+					for category, data in pairs(self.Attachments) do
+						for key, attachment in ipairs(data.atts) do
+							if attachment == attachmentName then
+								self:detach(category, key - 1, false)
+							end
+						end
+					end
+				end
+
+				-- A code to get rid of fucking movement/sway disability.
+				function v:getFinalSpread(vel, maxMultiplier)
 					maxMultiplier = maxMultiplier or 1
 					
 					local final = self.BaseCone
@@ -193,48 +197,53 @@ function MODULE:Initializedmodules()
 					local mult = hook.Run("GetSchemaCWMaxSpread", self, self.Owner) or 1
 
 					self.MaxSpreadInc = self.MaxSpreadInc_Orig * self.MaxSpreadIncMult * mult
-				end--]]
-                -- Generate Items
-                local uniqueID = string.Replace(class, prefix, ""):lower()
-                local dat = self.gunData[prefix .. uniqueID] or {}
-                v.Slot = dat.slot or 2
-                local ITEM = lia.item.register(class:lower(), "base_weapons", nil, nil, true)
-                ITEM.name = uniqueID
-                ITEM.desc = dat.desc
-                ITEM.price = dat.price or 4000
-                ITEM.exRender = dat.exRender or false
-                ITEM.iconCam = self.modelCam[v.WorldModel:lower()]
-                ITEM.class = prefix .. uniqueID
-                ITEM.holsterDrawInfo = dat.holster
-                ITEM.isCW = true
-                ITEM.isWeapon = true
-                if dat.holster then
-                    ITEM.holsterDrawInfo.model = v.WorldModel
-                end
+				end
 
-                ITEM.model = v.WorldModel
-                local slot = self.slotCategory[v.Slot]
-                ITEM.width = dat.width or 1
-                ITEM.height = dat.height or 1
-                ITEM.weaponCategory = slot or "primary"
-                function ITEM:onEquipWeapon(client, weapon)
-                end
+				-- Generate Items
+				local uniqueID = string.Replace(class, prefix, ""):lower()
+				local dat = self.gunData[prefix .. uniqueID] or {}
 
-                function ITEM:paintOver(item, w, h)
-                    local x, y = w - 14, h - 14
-                    if item:getData("equip") then
-                        surface.SetDrawColor(110, 255, 110, 100)
-                        surface.DrawRect(x, y, 8, 8)
-                        x = x - 8 * 1.6
-                    end
+				v.Slot = dat.slot or 2
+				local ITEM = lia.item.register(class:lower(), "base_weapons", nil, nil, true)
+				ITEM.name = uniqueID
+				ITEM.price = dat.price or 4000
+				ITEM.exRender = dat.exRender or false
+				ITEM.iconCam = self.modelCam[v.WorldModel:lower()]
+				ITEM.class = prefix .. uniqueID
+				ITEM.holsterDrawInfo = dat.holster
+				ITEM.isCW = true
 
-                    if table.Count(item:getData("mod", {})) > 0 then
-                        surface.SetDrawColor(255, 255, 110, 100)
-                        surface.DrawRect(x, y, 8, 8)
-                    end
-                end
+				if (dat.holster) then
+					ITEM.holsterDrawInfo.model = v.WorldModel
+				end
 
-                --[[function ITEM:getDesc()
+				ITEM.model = v.WorldModel
+
+				local slot = self.slotCategory[v.Slot]
+				ITEM.width = dat.width or 1
+				ITEM.height = dat.height or 1
+				ITEM.weaponCategory = slot or "primary"
+
+				function ITEM:onEquipWeapon(client, weapon)
+				end
+
+				function ITEM:paintOver(item, w, h)
+					local x, y = w - 14, h - 14
+
+					if (item:getData("equip")) then
+						surface.SetDrawColor(110, 255, 110, 100)
+						surface.DrawRect(x, y, 8, 8)
+
+						x = x - 8*1.6
+					end
+
+					if (table.Count(item:getData("mod", {})) > 0) then
+						surface.SetDrawColor(255, 255, 110, 100)
+						surface.DrawRect(x, y, 8, 8)
+					end
+				end
+
+				function ITEM:getDesc()
 					if (!self.entity or !IsValid(self.entity)) then
 						local text = L("gunInfoDesc", L(v.Primary.Ammo)) .. "\n"
 
@@ -253,220 +262,271 @@ function MODULE:Initializedmodules()
 						local text = L("gunInfoDesc", L(v.Primary.Ammo))
 						return text
 					end
-				end--]]
-                ITEM.functions.use = {
-                    name = "Detach",
-                    tip = "useTip",
-                    icon = "icon16/wrench.png",
-                    isMulti = true,
-                    multiOptions = function(item, client)
-                        local targets = {}
-                        for k, v in pairs(item:getData("mod", {})) do
-                            table.insert(
-                                targets,
-                                {
-                                    name = L(v[1] or "ERROR"),
-                                    data = k,
-                                }
-                            )
-                        end
+				end
+				
+			ITEM.functions.use = {
+			name = "Detach",
+			tip = "useTip",
+			icon = "icon16/wrench.png",
+            isMulti = true,
+            multiOptions = function(item, client)
+                local targets = {}
 
-                        return targets
-                    end,
-                    onCanRun = function(item)
-                        if table.Count(item:getData("mod", {})) <= 0 then return false end
-
-                        return not IsValid(item.entity)
-                    end,
-                    onRun = function(item, data)
-                        local client = item.player
-                        if data then
-                            local char = client:getChar()
-                            if char then
-                                local inv = char:getInv()
-                                if inv then
-                                    local mods = item:getData("mod", {})
-                                    local attData = mods[data]
-                                    if attData then
-                                        inv:add(attData[1])
-                                        local wepon = client:GetActiveWeapon()
-                                        if IsValid(wepon) and wepon:GetClass() == item.class then
-                                            wepon:detachSpecificAttachment(attData[2])
-                                        end
-
-                                        mods[data] = nil
-                                        if table.Count(mods) == 0 then
-                                            item:setData("mod", nil)
-                                        else
-                                            item:setData("mod", mods)
-                                        end
-
-                                        -- Yeah let them know you did something with your dildo
-                                        client:EmitSound("cw/holster4.wav")
-                                    else
-                                        client:notifyLocalized("notAttachment")
-                                    end
-                                end
-                            end
-                        else
-                            client:notifyLocalized("detTarget")
-                        end
-
-                        return false
-                    end,
-                }
-
-                HOLSTER_DRAWINFO[ITEM.class] = ITEM.holsterDrawInfo
-                -- Register Language name for the gun.
-                if CLIENT then
-                    if lia.lang.stored["english"] and lia.lang.stored["korean"] then
-                        ITEM.name = v.PrintName
-                        lia.lang.stored["english"][prefix .. uniqueID] = v.PrintName
-                        lia.lang.stored["korean"][prefix .. uniqueID] = v.PrintName
-                    end
+                for k, v in pairs(item:getData("mod", {})) do
+                    table.insert(targets, {
+                        name = L(v[1] or "ERROR"),
+                        data = k,
+                    })
                 end
-            end
-        end
-    end
 
-    -- Reconfigure Customizable Weaponry in here	
-    do
-        -- There is no Customization Keys.
-        CustomizableWeaponry.customizationEnabled = false
-        CustomizableWeaponry.customizationMenuKey = "+menu_context"
-        CustomizableWeaponry.canDropWeapon = false
-        CustomizableWeaponry.enableWeaponDrops = false
-        CustomizableWeaponry.quickGrenade.enabled = false
-        CustomizableWeaponry.quickGrenade.canDropLiveGrenadeIfKilled = false
-        CustomizableWeaponry.quickGrenade.unthrownGrenadesGiveWeapon = false
-        CustomizableWeaponry.physicalBulletsEnabled = false
-        if CLIENT then
-            local up = Vector(0, 0, -100)
-            local shellMins, shellMaxs = Vector(-0.5, -0.15, -0.5), Vector(0.5, 0.15, 0.5)
-            local angleVel = Vector(0, 0, 0)
-            function CustomizableWeaponry.shells:finishMaking(pos, ang, velocity, soundTime, removeTime)
-                velocity = velocity or up
-                velocity.x = velocity.x + math.Rand(-5, 5)
-                velocity.y = velocity.y + math.Rand(-5, 5)
-                velocity.z = velocity.z + math.Rand(-5, 5)
-                time = time or 0.5
-                removetime = removetime or 5
-                local t = self._shellTable or CustomizableWeaponry.shells:getShell("mainshell") -- default to the 'mainshell' shell type if there is none defined
-                local ent = ClientsideModel(t.m, RENDERGROUP_BOTH)
-                ent:SetPos(pos)
-                ent:PhysicsInitBox(shellMins, shellMaxs)
-                ent:SetAngles(ang + AngleRand())
-                ent:SetModelScale(self.ShellScale * .9 or .7, 0)
-                ent:SetMoveType(MOVETYPE_VPHYSICS)
-                ent:SetSolid(SOLID_VPHYSICS)
-                ent:SetCollisionGroup(COLLISION_GROUP_DEBRIS)
-                local phys = ent:GetPhysicsObject()
-                phys:SetMaterial("gmod_silent")
-                phys:SetMass(10)
-                phys:SetVelocity(velocity)
-                angleVel.x = math.random(-500, 500)
-                angleVel.y = math.random(-500, 500)
-                angleVel.z = math.random(-500, 500)
-                phys:AddAngleVelocity(ang:Right() * 100 + angleVel + VectorRand() * 50000)
-                timer.Simple(
-                    time,
-                    function()
-                        if t.s and IsValid(ent) then
-                            sound.Play(t.s, ent:GetPos())
-                        end
-                    end
-                )
+                return targets
+            end,
+			onCanRun = function(item)
+				if (table.Count(item:getData("mod", {})) <= 0) then
+					return false
+				end
+				
+				return (!IsValid(item.entity))
+			end,
+			onRun = function(item, data)
+						local client = item.player
+						if (data) then
+							local char = client:getChar()
 
-                SafeRemoveEntityDelayed(ent, removetime)
-            end
-        end
+							if (char) then
+								local inv = char:getInv()
 
-        do
-            CustomizableWeaponry.callbacks:addNew(
-                "finishReload",
-                "liaExperience",
-                function(weapon)
-                    if CLIENT then return end
-                    local owner = weapon.Owner
-                    if IsValid(owner) and owner:IsPlayer() then
-                        local char = owner:getChar()
-                        if char then
-                            if char:getAttrib("gunskill", 0) < 5 then
-                                char:updateAttrib("gunskill", 0.003)
-                            end
-                        end
-                    end
-                end
-            )
+								if (inv) then
+									local mods = item:getData("mod", {})
+									local attData = mods[data]
 
-            if CLIENT then
-                netstream.Hook(
-                    "liaUpdateWeapon",
-                    function(weapon)
-                        if weapon and weapon:IsValid() and weapon.recalculateStats then
-                            weapon:recalculateStats()
-                        end
-                    end
-                )
-            end
+									if (attData) then
+										inv:add(attData[1])
 
-            function CustomizableWeaponry:hasAttachment(ply, att, lookIn)
-                return true
-            end
+										
+										local wepon = client:GetActiveWeapon()
+										if (IsValid(wepon) and wepon:GetClass() == item.class) then
+											wepon:detachSpecificAttachment(attData[2])
+										end
 
-            CustomizableWeaponry.callbacks:addNew(
-                "deployWeapon",
-                "uploadAttachments",
-                function(weapon)
-                    if CLIENT then return end
-                    timer.Simple(
-                        .1,
-                        function()
-                            if IsValid(weapon) then
-                                if weapon.recalculateStats then
-                                    weapon:recalculateStats()
-                                    netstream.Start(weapon.Owner, "liaUpdateWeapon", weapon)
-                                end
-                            end
-                        end
-                    )
+										mods[data] = nil
 
-                    local class = weapon:GetClass():lower()
-                    local client = weapon.Owner
-                    if not client then return end
-                    if weapon.attLoaded then return end
-                    local char = client:getChar()
-                    if char then
-                        local inv = char:getInv()
-                        local attList = {}
-                        for k, v in pairs(inv:getItems()) do
-                            if v.isWeapon and v.class == class then
-                                local attachments = v:getData("mod")
-                                if attachments then
-                                    for k, v in pairs(attachments) do
-                                        table.insert(attList, v[2])
-                                    end
-                                end
+										if (table.Count(mods) == 0) then
+											item:setData("mod", nil)
+										else
+											item:setData("mod", mods)
+										end
+										
+										-- Yeah let them know you did something with your dildo
+										client:EmitSound("cw/holster4.wav")
+									else
+										client:notifyLocalized("notAttachment")
+									end
+								end
+							end
+						else
+							client:notifyLocalized("detTarget")
+						end
 
-                                break
-                            end
-                        end
+						return false
+					end,
+			}
 
-                        timer.Simple(
-                            0.2,
-                            function()
-                                if IsValid(weapon) and weapon:GetClass() == class and weapon.attachSpecificAttachment then
-                                    for _, b in ipairs(attList) do
-                                        weapon:attachSpecificAttachment(b)
-                                    end
-                                end
-                            end
-                        )
+				HOLSTER_DRAWINFO[ITEM.class] = ITEM.holsterDrawInfo
 
-                        weapon.attLoaded = true
-                    end
-                end
-            )
-        end
-    end
+				-- Register Language name for the gun.
+				if (CLIENT) then
+					if (lia.lang.stored["english"] and lia.lang.stored["korean"]) then
+						ITEM.name = v.PrintName 
+
+						lia.lang.stored["english"][prefix .. uniqueID] = v.PrintName 
+						lia.lang.stored["korean"][prefix .. uniqueID] = v.PrintName 
+					end
+				end
+			end
+		end
+	end
+
+	-- Reconfigure Customizable Weaponry in here	
+	do	
+		-- There is no Customization Keys.
+		CustomizableWeaponry.customizationMenuKey = "" -- the key we need to press to toggle the customization menu
+		CustomizableWeaponry.canDropWeapon = false
+		CustomizableWeaponry.enableWeaponDrops = false
+		CustomizableWeaponry.quickGrenade.enabled = false
+		CustomizableWeaponry.quickGrenade.canDropLiveGrenadeIfKilled = false
+		CustomizableWeaponry.quickGrenade.unthrownGrenadesGiveWeapon = false
+		CustomizableWeaponry.physicalBulletsEnabled = false
+		CustomizableWeaponry.customizationEnabled = false
+
+		hook.Remove("PlayerInitialSpawn", "CustomizableWeaponry.PlayerInitialSpawn")
+		hook.Remove("PlayerSpawn", "CustomizableWeaponry.PlayerSpawn")
+		hook.Remove("AllowPlayerPickup", "CustomizableWeaponry.AllowPlayerPickup")
+
+		if (CLIENT) then
+			local up = Vector(0, 0, -100)
+			local shellMins, shellMaxs = Vector(-0.5, -0.15, -0.5), Vector(0.5, 0.15, 0.5)
+			local angleVel = Vector(0, 0, 0)
+
+			function CustomizableWeaponry.shells:finishMaking(pos, ang, velocity, soundTime, removeTime)
+				velocity = velocity or up
+				velocity.x = velocity.x + math.Rand(-5, 5)
+				velocity.y = velocity.y + math.Rand(-5, 5)
+				velocity.z = velocity.z + math.Rand(-5, 5)
+				
+				time = time or 0.5
+				removetime = removetime or 5
+				
+				local t = self._shellTable or CustomizableWeaponry.shells:getShell("mainshell") -- default to the 'mainshell' shell type if there is none defined
+
+				local ent = ClientsideModel(t.m, RENDERGROUP_BOTH) 
+				ent:SetPos(pos)
+				ent:PhysicsInitBox(shellMins, shellMaxs)
+				ent:SetAngles(ang + AngleRand())
+				ent:SetModelScale((self.ShellScale*.9 or .7), 0)
+				ent:SetMoveType(MOVETYPE_VPHYSICS) 
+				ent:SetSolid(SOLID_VPHYSICS) 
+				ent:SetCollisionGroup(COLLISION_GROUP_DEBRIS)
+				
+				local phys = ent:GetPhysicsObject()
+				phys:SetMaterial("gmod_silent")
+				phys:SetMass(10)
+				phys:SetVelocity(velocity)
+				
+				angleVel.x = math.random(-500, 500)
+				angleVel.y = math.random(-500, 500)
+				angleVel.z = math.random(-500, 500)
+				
+				phys:AddAngleVelocity(ang:Right() * 100 + angleVel + VectorRand()*50000)
+
+				timer.Simple(time, function()
+					if t.s and IsValid(ent) then
+						sound.Play(t.s, ent:GetPos())
+					end
+				end)
+				
+				SafeRemoveEntityDelayed(ent, removetime)
+			end
+		end
+
+		do
+			CustomizableWeaponry.callbacks:addNew("finishReload", "liaExperience", function(weapon)
+				if (CLIENT) then return end
+
+				local owner = weapon.Owner
+
+				if (IsValid(owner) and owner:IsPlayer()) then
+					local char = owner:getChar()
+
+					if (char) then
+						if (char:getAttrib("gunskill", 0) < 5) then
+							char:updateAttrib("gunskill", 0.003)
+						end
+					end
+				end
+			end)
+
+			if (CLIENT) then
+				netstream.Hook("liaUpdateWeapon", function(weapon) if (weapon and weapon:IsValid() and weapon.recalculateStats) then weapon:recalculateStats() end end)
+			end
+
+			function CustomizableWeaponry:hasAttachment(ply, att, lookIn)		
+				return true
+			end
+
+			CustomizableWeaponry.callbacks:addNew("deployWeapon", "uploadAttachments", function(weapon)
+				if (CLIENT) then return end
+
+				timer.Simple(.1, function()
+					if (IsValid(weapon)) then
+						if (weapon.recalculateStats) then
+							weapon:recalculateStats()
+							
+							netstream.Start(weapon.Owner, "liaUpdateWeapon", weapon)
+						end
+					end
+				end)
+
+				local class = weapon:GetClass():lower()
+				local client = weapon.Owner
+
+				if (!client) then return end
+				if (weapon.attLoaded) then return end
+
+				local char = client:getChar()
+
+				if (char) then
+					local inv = char:getInv()
+					local attList = {}
+
+					for k, v in pairs(inv:getItems()) do
+						if (v.isWeapon and v.class == class) then
+							local attachments = v:getData("mod")
+
+							if (attachments) then
+								for k, v in pairs(attachments) do
+									table.insert(attList, v[2])
+								end
+							end
+
+							break
+						end
+					end
+
+					timer.Simple(0.2, function()
+						if (IsValid(weapon) and weapon:GetClass() == class and weapon.attachSpecificAttachment) then
+							for _, b in ipairs(attList) do
+								weapon:attachSpecificAttachment(b)
+							end
+						end
+					end)
+
+					weapon.attLoaded = true
+				end
+			end)
+		end
+	end
 end
+
+function MODULE:GetSchemaCWVel(weapon, client)
+	return 10
+end
+
+if (SERVER) then
+	function MODULE:OnCharAttribUpdated(client, character, key, value)
+		if (!client) then
+			client = (character and character:getPlayer())
+		end
+
+		if (client and client:IsValid()) then
+			local weapon = client:GetActiveWeapon()
+
+			if (value == "gunskill") then
+				if (weapon and weapon:IsValid() and weapon.recalculateStats) then
+					weapon:recalculateStats()
+					
+					netstream.Start(client, "liaUpdateWeapon", weapon)
+				end
+			end
+		end
+	end
+
+	function MODULE:OnCharAttribBoosted(client, character, attribID, boostID, boostAmount)
+		if (!client) then
+			client = (character and character:getPlayer())
+		end
+
+		if (client and client:IsValid()) then
+			local weapon = client:GetActiveWeapon()
+
+			if (value == "gunskill") then
+				if (weapon and weapon:IsValid() and weapon.recalculateStats) then
+					weapon:recalculateStats()
+					
+					netstream.Start(client, "liaUpdateWeapon", weapon)
+				end
+			end
+		end
+	end
+end
+
