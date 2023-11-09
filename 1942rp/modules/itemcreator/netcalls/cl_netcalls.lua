@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------
+﻿--------------------------------------------------------------------------------------------------------
 ForgedItems = ForgedItems or {}
 --------------------------------------------------------------------------------------------------------
 ForgedItems.List = ForgedItems.List or {}
@@ -12,6 +12,7 @@ netstream.Hook(
         end
     end
 )
+
 --------------------------------------------------------------------------------------------------------
 netstream.Hook(
     "ForgedItemsLoadSingle",
@@ -20,6 +21,7 @@ netstream.Hook(
         ForgedItems.RegisterCustomItem(id, itemData)
     end
 )
+
 --------------------------------------------------------------------------------------------------------
 netstream.Hook(
     "ItemMakerGUI",
@@ -97,7 +99,6 @@ netstream.Hook(
             for k, v in pairs({txtUniqueID, txtName, txtDesc, txtModel}) do
                 if not v:GetValue() or type(v:GetValue()) ~= "string" or v:GetValue() == "" then
                     lia.util.notify("You have to specify a Unique ID, Name, Description and Model")
-
                     return
                 end
             end
@@ -108,20 +109,15 @@ netstream.Hook(
                 model = txtModel:GetValue()
             }
 
-            if txtCategory:GetValue() and txtCategory:GetValue() ~= "" then
-                itemData.category = txtCategory:GetValue()
-            end
-
+            if txtCategory:GetValue() and txtCategory:GetValue() ~= "" then itemData.category = txtCategory:GetValue() end
             itemData.price = tonumber(txtPrice:GetValue())
             local restore = tonumber(txtRestore:GetValue())
-            if restore and restore > 0 then
-                itemData.restore = restore
-            end
-
+            if restore and restore > 0 then itemData.restore = restore end
             netstream.Start("ItemMakerGUI", txtUniqueID:GetValue(), itemData)
         end
     end
 )
+
 --------------------------------------------------------------------------------------------------------
 netstream.Hook(
     "ItemMakerDetails",
@@ -131,6 +127,7 @@ netstream.Hook(
         chat.AddText(color_white, "Details have been printed to your console.")
     end
 )
+
 --------------------------------------------------------------------------------------------------------
 netstream.Hook(
     "ItemMakerList",

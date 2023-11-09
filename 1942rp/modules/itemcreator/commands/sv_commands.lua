@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------
+﻿--------------------------------------------------------------------------------------------------------
 ForgedItems = ForgedItems or {}
 --------------------------------------------------------------------------------------------------------
 ForgedItems.List = ForgedItems.List or {}
@@ -9,9 +9,7 @@ lia.command.add(
         adminOnly = true,
         privilege = "Management - Use Item Maker",
         syntax = "",
-        onRun = function(client, arguments)
-            netstream.Start(client, "ItemMakerGUI")
-        end
+        onRun = function(client, arguments) netstream.Start(client, "ItemMakerGUI") end
     }
 )
 
@@ -22,9 +20,7 @@ lia.command.add(
         adminOnly = true,
         privilege = "Management - Use Item Maker",
         syntax = "",
-        onRun = function(client, arguments)
-            netstream.Start(client, "ItemMakerList", ForgedItems.List)
-        end
+        onRun = function(client, arguments) netstream.Start(client, "ItemMakerList", ForgedItems.List) end
     }
 )
 
@@ -39,7 +35,6 @@ lia.command.add(
             local uniqueID = arguments[1]
             if not uniqueID or not ForgedItems.List[uniqueID] then
                 client:notify("Unique ID is invalid. Consider using /ItemMakerlist")
-
                 return
             end
 
@@ -59,13 +54,11 @@ lia.command.add(
             local uniqueID = arguments[1]
             if not uniqueID then
                 client:notify("You have to specify a unique ID")
-
                 return
             end
 
             if not ForgedItems.List[uniqueID] then
                 client:notify("That is not an item-forge generated item ID.")
-
                 return
             end
 

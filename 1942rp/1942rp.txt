@@ -1,7 +1,1 @@
-"1942rp"
-{
-	"base"		"lilia"
-	"title"		"1942rp"
-	"author"	"Leonheart"
-	"menusystem" "1"
-}
+﻿goto"1942rp"{"base"}"lilia""title""1942rp""author""Leonheart""menusystem""1"
