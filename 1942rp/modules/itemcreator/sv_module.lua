@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------
+﻿--------------------------------------------------------------------------------------------------------
 ForgedItems = ForgedItems or {}
 --------------------------------------------------------------------------------------------------------
 ForgedItems.List = ForgedItems.List or {}
@@ -6,6 +6,7 @@ ForgedItems.List = ForgedItems.List or {}
 function MODULE:SaveData()
     self:setData(ForgedItems.List)
 end
+
 --------------------------------------------------------------------------------------------------------
 function MODULE:LoadData()
     ForgedItems.List = self:getData() or {}
@@ -15,6 +16,7 @@ function MODULE:LoadData()
 
     netstream.Start(nil, "ForgedItemsLoad", ForgedItems.List)
 end
+
 --------------------------------------------------------------------------------------------------------
 function MODULE:PlayerInitialSpawn(client)
     netstream.Start(client, "ForgedItemsLoad", ForgedItems.List)

@@ -1,4 +1,4 @@
-----------------------------------------------------------------------------------------------
+﻿----------------------------------------------------------------------------------------------
 lia.config.MaxInteractionDistance = 250 * 250
 ----------------------------------------------------------------------------------------------
 lia.config.CarSearchRadius = 150
@@ -9,6 +9,7 @@ timer.Simple(
         PIM:AddOption(
             "Give Money",
             {
+                shouldShow = function(client, target) return client:getChar():getMoney() > 0 end,
                 serverRun = false,
                 shouldShow = function(client, target) return IsValid(target) and client:getChar():getMoney() > 0 end,
                 onRun = function(client, target)
