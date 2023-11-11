@@ -29,23 +29,17 @@ timer.Simple(
                         local val = tonumber(frame.te:GetText())
                         if val == 0 then
                             client:notify("You need to insert a value bigger than 0.", NOT_ERROR)
-
                             return
                         end
 
                         if val < 0 then
                             client:notify("What are you trying to do? >:|", NOT_ERROR)
-
                             return
                         end
 
-                        if math.modf(val) > 0 then
-                            val = math.ceil(val)
-                        end
-
+                        if math.modf(val) > 0 then val = math.ceil(val) end
                         if not client:getChar():hasMoney(val) then
                             client:notify("You don't have enough money", NOT_ERROR)
-
                             return
                         end
 
@@ -94,14 +88,9 @@ timer.Simple(
                 shouldShow = function(client, target)
                     local ourChar = client:getChar()
                     local tarCharID = target:getChar():getID()
-
                     return not hook.Run("IsCharRecognized", ourChar, tarCharID)
                 end,
-                onRun = function(client, target)
-                    if CLIENT then
-                        netstream.Start("rgnDirect", target)
-                    end
-                end
+                onRun = function(client, target) if CLIENT then netstream.Start("rgnDirect", target) end end
             }
         )
 
@@ -113,23 +102,9 @@ timer.Simple(
                 shouldShow = function(client, target)
                     local ourChar = client:getChar()
                     local tarCharID = target:getChar():getID()
-
                     return not hook.Run("IsCharRecognized", ourChar, tarCharID) and lia.config.FakeNamesEnabled
                 end,
-                onRun = function(client, target)
-                    if CLIENT then
-                        Derma_StringRequest(
-                            "Allow those in whispering range to recognize you by a fake name.",
-                            "Enter a fake name to display to other players in range.",
-                            default or "",
-                            function(text)
-                                if text then
-                                    netstream.Start("rgnDirect", target, text)
-                                end
-                            end
-                        )
-                    end
-                end
+                onRun = function(client, target) if CLIENT then Derma_StringRequest("Allow those in whispering range to recognize you by a fake name.", "Enter a fake name to display to other players in range.", default or "", function(text) if text then netstream.Start("rgnDirect", target, text) end end) end end
             }
         )
     end
