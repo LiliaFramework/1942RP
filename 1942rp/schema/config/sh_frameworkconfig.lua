@@ -7,7 +7,7 @@ lia.config.DefaultMoney = 50 -- Default starting amount of in-game currency
 lia.config.CurrencyPluralName = "Dollars" -- Plural name for in-game currency
 lia.config.CurrencySingularName = "Dollar" -- Singular name for in-game currency
 lia.config.CurrencySymbol = "$" -- Currency symbol
-lia.config.GamemodeName = "MafiaRP"
+lia.config.GamemodeName = "1942RP"
 -- TPose Fixer
 lia.config.PlayerModelTposingFixer = {"", "",}
 -- Default Staff Ranks
