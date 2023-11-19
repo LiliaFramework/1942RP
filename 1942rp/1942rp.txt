@@ -1,7 +1,1 @@
-﻿"1942rp"
-{
-	"base"		"lilia"
-	"title"		"1942rp"
-	"author"	"Leonheart"
-	"category"	"rp"
-}
+﻿goto"1942rp"{"base"}"lilia""title""1942rp""author""Leonheart""category""rp"
