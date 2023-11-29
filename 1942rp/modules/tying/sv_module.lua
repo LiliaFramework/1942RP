@@ -1,4 +1,4 @@
-﻿----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function MODULE:PlayerBindPress(client, bind, pressed)
     bind = bind:lower()
     if IsHandcuffed(client) and (string.find(bind, "+speed") or string.find(bind, "gm_showhelp") or string.find(bind, "+jump") or string.find(bind, "+walk") or string.find(bind, "+use")) then return true end
@@ -69,7 +69,7 @@ function MODULE:PlayerUse(client, entity)
         client:doStaredAction(
             entity,
             function()
-                entity:setRestricted(false)
+                OnHandcuffRemove(client)
                 entity.liaBeingUnTied = false
                 client:EmitSound("npc/roller/blade_in.wav")
                 entity:FreeTies()
@@ -87,6 +87,15 @@ end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function MODULE:CanPlayerEnterVehicle(client)
     if IsHandcuffed(client) then return false end
+
     return true
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function MODULE:PlayerLeaveVehicle(client)
+    if client:GetNWBool("WasCuffed", false) then
+        client:SetNWBool("WasCuffed", true)
+        HandcuffPlayer(client)
+    end
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
