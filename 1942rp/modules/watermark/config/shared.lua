@@ -1,0 +1,2 @@
+WatermarkCore.WelcomeText = ""
+WatermarkCore.CommunityName = ""

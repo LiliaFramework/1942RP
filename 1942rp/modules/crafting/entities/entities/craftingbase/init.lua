@@ -1,5 +1,3 @@
-﻿--------------------------------------------------------------------------------------------------------
-local MODULE = MODULE
 --------------------------------------------------------------------------------------------------------
 AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
@@ -12,7 +10,10 @@ function ENT:Initialize()
     self:SetUseType(SIMPLE_USE)
     self.receivers = {}
     local physicsObject = self:GetPhysicsObject()
-    if IsValid(physicsObject) then physicsObject:Wake() end
+    if IsValid(physicsObject) then
+        physicsObject:Wake()
+    end
+
     lia.inventory.instance(
         "grid",
         {
@@ -42,8 +43,13 @@ function ENT:DoCraft(client)
     if not client_inv then return client:notifyLocalized("cantCraft") end
     local client_items = client_inv:getItems()
     for k, v in pairs(our_items) do
-        if v.isBlueprint then table.insert(blueprints, v) end
-        if v.isWeapon then table.insert(weapons, v) end
+        if v.isBlueprint then
+            table.insert(blueprints, v)
+        end
+
+        if v.isWeapon then
+            table.insert(weapons, v)
+        end
     end
 
     local blueprints_count = #blueprints
@@ -64,6 +70,7 @@ function ENT:DoCraft(client)
                     break
                 end
             end
+
             return client:notifyLocalized("wrongBlueprint", table.concat(other_tables, " or "))
         end
 
@@ -78,8 +85,10 @@ function ENT:DoCraft(client)
 
         for _, item in ipairs(items_to_remove) do
             for i = 1, item[2] do
-                local itm = MODULE:HasItem(our_inv, item[1])
-                if itm then itm:remove() end
+                local itm = CraftingCore:HasItem(our_inv, item[1])
+                if itm then
+                    itm:remove()
+                end
             end
         end
 
@@ -112,7 +121,9 @@ function ENT:DoCraft(client)
         end
 
         for _, v in pairs(our_items) do
-            if v.isAttachment then available_attachments[v.uniqueID] = v end
+            if v.isAttachment then
+                available_attachments[v.uniqueID] = v
+            end
         end
 
         for category, data in ipairs(weaponTable.Attachments) do
@@ -129,7 +140,10 @@ function ENT:DoCraft(client)
             v:remove()
         end
 
-        if table.Count(attach_table) <= 0 then attach_table = nil end
+        if table.Count(attach_table) <= 0 then
+            attach_table = nil
+        end
+
         weapon:setData("mod", attach_table)
     else
         return client:notifyLocalized("nothingCraftable")
@@ -199,6 +213,7 @@ function ENT:SpawnFunction(ply, tr, ClassName)
     ent.Owner = ply
     ent:Spawn()
     ent:Activate()
+
     return ent
 end
 --------------------------------------------------------------------------------------------------------

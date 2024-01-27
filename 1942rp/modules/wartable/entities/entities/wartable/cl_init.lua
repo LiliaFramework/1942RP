@@ -1,5 +1,3 @@
-﻿--------------------------------------------------------------------------------------------------------
-lia.config.WarTableMapURL = lia.config.WarTableMapURL or {}
 --------------------------------------------------------------------------------------------------------
 include("shared.lua")
 --------------------------------------------------------------------------------------------------------
@@ -9,7 +7,6 @@ ENT.DisplayAngle = Angle(180, 0, 180)
 --------------------------------------------------------------------------------------------------------
 local mainBG = vgui.Create("DPanel")
 mainBG:SetSize(2150, 1250)
-local mainBGX, mainBGY = mainBG:GetSize()
 mainBG:SetPos(0, 0)
 mainBG:SetPaintedManually(true)
 mainBG.Paint = function(this, w, h)
@@ -21,7 +18,7 @@ end
 local map = vgui.Create("HTML", mainBG)
 map:SetSize(mainBG:GetSize())
 map:SetMouseInputEnabled(false)
-map:OpenURL("https://cdn.discordapp.com/attachments/1059867063902019677/1073743159017885706/432b60eb74bc53305dc3a5ccc573335c1.png")
+map:OpenURL(WarTable.URL)
 --------------------------------------------------------------------------------------------------------
 function ENT:Draw()
     self:DrawModel()
