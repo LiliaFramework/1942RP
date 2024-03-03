@@ -1,3 +1,4 @@
+local MODULE = MODULE
 --------------------------------------------------------------------------------------------------------
 include("shared.lua")
 --------------------------------------------------------------------------------------------------------
@@ -18,7 +19,7 @@ end
 local map = vgui.Create("HTML", mainBG)
 map:SetSize(mainBG:GetSize())
 map:SetMouseInputEnabled(false)
-map:OpenURL(WarTable.URL)
+map:OpenURL(MODULE.URL)
 --------------------------------------------------------------------------------------------------------
 function ENT:Draw()
     self:DrawModel()

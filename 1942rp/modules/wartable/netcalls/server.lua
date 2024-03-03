@@ -1,3 +1,4 @@
+local MODULE = MODULE
 --------------------------------------------------------------------------------------------------------
 netstream.Hook("ClearWarTable", function(ply, tableEnt)
     local tableEnt = getTableEnt(ply:GetPos())
@@ -9,7 +10,7 @@ end)
 netstream.Hook("SetWarTableMap", function(ply, tableEnt, text)
     local tableEnt = getTableEnt(ply:GetPos())
     if not tableEnt then return end
-    for _, imageType in pairs(WarTable.allowedImageTypes) do
+    for _, imageType in pairs(MODULE.allowedImageTypes) do
         print(text, imageType)
         if string.find(text, string.lower(imageType)) then
             netstream.Start(player.GetAll(), "SetWarTableMap", tableEnt, text)
