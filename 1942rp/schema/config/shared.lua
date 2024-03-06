@@ -24,3 +24,5 @@ lia.config.SchemaYear = 2023 -- Year in the gamemode's schema
 lia.config.AmericanDates = true -- Use American date format
 lia.config.AmericanTimeStamp = true -- Use American timestamp format
 lia.config.MinDescLen = 16 -- How long the description has to be
+lia.config.TimeToEnterVehicle = 1 -- Time (in seconds) required to enter a vehicle
+lia.config.CarEntryDelayEnabled = true -- If Car Entry Delay is Applicable
