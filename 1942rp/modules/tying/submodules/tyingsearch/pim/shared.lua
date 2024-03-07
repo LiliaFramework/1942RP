@@ -1,3 +1,5 @@
+----------------------------------------------------------------------------------------------
+local MODULE = MODULE
 --------------------------------------------------------------------------------------------------------
 PIM:AddOption(
     "Request Search",
@@ -23,7 +25,7 @@ PIM:AddOption(
         shouldShow = function(client, target) return IsHandcuffed(target) and not IsBeingSearched(target) end,
         onRun = function(client, target)
             if not SERVER then return end
-            TyingSearchCore:searchPlayer(client, target)
+            MODULE:searchPlayer(client, target)
         end
     }
 )

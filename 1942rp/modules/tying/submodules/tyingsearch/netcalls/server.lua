@@ -1,8 +1,10 @@
+----------------------------------------------------------------------------------------------
+local MODULE = MODULE
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 netstream.Hook(
     "searchExit",
     function(client)
-        TyingSearchCore:stopSearching(client)
+        MODULE:stopSearching(client)
     end
 )
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -22,7 +24,7 @@ net.Receive(
         end
 
         if requester:GetPos():DistToSqr(client:GetPos()) > 250 * 250 then return end
-        TyingSearchCore:searchPlayer(requester, client, true)
+        MODULE:searchPlayer(requester, client, true)
         requester.SearchRequested = nil
         client.SearchRequested = nil
     end

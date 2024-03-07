@@ -1,4 +1,6 @@
 --------------------------------------------------------------------------------------------------------
+local MODULE = MODULE
+--------------------------------------------------------------------------------------------------------
 lia.command.add(
     "warrant",
     {
@@ -6,7 +8,7 @@ lia.command.add(
         privilege = "Basic User Permissions",
         onRun = function(client, arguments)
             local target = lia.command.findPlayer(client, arguments[1])
-            if not client:getChar():hasFlags(WarrantsCore.WarrantFlag) then
+            if not client:getChar():hasFlags(MODULE.WarrantFlag) then
                 client:notify("No permission to run this command!")
 
                 return

@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------------
-function AlcoholismCore:Think()
+function MODULE:Think()
     if not self.next_think then
         self.next_think = CurTime()
     end
@@ -8,16 +8,16 @@ function AlcoholismCore:Think()
         for k, v in next, player.GetAll() do
             local bac = v:GetNW2Int("lia_alcoholism_bac", 0)
             if bac > 0 then
-                v:SetNW2Int("lia_alcoholism_bac", math.Clamp(bac - AlcoholismCore.DegradeRate, 0, 100))
+                v:SetNW2Int("lia_alcoholism_bac", math.Clamp(bac - self.DegradeRate, 0, 100))
             end
         end
 
-        self.next_think = CurTime() + AlcoholismCore.TickTime
+        self.next_think = CurTime() + self.TickTime
     end
 end
 
 --------------------------------------------------------------------------------------------------------
-function AlcoholismCore:StartCommand(ply, ucmd)
+function MODULE:StartCommand(ply, ucmd)
     if (ply.nextDrunkCheck or 0) < CurTime() then
         ply.nextDrunkCheck = CurTime() + 0.05
         if ply:GetNW2Int("lia_alcoholism_bac", 0) > 30 then
@@ -44,12 +44,12 @@ function AlcoholismCore:StartCommand(ply, ucmd)
 end
 
 --------------------------------------------------------------------------------------------------------
-function AlcoholismCore:PlayerLoadedChar(ply)
+function MODULE:PlayerLoadedChar(ply)
     ply:ResetBAC()
 end
 
 --------------------------------------------------------------------------------------------------------
-function AlcoholismCore:PostPlayerLoadout(ply)
+function MODULE:PostPlayerLoadout(ply)
     ply:ResetBAC()
 end
 --------------------------------------------------------------------------------------------------------

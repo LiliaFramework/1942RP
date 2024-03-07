@@ -1,5 +1,7 @@
+----------------------------------------------------------------------------------------------
+local MODULE = MODULE
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-TyingSearchCore.searchPanels = TyingSearchCore.searchPanels or {}
+MODULE.searchPanels = MODULE.searchPanels or {}
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 net.Receive(
     "RequestID",
@@ -55,8 +57,8 @@ netstream.Hook(
         targetInvPanel.OnRemove = onRemove
         myInvPanel.x = myInvPanel.x + (myInvPanel:GetWide() * 0.5) + 2
         targetInvPanel:MoveLeftOf(myInvPanel, 4)
-        TyingSearchCore.searchPanels[#TyingSearchCore.searchPanels + 1] = myInvPanel
-        TyingSearchCore.searchPanels[#TyingSearchCore.searchPanels + 1] = targetInvPanel
+        MODULE.searchPanels[#MODULE.searchPanels + 1] = myInvPanel
+        MODULE.searchPanels[#MODULE.searchPanels + 1] = targetInvPanel
     end
 )
 
@@ -64,11 +66,11 @@ netstream.Hook(
 netstream.Hook(
     "searchExit",
     function()
-        for _, panel in pairs(TyingSearchCore.searchPanels) do
+        for _, panel in pairs(MODULE.searchPanels) do
             if IsValid(panel) then panel:Remove() end
         end
 
-        TyingSearchCore.searchPanels = {}
+        MODULE.searchPanels = {}
     end
 )
 

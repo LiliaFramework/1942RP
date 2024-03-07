@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------------
-function WarrantsCore:DrawCharInfo(client, character, info)
+function MODULE:DrawCharInfo(client, character, info)
     local PoliceMan = LocalPlayer():Team() == self.PoliceFaction
     if client:IsWanted() then
         if self.OnlyPoliceSeeWarranted then

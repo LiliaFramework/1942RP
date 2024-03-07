@@ -1,66 +1,66 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:PlayerBindPress(client, bind, pressed)
+function MODULE:PlayerBindPress(client, bind, pressed)
     bind = bind:lower()
     if IsHandcuffed(client) and (string.find(bind, "+speed") or string.find(bind, "gm_showhelp") or string.find(bind, "+jump") or string.find(bind, "+walk") or string.find(bind, "+use")) then return true end
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:CheckValidSit(client, trace)
+function MODULE:CheckValidSit(client, trace)
     if IsHandcuffed(client) then return false end
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:CanDeleteChar(client, char)
+function MODULE:CanDeleteChar(client, char)
     if IsHandcuffed(client) then return true end
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:PlayerSwitchWeapon(client, old, new)
+function MODULE:PlayerSwitchWeapon(client, old, new)
     if IsHandcuffed(client) then return true end
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:CanExitVehicle(veh, client)
+function MODULE:CanExitVehicle(veh, client)
     if IsHandcuffed(client) then return false end
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:CanPlayerUseChar(client, char)
+function MODULE:CanPlayerUseChar(client, char)
     if IsHandcuffed(client) then return false, "You're currently handcuffed." end
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:PostPlayerLoadout(client)
+function MODULE:PostPlayerLoadout(client)
     OnHandcuffRemove(client)
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:ShouldWeaponBeRaised(client, weapon)
+function MODULE:ShouldWeaponBeRaised(client, weapon)
     if IsHandcuffed(client) then return false end
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:CanPlayerUseDoor(client, entity)
+function MODULE:CanPlayerUseDoor(client, entity)
     if IsHandcuffed(client) then return false end
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:CanPlayerInteractItem(client, action, item)
+function MODULE:CanPlayerInteractItem(client, action, item)
     if IsHandcuffed(client) then return false end
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:VC_canEnterPassengerSeat(client, seat, veh)
+function MODULE:VC_canEnterPassengerSeat(client, seat, veh)
     return not IsHandcuffed(client)
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:CanPlayerInteractItem(client, action, item)
+function MODULE:CanPlayerInteractItem(client, action, item)
     if IsHandcuffed(client) then return false end
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:PlayerUse(client, entity)
+function MODULE:PlayerUse(client, entity)
     if IsHandcuffed(client) then return false end
     if (IsHandcuffed(entity) and entity:IsPlayer()) and not entity.liaBeingUnTied then
         entity.liaBeingUnTied = true
@@ -84,14 +84,14 @@ function TyingCore:PlayerUse(client, entity)
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:CanPlayerEnterVehicle(client)
+function MODULE:CanPlayerEnterVehicle(client)
     if IsHandcuffed(client) then return false end
 
     return true
 end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingCore:PlayerLeaveVehicle(client)
+function MODULE:PlayerLeaveVehicle(client)
     if client:GetNWBool("WasCuffed", false) then
         client:SetNWBool("WasCuffed", true)
         HandcuffPlayer(client)

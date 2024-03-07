@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------------------------------
 dying_storages = dying_storages or {}
 --------------------------------------------------------------------------------------------------------
-function CraftingCore:SaveData()
+function MODULE:SaveData()
     local to_save = {}
     for k, v in ipairs(ents.GetAll()) do
         if not v.IsCraftingTable then continue end
@@ -17,7 +17,7 @@ function CraftingCore:SaveData()
 end
 
 --------------------------------------------------------------------------------------------------------
-function CraftingCore:LoadData()
+function MODULE:LoadData()
     for k, v in ipairs(ents.GetAll()) do
         if v.IsCraftingTable then
             v:Remove()
@@ -41,7 +41,7 @@ function CraftingCore:LoadData()
 end
 
 --------------------------------------------------------------------------------------------------------
-function CraftingCore:Think()
+function MODULE:Think()
     local t = CurTime()
     for _, storage in ipairs(dying_storages) do
         if not IsValid(storage) then continue end

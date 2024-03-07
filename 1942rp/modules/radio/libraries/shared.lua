@@ -1,10 +1,12 @@
 --------------------------------------------------------------------------------------------------------
+local MODULE = MODULE
+--------------------------------------------------------------------------------------------------------
 local find = {
     ["radio"] = true,
 }
 
 --------------------------------------------------------------------------------------------------------
-function RadioCore:EndChatter(listener)
+function MODULE:EndChatter(listener)
     timer.Simple(1, function()
         if not listener:IsValid() or not listener:Alive() or hook.Run("ShouldRadioBeep", listener) == false then return false end
         listener:EmitSound("npc/metropolice/vo/off" .. math.random(1, 3) .. ".wav", math.random(60, 70), math.random(80, 120))
@@ -30,7 +32,7 @@ lia.chat.register("radio", {
                 for id, far in pairs(find) do
                     if v.uniqueID == id and v:getData("enabled", false) == true then
                         if CURFREQ == v:getData("freq", "000.0") and CURCHANNEL == v:getData("channel", 1) then
-                            RadioCore:EndChatter(listener)
+                            MODULE:EndChatter(listener)
                             return true
                         end
 
@@ -48,7 +50,7 @@ lia.chat.register("radio", {
                     for id, far in pairs(find) do
                         if far and itemTable.uniqueID == id and v:getData("enabled", false) == true then
                             if CURFREQ == v:getData("freq", "000.0") and CURCHANNEL == v:getData("channel", 1) then
-                                RadioCore:EndChatter(listener)
+                                MODULE:EndChatter(listener)
                                 return true
                             end
                         end

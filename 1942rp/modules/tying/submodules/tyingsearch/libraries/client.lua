@@ -1,9 +1,11 @@
+----------------------------------------------------------------------------------------------
+local MODULE = MODULE
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingSearchCore:CanPlayerViewInventory()
+function MODULE:CanPlayerViewInventory()
     if IsBeingSearched(LocalPlayer()) then return false end
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function TyingSearchCore:DrawCharInfo(client, character, info)
+function MODULE:DrawCharInfo(client, character, info)
     if not IsHandcuffed(client) then return end
     if IsBeingSearched(client) then
         info[#info + 1] = {"Being Searched", Color(245, 215, 110)}

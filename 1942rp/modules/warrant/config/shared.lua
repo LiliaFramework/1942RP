@@ -1,8 +1,8 @@
-WarrantsCore.OnlyPoliceSeeWarranted = true
+MODULE.OnlyPoliceSeeWarranted = true
 --------------------------------------------------------------------------------------------------------
-WarrantsCore.PoliceFaction = FACTION_ORPO
+MODULE.PoliceFaction = FACTION_ORPO
 --------------------------------------------------------------------------------------------------------
-WarrantsCore.WarrantFlag = "P"
+MODULE.WarrantFlag = "P"
 --------------------------------------------------------------------------------------------------------
-lia.flag.add(WarrantsCore.WarrantFlag, "Adds Warrant Flag")
+lia.flag.add(MODULE.WarrantFlag, "Adds Warrant Flag")
 --------------------------------------------------------------------------------------------------------

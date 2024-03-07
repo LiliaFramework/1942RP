@@ -1,3 +1,3 @@
 --------------------------------------------------------------------------------------------------------
-DoorKickCore.KickDoorBlacklistedFactions = {FACTION_CITIZEN}
+MODULE.KickDoorBlacklistedFactions = {FACTION_CITIZEN}
 --------------------------------------------------------------------------------------------------------

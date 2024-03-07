@@ -1,4 +1,6 @@
 --------------------------------------------------------------------------------------------------------
+local MODULE = MODULE
+--------------------------------------------------------------------------------------------------------
 AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 include("shared.lua")
@@ -85,7 +87,7 @@ function ENT:DoCraft(client)
 
         for _, item in ipairs(items_to_remove) do
             for i = 1, item[2] do
-                local itm = CraftingCore:HasItem(our_inv, item[1])
+                local itm = MODULE:HasItem(our_inv, item[1])
                 if itm then
                     itm:remove()
                 end

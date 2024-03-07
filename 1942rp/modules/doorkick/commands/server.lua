@@ -1,10 +1,12 @@
 --------------------------------------------------------------------------------------------------------
+local MODULE = MODULE
+--------------------------------------------------------------------------------------------------------
 lia.command.add("doorkick", {
     adminOnly = false,
     privilege = "Basic User Permissions",
     syntax = "",
     onRun = function(client)
-        if table.HasValue(DoorKickCore.KickDoorBlacklistedFactions, client:Team()) then
+        if table.HasValue(MODULE.KickDoorBlacklistedFactions, client:Team()) then
             client:notify("You are too weak to kick this door in!")
             return
         else

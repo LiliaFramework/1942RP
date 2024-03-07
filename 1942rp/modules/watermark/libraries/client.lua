@@ -1,8 +1,8 @@
 --------------------------------------------------------------------------------------------------------
-function WatermarkCore:HUDPaint()
-    if not WatermarkCore.IsEnabled then return end
+function MODULE:HUDPaint()
+    if not self.IsEnabled then return end
     local w, h = 64, 64
-    surface.SetMaterial(Material(WatermarkCore.CommunityLogo))
+    surface.SetMaterial(Material(self.CommunityLogo))
     surface.SetDrawColor(255, 255, 255, 80)
     surface.DrawTexturedRect(5, ScrH() - h - 5, w, h)
     surface.SetTextColor(255, 255, 255, 80)

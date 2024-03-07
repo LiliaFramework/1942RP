@@ -1,4 +1,6 @@
 ----------------------------------------------------------------------------------------------
+local MODULE = MODULE
+----------------------------------------------------------------------------------------------
 lia.command.add(
     "stopsearch",
     {
@@ -10,7 +12,7 @@ lia.command.add(
             local searcher = target:getNetVar("searcher")
             if not target then return end
             if IsValid(searcher) then
-                TyingSearchCore:stopSearching(searcher)
+                MODULE:stopSearching(searcher)
             end
         end
     }
@@ -25,7 +27,7 @@ lia.command.add(
         onRun = function(client, arguments)
             local target = lia.command.findPlayer(client, arguments[1])
             if not target then return end
-            TyingSearchCore:searchPlayer(client, target)
+            MODULE:searchPlayer(client, target)
         end
     }
 )

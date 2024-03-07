@@ -1,4 +1,4 @@
-WatermarkCore.WelcomeText = ""
-WatermarkCore.CommunityName = ""
-WatermarkCore.CommunityLogo = ""
-WatermarkCore.IsEnabled = false
+MODULE.WelcomeText = ""
+MODULE.CommunityName = ""
+MODULE.CommunityLogo = ""
+MODULE.IsEnabled = false

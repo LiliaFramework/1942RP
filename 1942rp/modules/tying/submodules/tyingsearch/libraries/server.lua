@@ -1,5 +1,7 @@
 ----------------------------------------------------------------------------------------------
-function TyingSearchCore:SetupInventorySearch(client, target)
+local MODULE = MODULE
+----------------------------------------------------------------------------------------------
+function MODULE:SetupInventorySearch(client, target)
     local function searcherCanAccess(inventory, action, context)
         if context.client == client then return true end
     end
@@ -10,7 +12,7 @@ function TyingSearchCore:SetupInventorySearch(client, target)
 end
 
 ----------------------------------------------------------------------------------------------
-function TyingSearchCore:RemoveInventorySearchPermissions(client, target)
+function MODULE:RemoveInventorySearchPermissions(client, target)
     local rule = target.liaSearchAccessRule
     if rule then
         target:getChar():getInv():removeAccessRule(rule)
@@ -18,7 +20,7 @@ function TyingSearchCore:RemoveInventorySearchPermissions(client, target)
 end
 
 ----------------------------------------------------------------------------------------------
-function TyingSearchCore:searchPlayer(client, target)
+function MODULE:searchPlayer(client, target)
     if IsValid(target:getNetVar("searcher")) or IsValid(client.liaSearchTarget) then
         client:notifyLocalized("This person is already being searched.")
 
@@ -40,15 +42,15 @@ function TyingSearchCore:searchPlayer(client, target)
 end
 
 ----------------------------------------------------------------------------------------------
-function TyingSearchCore:CanPlayerInteractItem(client, action, item)
+function MODULE:CanPlayerInteractItem(client, action, item)
     if IsValid(client:getNetVar("searcher")) then return false end
 end
 
 ----------------------------------------------------------------------------------------------
-function TyingSearchCore:stopSearching(client)
+function MODULE:stopSearching(client)
     local target = client.liaSearchTarget
     if IsValid(target) and target:getNetVar("searcher") == client then
-        TyingSearchCore:RemoveInventorySearchPermissions(client, target)
+        self:RemoveInventorySearchPermissions(client, target)
         target:setNetVar("searcher", nil)
         client.liaSearchTarget = nil
         netstream.Start(client, "searchExit")
@@ -56,7 +58,7 @@ function TyingSearchCore:stopSearching(client)
 end
 
 ----------------------------------------------------------------------------------------------
-function TyingSearchCore:OnPlayerUnRestricted(client)
+function MODULE:OnPlayerUnRestricted(client)
     local searcher = client:getNetVar("searcher")
     if IsValid(searcher) then
         self:stopSearching(searcher)
