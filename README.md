@@ -8,7 +8,7 @@ If you have any questions, need assistance with the schema, or want to engage wi
 
 # Contents and Important Information
 
-Beware of an individual attempting to resell this schema for 200+ pounds each time. Please be aware that such an offer is a scam. Always exercise caution before making any purchase.
+Beware of individuals attempting to resell this schema for 200+ pounds each time. Please be aware that such offers are scams. Always exercise caution before making any purchase.
 
 - Alcoholic Drinks
 - Crafting
@@ -23,3 +23,7 @@ Beware of an individual attempting to resell this schema for 200+ pounds each ti
 If you encounter anyone attempting to sell this schema individually, please note that it might be a scam. We advise against purchasing it under such circumstances.
 
 Feel free to ask if you have any further questions or if there's anything else you'd like to clarify!
+
+# Disclaimer
+
+It has come to my attention that some individuals are claiming that this schema is backdoored. If you wish to test it for backdoors, you can find several tools for such. One of the most well-known is [nomalua](https://github.com/mtz629/nomalua/tree/master), but you can find more online if needed. For any half-experienced developer, this is open-source code, therefore it can be analyzed for any backdoors. If you are afraid, proceed to do so.
