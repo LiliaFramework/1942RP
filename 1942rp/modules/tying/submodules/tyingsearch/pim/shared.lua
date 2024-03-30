@@ -20,10 +20,7 @@ PIM:AddOption("Search", {
     shouldShow = function(client, target) return IsHandcuffed(target) and not IsBeingSearched(target) end,
     onRun = function(client, target)
         if not SERVER then return end
-        MODULE:SetupInventorySearch(client, target)
-        netstream.Start(client, "searchPly", target, target:getChar():getInv():getID())
-        client.liaSearchTarget = target
-        target:setNetVar("searcher", client)
+        MODULE:searchPlayer(client, target)
     end
 })
 ----------------------------------------------------------------------------------------------
