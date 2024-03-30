@@ -69,9 +69,13 @@ PIM:AddOption("Tie", {
         end
 
         target:setAction("@beingTied", 3)
-        client:setAction("@tying", 3, function()
+        client:setAction("@tying", 3)
+        client:doStaredAction(target, function()
             HandcuffPlayer(target)
             item:remove()
+        end, 3, function()
+            client:setAction()
+            target:setAction()
         end)
     end
 })
@@ -82,7 +86,12 @@ PIM:AddOption("UnTie", {
     shouldShow = function(client, target) return IsHandcuffed(target) end,
     onRun = function(client, target)
         if not SERVER then return end
-        OnHandcuffRemove(target)
+        target:setAction("You are being untied...", 3)
+        client:setAction("Untying...", 3)
+        client:doStaredAction(target, function() OnHandcuffRemove(target) end, 3, function()
+            client:setAction()
+            target:setAction()
+        end)
     end
 })
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
