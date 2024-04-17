@@ -19,24 +19,20 @@ end
 --------------------------------------------------------------------------------------------------------
 function MODULE:LoadData()
     for k, v in ipairs(ents.GetAll()) do
-        if v.IsCraftingTable then
-            v:Remove()
-        end
+        if v.IsCraftingTable then v:Remove() end
     end
 
     local to_load = self:getData() or {}
     for k, v in ipairs(to_load) do
         local crafting_table = ents.Create(v.class)
-        lia.inventory.loadByID(v.id):next(
-            function(inventory)
-                if not inventory then return end
-                crafting_table:SetPos(v.pos)
-                crafting_table:SetAngles(v.ang)
-                crafting_table:Spawn()
-                crafting_table:Activate()
-                crafting_table:setInventory(inventory)
-            end
-        )
+        lia.inventory.loadByID(v.id):next(function(inventory)
+            if not inventory then return end
+            crafting_table:SetPos(v.pos)
+            crafting_table:SetAngles(v.ang)
+            crafting_table:Spawn()
+            crafting_table:Activate()
+            crafting_table:setInventory(inventory)
+        end)
     end
 end
 

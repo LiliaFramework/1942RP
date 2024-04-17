@@ -12,26 +12,18 @@ function ENT:Initialize()
     self:SetUseType(SIMPLE_USE)
     self.receivers = {}
     local physicsObject = self:GetPhysicsObject()
-    if IsValid(physicsObject) then
-        physicsObject:Wake()
-    end
-
-    lia.inventory.instance(
-        "grid",
-        {
-            w = self.InvWidth,
-            h = self.InvHeight
-        }
-    ):next(
-        function(inventory)
-            inventory.invType = "grid"
-            self:setInventory(inventory)
-            inventory.noBags = true
-            function inventory:onCanTransfer(client, oldX, oldY, x, y, newInvID)
-                return hook.Run("StorageCanTransfer", inventory, client, oldX, oldY, x, y, newInvID)
-            end
+    if IsValid(physicsObject) then physicsObject:Wake() end
+    lia.inventory.instance("grid", {
+        w = self.InvWidth,
+        h = self.InvHeight
+    }):next(function(inventory)
+        inventory.invType = "grid"
+        self:setInventory(inventory)
+        inventory.noBags = true
+        function inventory:onCanTransfer(client, oldX, oldY, x, y, newInvID)
+            return hook.Run("StorageCanTransfer", inventory, client, oldX, oldY, x, y, newInvID)
         end
-    )
+    end)
 end
 
 --------------------------------------------------------------------------------------------------------
@@ -45,13 +37,8 @@ function ENT:DoCraft(client)
     if not client_inv then return client:notifyLocalized("cantCraft") end
     local client_items = client_inv:getItems()
     for k, v in pairs(our_items) do
-        if v.isBlueprint then
-            table.insert(blueprints, v)
-        end
-
-        if v.isWeapon then
-            table.insert(weapons, v)
-        end
+        if v.isBlueprint then table.insert(blueprints, v) end
+        if v.isWeapon then table.insert(weapons, v) end
     end
 
     local blueprints_count = #blueprints
@@ -72,7 +59,6 @@ function ENT:DoCraft(client)
                     break
                 end
             end
-
             return client:notifyLocalized("wrongBlueprint", table.concat(other_tables, " or "))
         end
 
@@ -88,9 +74,7 @@ function ENT:DoCraft(client)
         for _, item in ipairs(items_to_remove) do
             for i = 1, item[2] do
                 local itm = MODULE:HasItem(our_inv, item[1])
-                if itm then
-                    itm:remove()
-                end
+                if itm then itm:remove() end
             end
         end
 
@@ -123,9 +107,7 @@ function ENT:DoCraft(client)
         end
 
         for _, v in pairs(our_items) do
-            if v.isAttachment then
-                available_attachments[v.uniqueID] = v
-            end
+            if v.isAttachment then available_attachments[v.uniqueID] = v end
         end
 
         for category, data in ipairs(weaponTable.Attachments) do
@@ -142,10 +124,7 @@ function ENT:DoCraft(client)
             v:remove()
         end
 
-        if table.Count(attach_table) <= 0 then
-            attach_table = nil
-        end
-
+        if table.Count(attach_table) <= 0 then attach_table = nil end
         weapon:setData("mod", attach_table)
     else
         return client:notifyLocalized("nothingCraftable")
@@ -156,20 +135,18 @@ end
 function ENT:setInventory(inventory)
     if not inventory then return end
     self:setNetVar("id", inventory:getID())
-    inventory:addAccessRule(
-        function(inventory, action, context)
-            local client = context.client
-            local ent = client.m_nUsingCraftingBench
-            if not IsValid(ent) then return end
-            if not IsValid(client) then return end
-            if ent:getInv() ~= inventory then return end
-            -- If the player is too far away from storage, then ignore.
-            local distance = ent:GetPos():Distance(client:GetPos())
-            if distance > 128 then return false end
-            -- Allow if the player is a receiver of the storage.
-            if ent.receivers[client] then return true end
-        end
-    )
+    inventory:addAccessRule(function(inventory, action, context)
+        local client = context.client
+        local ent = client.m_nUsingCraftingBench
+        if not IsValid(ent) then return end
+        if not IsValid(client) then return end
+        if ent:getInv() ~= inventory then return end
+        -- If the player is too far away from storage, then ignore.
+        local distance = ent:GetPos():Distance(client:GetPos())
+        if distance > 128 then return false end
+        -- Allow if the player is a receiver of the storage.
+        if ent.receivers[client] then return true end
+    end)
 end
 
 --------------------------------------------------------------------------------------------------------
@@ -177,24 +154,20 @@ function ENT:Use(activator)
     local inventory = self:getInv()
     if not inventory or (activator.liaNextOpen or 0) > CurTime() then return end
     if activator:getChar() then
-        activator:setAction(
-            "Opening...",
-            1,
-            function()
-                if activator:GetPos():DistToSqr(self:GetPos()) <= 10000 then
-                    if self:IsTableLocked() then
-                        self:EmitSound("doors/default_locked.wav")
-                        activator:notifyLocalized("lockedTable")
-                    else
-                        activator.m_nUsingCraftingBench = self
-                        self.receivers[activator] = true
-                        activator.liaBagEntity = self
-                        inventory:sync(activator)
-                        netstream.Start(activator, "craftingTableOpen", self, inventory:getID())
-                    end
+        activator:setAction("Opening...", 1, function()
+            if activator:GetPos():DistToSqr(self:GetPos()) <= 10000 then
+                if self:IsTableLocked() then
+                    self:EmitSound("doors/default_locked.wav")
+                    activator:notifyLocalized("lockedTable")
+                else
+                    activator.m_nUsingCraftingBench = self
+                    self.receivers[activator] = true
+                    activator.liaBagEntity = self
+                    inventory:sync(activator)
+                    netstream.Start(activator, "craftingTableOpen", self, inventory:getID())
                 end
             end
-        )
+        end)
     end
 
     activator.liaNextOpen = CurTime() + 1.5
@@ -215,7 +188,6 @@ function ENT:SpawnFunction(ply, tr, ClassName)
     ent.Owner = ply
     ent:Spawn()
     ent:Activate()
-
     return ent
 end
 --------------------------------------------------------------------------------------------------------

@@ -3,7 +3,6 @@ local MODULE = MODULE
 --------------------------------------------------------------------------------------------------------
 lia.command.add("doorkick", {
     adminOnly = false,
-    privilege = "Basic User Permissions",
     syntax = "",
     onRun = function(client)
         if table.HasValue(MODULE.KickDoorBlacklistedFactions, client:Team()) then
