@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 function MODULE:CalcView(client, pos)
     if client.KickingInDoor then
         local origin = pos + client:GetAngles():Forward() * -10
@@ -10,4 +10,4 @@ function MODULE:CalcView(client, pos)
         return view
     end
 end
---------------------------------------------------------------------------------------------------------
+

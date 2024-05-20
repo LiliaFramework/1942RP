@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 function MODULE:CreateMove()
     if not LocalPlayer().UseWarTable then return end
     if not IsValid(LocalPlayer().MarkerModel) then return end
@@ -9,7 +9,7 @@ function MODULE:CreateMove()
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function MODULE:Think()
     if not LocalPlayer().UseWarTable then return end
     local client = LocalPlayer()
@@ -36,4 +36,4 @@ function MODULE:Think()
     client.MarkerModel.LastPos = LerpVector(FrameTime() * 15, client.MarkerModel.LastPos, tr.HitPos)
     client.MarkerModel:SetPos(client.MarkerModel.LastPos)
 end
---------------------------------------------------------------------------------------------------------
+

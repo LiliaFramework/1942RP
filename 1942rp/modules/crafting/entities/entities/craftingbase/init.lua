@@ -1,10 +1,10 @@
-﻿--------------------------------------------------------------------------------------------------------
+﻿
 local MODULE = MODULE
---------------------------------------------------------------------------------------------------------
+
 AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 include("shared.lua")
---------------------------------------------------------------------------------------------------------
+
 function ENT:Initialize()
     self:SetModel(self.Model or "models/props_c17/FurnitureTable001a.mdl")
     self:PhysicsInit(SOLID_VPHYSICS)
@@ -26,7 +26,7 @@ function ENT:Initialize()
     end)
 end
 
---------------------------------------------------------------------------------------------------------
+
 function ENT:DoCraft(client)
     if not self.AllowedBlueprints then return client:notifyLocalized("notSetup", self.PrintName) end
     if not client:CanCraft() then return client:notifyLocalized("cantCraft") end
@@ -128,7 +128,7 @@ function ENT:DoCraft(client)
     end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function ENT:setInventory(inventory)
     if not inventory then return end
     self:setNetVar("id", inventory:getID())
@@ -144,7 +144,7 @@ function ENT:setInventory(inventory)
     end)
 end
 
---------------------------------------------------------------------------------------------------------
+
 function ENT:Use(activator)
     local inventory = self:getInv()
     if not inventory or (activator.liaNextOpen or 0) > CurTime() then return end
@@ -168,13 +168,13 @@ function ENT:Use(activator)
     activator.liaNextOpen = CurTime() + 1.5
 end
 
---------------------------------------------------------------------------------------------------------
+
 function ENT:OnRemove()
     local index = self:getNetVar("id")
     if lia.shuttingDown or self.liaIsSafe or not index then return end
 end
 
---------------------------------------------------------------------------------------------------------
+
 function ENT:SpawnFunction(client, tr, ClassName)
     if not tr.Hit then return end
     local SpawnPos = tr.HitPos + tr.HitNormal * 16
@@ -185,4 +185,4 @@ function ENT:SpawnFunction(client, tr, ClassName)
     ent:Activate()
     return ent
 end
---------------------------------------------------------------------------------------------------------
+
