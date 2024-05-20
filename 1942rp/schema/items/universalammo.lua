@@ -1,6 +1,4 @@
-﻿
-
---- Structure of UniversalAmmunition Item.
+﻿--- Structure of UniversalAmmunition Item.
 -- @items UniversalAmmunition
 
 --- This table defines the fields of the universal ammo item.
@@ -20,7 +18,7 @@ ITEM.desc = "A box that contains sixty bullets.\nUse items with the gun you want
 ITEM.model = "models/Items/BoxSRounds.mdl"
 ITEM.ammoAmount = 60
 ITEM.category = "Ammunition"
-ITEM.blacklistedWeapons = {""}
+ITEM.blacklistedWeapons = {"weapon_crowbar", "weapon_stunstick", "weapon_physcannon", "weapon_physgun", "weapon_bugbait", "gmod_tool", "gmod_camera", "weapon_extinguisher", "swep_flamethrower", "weapon_gascan", "weapon_midascannon", "riotshield", "spiderman_swep", "m_cyclonetrap", "m_electrobolt", "m_incinerate", "m_insectswarm", "m_winterblast", "bb_css_knife", "weapon_axe", "weapon_bat", "weapon_keyboard", "weapon_shovel", "weapon_sledgehammer", "weapon_fists", "cutter", "weapon_glowstick", "weapon_glowstick_blu", "weapon_glowstick_lblu", "weapon_glowstick_rng", "weapon_glowstick_pnk", "weapon_glowstick_red", "weapon_glowstick_wht", "weapon_glowstick_ylw", "m9k_ied_detonator", "lia_hands", "lia_keys", "super_aug"}
 ITEM.functions.use = {
     name = "Load",
     tip = "useTip",
@@ -34,7 +32,7 @@ ITEM.functions.use = {
             return false
         end
 
-        if table.hasvalue(item.allowedWeapons, weapon:GetClass()) then
+        if table.hasvalue(item.blacklistedWeapons, weapon:GetClass()) then
             client:PrintMessage(HUD_PRINTTALK, "This weapon may not be resupplied.")
             client:EmitSound("Player.DenyWeaponSelection")
             return false
