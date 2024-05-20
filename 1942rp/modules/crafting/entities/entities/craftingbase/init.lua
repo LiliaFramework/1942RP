@@ -35,8 +35,7 @@ function ENT:DoCraft(client)
     local our_items = our_inv:getItems()
     local client_inv = client:getChar():getInv()
     if not client_inv then return client:notifyLocalized("cantCraft") end
-    local client_items = client_inv:getItems()
-    for k, v in pairs(our_items) do
+    for _, v in pairs(our_items) do
         if v.isBlueprint then table.insert(blueprints, v) end
         if v.isWeapon then table.insert(weapons, v) end
     end
@@ -45,9 +44,7 @@ function ENT:DoCraft(client)
     local weapons_count = #weapons
     if blueprints_count > 0 then
         if blueprints_count > 1 then return client:notifyLocalized("tooMany", "blueprints") end
-        -- Guaranteed single valid blueprint at this point
         local blueprint = blueprints[1]
-        local blueprint_item = lia.item.get(blueprint.uniqueID)
         if not self.AllowedBlueprints[blueprint.uniqueID] then
             local other_tables = {}
             for name, tbl in pairs(CraftingTables) do
@@ -72,7 +69,7 @@ function ENT:DoCraft(client)
         end
 
         for _, item in ipairs(items_to_remove) do
-            for i = 1, item[2] do
+            for _ = 1, item[2] do
                 local itm = MODULE:HasItem(our_inv, item[1])
                 if itm then itm:remove() end
             end
@@ -80,7 +77,7 @@ function ENT:DoCraft(client)
 
         -- Insert crafting result
         for _, item in ipairs(blueprint.result) do
-            for i = 1, item[2] do
+            for _ = 1, item[2] do
                 local item_definition = lia.item.list[item[1]]
                 if not item_definition then return client:notifyLocalized("illegalAccess, %s", "invalid crafting result") end
                 local fits = client_inv:canItemFitInInventory(item[1], item_definition.width, item_definition.height)
@@ -111,7 +108,7 @@ function ENT:DoCraft(client)
         end
 
         for category, data in ipairs(weaponTable.Attachments) do
-            for k, name in pairs(data.atts) do
+            for _, name in pairs(data.atts) do
                 local attachment = available_attachments[name]
                 if attachment and not attach_table[category] then
                     attach_table[category] = name
@@ -135,16 +132,14 @@ end
 function ENT:setInventory(inventory)
     if not inventory then return end
     self:setNetVar("id", inventory:getID())
-    inventory:addAccessRule(function(inventory, action, context)
+    inventory:addAccessRule(function(inventory, _, context)
         local client = context.client
         local ent = client.m_nUsingCraftingBench
         if not IsValid(ent) then return end
         if not IsValid(client) then return end
         if ent:getInv() ~= inventory then return end
-        -- If the player is too far away from storage, then ignore.
         local distance = ent:GetPos():Distance(client:GetPos())
         if distance > 128 then return false end
-        -- Allow if the player is a receiver of the storage.
         if ent.receivers[client] then return true end
     end)
 end
@@ -180,12 +175,12 @@ function ENT:OnRemove()
 end
 
 --------------------------------------------------------------------------------------------------------
-function ENT:SpawnFunction(ply, tr, ClassName)
+function ENT:SpawnFunction(client, tr, ClassName)
     if not tr.Hit then return end
     local SpawnPos = tr.HitPos + tr.HitNormal * 16
     local ent = ents.Create(ClassName)
     ent:SetPos(SpawnPos)
-    ent.Owner = ply
+    ent.Owner = client
     ent:Spawn()
     ent:Activate()
     return ent

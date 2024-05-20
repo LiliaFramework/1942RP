@@ -1,6 +1,6 @@
 ﻿--------------------------------------------------------------------------------------------------------
 netstream.Hook("UseWarTable", function(tableEnt, shouldAct)
-    local ply = LocalPlayer()
+    local client = LocalPlayer()
     if shouldAct then
         local panel = vgui.Create("DFrame")
         panel:SetTitle("")
@@ -34,11 +34,11 @@ netstream.Hook("UseWarTable", function(tableEnt, shouldAct)
         exitButton:SetTextColor(Color(255, 255, 255))
         exitButton.DoClick = function() panel:Remove() end
     else
-        ply.LastPos = ply:GetPos()
-        ply.LastAng = ply:EyeAngles()
-        ply.tableEnt = tableEnt
-        ply.UseWarTable = not ply.UseWarTable
-        if not ply.UseWarTable and IsValid(ply.MarkerModel) then ply.MarkerModel:Remove() end
+        client.LastPos = client:GetPos()
+        client.LastAng = client:EyeAngles()
+        client.tableEnt = tableEnt
+        client.UseWarTable = not client.UseWarTable
+        if not client.UseWarTable and IsValid(client.MarkerModel) then client.MarkerModel:Remove() end
     end
 end)
 

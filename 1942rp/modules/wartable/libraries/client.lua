@@ -12,28 +12,28 @@ end
 --------------------------------------------------------------------------------------------------------
 function MODULE:Think()
     if not LocalPlayer().UseWarTable then return end
-    local ply = LocalPlayer()
-    local tableEnt = ply.tableEnt
+    local client = LocalPlayer()
+    local tableEnt = client.tableEnt
     if not IsValid(tableEnt) then
-        ply.UseWarTable = false
-        if IsValid(ply.MarkerModel) then ply.MarkerModel:Remove() end
+        client.UseWarTable = false
+        if IsValid(client.MarkerModel) then client.MarkerModel:Remove() end
         return
     end
 
-    if not IsValid(ply.MarkerModel) then
-        ply.MarkerModel = ClientsideModel("models/william/war_marker/war_marker.mdl")
-        ply.MarkerModel:SetPos(tableEnt:GetPos())
-        ply.MarkerModel:Spawn()
+    if not IsValid(client.MarkerModel) then
+        client.MarkerModel = ClientsideModel("models/william/war_marker/war_marker.mdl")
+        client.MarkerModel:SetPos(tableEnt:GetPos())
+        client.MarkerModel:Spawn()
     end
 
     local tr = util.TraceLine({
-        start = ply:EyePos(),
-        endpos = ply:GetAngles():Forward() * 100000,
+        start = client:EyePos(),
+        endpos = client:GetAngles():Forward() * 100000,
         filter = function(ent) if IsValid(ent) and not ent:IsPlayer() then return true end end
     })
 
-    if not ply.MarkerModel.LastPos then ply.MarkerModel.LastPos = tr.HitPos end
-    ply.MarkerModel.LastPos = LerpVector(FrameTime() * 15, ply.MarkerModel.LastPos, tr.HitPos)
-    ply.MarkerModel:SetPos(ply.MarkerModel.LastPos)
+    if not client.MarkerModel.LastPos then client.MarkerModel.LastPos = tr.HitPos end
+    client.MarkerModel.LastPos = LerpVector(FrameTime() * 15, client.MarkerModel.LastPos, tr.HitPos)
+    client.MarkerModel:SetPos(client.MarkerModel.LastPos)
 end
 --------------------------------------------------------------------------------------------------------

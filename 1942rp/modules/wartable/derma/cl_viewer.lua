@@ -49,7 +49,7 @@ function PANEL:PopulateBodygroupOptions()
     self.bodygroupNext = {}
     self.bodygroupIndex = {}
     self.bodygroups:Dock(FILL)
-    for k, v in pairs(self.target:GetBodyGroups()) do
+    for _, v in pairs(self.target:GetBodyGroups()) do
         if not (v.id == 0) then
             local index = v.id
             self.bodygroupBox[v.id] = self.bodygroups:Add("DPanel")

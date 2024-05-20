@@ -1,14 +1,14 @@
 ﻿local MODULE = MODULE
 --------------------------------------------------------------------------------------------------------
-netstream.Hook("ClearWarTable", function(ply, tableEnt)
-    local tableEnt = getTableEnt(ply:GetPos())
+netstream.Hook("ClearWarTable", function(client)
+    local tableEnt = getTableEnt(client:GetPos())
     if not tableEnt then return end
     tableEnt:Clear()
 end)
 
 --------------------------------------------------------------------------------------------------------
-netstream.Hook("SetWarTableMap", function(ply, tableEnt, text)
-    local tableEnt = getTableEnt(ply:GetPos())
+netstream.Hook("SetWarTableMap", function(client, tableEnt, text)
+    local tableEnt = getTableEnt(client:GetPos())
     if not tableEnt then return end
     for _, imageType in pairs(MODULE.allowedImageTypes) do
         print(text, imageType)
@@ -20,8 +20,8 @@ netstream.Hook("SetWarTableMap", function(ply, tableEnt, text)
 end)
 
 --------------------------------------------------------------------------------------------------------
-netstream.Hook("PlaceWarTableMarker", function(ply, pos, bodygroups)
-    local tableEnt = getTableEnt(ply:GetPos())
+netstream.Hook("PlaceWarTableMarker", function(client, pos, bodygroups)
+    local tableEnt = getTableEnt(client:GetPos())
     if not tableEnt then return end
     local tableEntFound = false
     for _, ent in pairs(ents.FindInSphere(pos, 1)) do
@@ -42,8 +42,8 @@ netstream.Hook("PlaceWarTableMarker", function(ply, pos, bodygroups)
 end)
 
 --------------------------------------------------------------------------------------------------------
-netstream.Hook("RemoveWarTableMarker", function(ply, ent)
-    local tableEnt = getTableEnt(ply:GetPos())
+netstream.Hook("RemoveWarTableMarker", function(client, ent)
+    local tableEnt = getTableEnt(client:GetPos())
     if not tableEnt then return end
     ent:Remove()
 end)

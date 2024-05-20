@@ -9,7 +9,7 @@ function getTableEnt(pos)
 end
 
 --------------------------------------------------------------------------------------------------------
-function MODULE:PhysgunPickup(ply, ent)
+function MODULE:PhysgunPickup(client, ent)
     if ent:GetModel() == "models/william/war_marker/war_marker.mdl" then return false end
 end
 --------------------------------------------------------------------------------------------------------

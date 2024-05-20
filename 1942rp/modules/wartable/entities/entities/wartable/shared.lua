@@ -10,6 +10,6 @@ function ENT:Clear()
     end
 end
 
-function ENT:Use(activator, caller)
+function ENT:Use(activator)
     netstream.Start(activator, "UseWarTable", self, activator:KeyDown(IN_SPEED) and true or false)
 end

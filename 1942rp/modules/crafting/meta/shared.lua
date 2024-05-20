@@ -3,7 +3,7 @@ local playerMeta = FindMetaTable("Player")
 --------------------------------------------------------------------------------------------------------
 local entityMeta = FindMetaTable("Entity")
 --------------------------------------------------------------------------------------------------------
-function playerMeta:CanCraft(craftID)
+function playerMeta:CanCraft()
     return self:Alive() and self:getChar()
 end
 

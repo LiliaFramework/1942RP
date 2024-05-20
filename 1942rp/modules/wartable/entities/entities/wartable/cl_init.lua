@@ -10,7 +10,7 @@ local mainBG = vgui.Create("DPanel")
 mainBG:SetSize(2150, 1250)
 mainBG:SetPos(0, 0)
 mainBG:SetPaintedManually(true)
-mainBG.Paint = function(this, w, h)
+mainBG.Paint = function(_, w, h)
     surface.SetDrawColor(0, 0, 0, 255)
     surface.DrawRect(0, 0, w, h)
 end
