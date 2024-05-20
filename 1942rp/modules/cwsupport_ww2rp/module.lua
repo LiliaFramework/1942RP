@@ -1,4 +1,4 @@
-----------------------------------------------------------------------------------------------
+﻿----------------------------------------------------------------------------------------------
 MODULE.name = "Macro Weapon Register"
 ----------------------------------------------------------------------------------------------
 MODULE.author = "76561198312513285"
@@ -107,9 +107,7 @@ function MODULE:InitializedModules()
                     -- since we don't know the category, we'll just have to iterate over all attachments, find the one we want, and attach it there
                     for category, data in pairs(self.Attachments) do
                         for key, attachment in ipairs(data.atts) do
-                            if attachment == attachmentName then
-                                self:detach(category, key - 1, false)
-                            end
+                            if attachment == attachmentName then self:detach(category, key - 1, false) end
                         end
                     end
                 end
@@ -208,10 +206,7 @@ function MODULE:InitializedModules()
                 ITEM.holsterDrawInfo = dat.holster
                 ITEM.isCW = true
                 ITEM.isWeapon = true
-                if dat.holster then
-                    ITEM.holsterDrawInfo.model = v.WorldModel
-                end
-
+                if dat.holster then ITEM.holsterDrawInfo.model = v.WorldModel end
                 ITEM.model = v.WorldModel
                 local slot = self.slotCategory[v.Slot]
                 ITEM.width = dat.width or 1
@@ -262,20 +257,15 @@ function MODULE:InitializedModules()
                     multiOptions = function(item, client)
                         local targets = {}
                         for k, v in pairs(item:getData("mod", {})) do
-                            table.insert(
-                                targets,
-                                {
-                                    name = L(v[1] or "ERROR"),
-                                    data = k,
-                                }
-                            )
+                            table.insert(targets, {
+                                name = L(v[1] or "ERROR"),
+                                data = k,
+                            })
                         end
-
                         return targets
                     end,
                     onCanRun = function(item)
                         if table.Count(item:getData("mod", {})) <= 0 then return false end
-
                         return not IsValid(item.entity)
                     end,
                     onRun = function(item, data)
@@ -290,10 +280,7 @@ function MODULE:InitializedModules()
                                     if attData then
                                         inv:add(attData[1])
                                         local wepon = client:GetActiveWeapon()
-                                        if IsValid(wepon) and wepon:GetClass() == item.class then
-                                            wepon:detachSpecificAttachment(attData[2])
-                                        end
-
+                                        if IsValid(wepon) and wepon:GetClass() == item.class then wepon:detachSpecificAttachment(attData[2]) end
                                         mods[data] = nil
                                         if table.Count(mods) == 0 then
                                             item:setData("mod", nil)
@@ -311,7 +298,6 @@ function MODULE:InitializedModules()
                         else
                             client:notifyLocalized("detTarget")
                         end
-
                         return false
                     end,
                 }
@@ -367,105 +353,69 @@ function MODULE:InitializedModules()
                 angleVel.y = math.random(-500, 500)
                 angleVel.z = math.random(-500, 500)
                 phys:AddAngleVelocity(ang:Right() * 100 + angleVel + VectorRand() * 50000)
-                timer.Simple(
-                    time,
-                    function()
-                        if t.s and IsValid(ent) then
-                            sound.Play(t.s, ent:GetPos())
-                        end
-                    end
-                )
-
+                timer.Simple(time, function() if t.s and IsValid(ent) then sound.Play(t.s, ent:GetPos()) end end)
                 SafeRemoveEntityDelayed(ent, removetime)
             end
         end
 
         do
-            CustomizableWeaponry.callbacks:addNew(
-                "finishReload",
-                "liaExperience",
-                function(weapon)
-                    if CLIENT then return end
-                    local owner = weapon.Owner
-                    if IsValid(owner) and owner:IsPlayer() then
-                        local char = owner:getChar()
-                        if char then
-                            if char:getAttrib("gunskill", 0) < 5 then
-                                char:updateAttrib("gunskill", 0.003)
-                            end
-                        end
-                    end
+            CustomizableWeaponry.callbacks:addNew("finishReload", "liaExperience", function(weapon)
+                if CLIENT then return end
+                local owner = weapon.Owner
+                if IsValid(owner) and owner:IsPlayer() then
+                    local char = owner:getChar()
+                    if char then if char:getAttrib("gunskill", 0) < 5 then char:updateAttrib("gunskill", 0.003) end end
                 end
-            )
+            end)
 
-            if CLIENT then
-                netstream.Hook(
-                    "liaUpdateWeapon",
-                    function(weapon)
-                        if weapon and weapon:IsValid() and weapon.recalculateStats then
-                            weapon:recalculateStats()
-                        end
-                    end
-                )
-            end
-
+            if CLIENT then netstream.Hook("liaUpdateWeapon", function(weapon) if weapon and weapon:IsValid() and weapon.recalculateStats then weapon:recalculateStats() end end) end
             function CustomizableWeaponry:hasAttachment(ply, att, lookIn)
                 return true
             end
 
-            CustomizableWeaponry.callbacks:addNew(
-                "deployWeapon",
-                "uploadAttachments",
-                function(weapon)
-                    if CLIENT then return end
-                    timer.Simple(
-                        .1,
-                        function()
-                            if IsValid(weapon) then
-                                if weapon.recalculateStats then
-                                    weapon:recalculateStats()
-                                    netstream.Start(weapon.Owner, "liaUpdateWeapon", weapon)
-                                end
-                            end
+            CustomizableWeaponry.callbacks:addNew("deployWeapon", "uploadAttachments", function(weapon)
+                if CLIENT then return end
+                timer.Simple(.1, function()
+                    if IsValid(weapon) then
+                        if weapon.recalculateStats then
+                            weapon:recalculateStats()
+                            netstream.Start(weapon.Owner, "liaUpdateWeapon", weapon)
                         end
-                    )
-
-                    local class = weapon:GetClass():lower()
-                    local client = weapon.Owner
-                    if not client then return end
-                    if weapon.attLoaded then return end
-                    local char = client:getChar()
-                    if char then
-                        local inv = char:getInv()
-                        local attList = {}
-                        for k, v in pairs(inv:getItems()) do
-                            if v.isWeapon and v.class == class then
-                                local attachments = v:getData("mod")
-                                if attachments then
-                                    for k, v in pairs(attachments) do
-                                        table.insert(attList, v[2])
-                                    end
-                                end
-
-                                break
-                            end
-                        end
-
-                        timer.Simple(
-                            0.2,
-                            function()
-                                if IsValid(weapon) and weapon:GetClass() == class and weapon.attachSpecificAttachment then
-                                    for _, b in ipairs(attList) do
-                                        weapon:attachSpecificAttachment(b)
-                                    end
-                                end
-                            end
-                        )
-
-                        weapon.attLoaded = true
                     end
+                end)
+
+                local class = weapon:GetClass():lower()
+                local client = weapon.Owner
+                if not client then return end
+                if weapon.attLoaded then return end
+                local char = client:getChar()
+                if char then
+                    local inv = char:getInv()
+                    local attList = {}
+                    for k, v in pairs(inv:getItems()) do
+                        if v.isWeapon and v.class == class then
+                            local attachments = v:getData("mod")
+                            if attachments then
+                                for k, v in pairs(attachments) do
+                                    table.insert(attList, v[2])
+                                end
+                            end
+
+                            break
+                        end
+                    end
+
+                    timer.Simple(0.2, function()
+                        if IsValid(weapon) and weapon:GetClass() == class and weapon.attachSpecificAttachment then
+                            for _, b in ipairs(attList) do
+                                weapon:attachSpecificAttachment(b)
+                            end
+                        end
+                    end)
+
+                    weapon.attLoaded = true
                 end
-            )
+            end)
         end
     end
 end
