@@ -5,6 +5,7 @@
 ]]
 -- @configurations Schema
 --- A list of schema fields that define the gamemode you are making.
+
 -- These options are defined by the 'SCHEMA' table.
 -- @realm shared
 -- @table Configurations
