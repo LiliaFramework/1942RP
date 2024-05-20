@@ -7,7 +7,7 @@ netstream.Hook("ClearWarTable", function(client)
 end)
 
 --------------------------------------------------------------------------------------------------------
-netstream.Hook("SetWarTableMap", function(client, tableEnt, text)
+netstream.Hook("SetWarTableMap", function(client, _, text)
     local tableEnt = getTableEnt(client:GetPos())
     if not tableEnt then return end
     for _, imageType in pairs(MODULE.allowedImageTypes) do

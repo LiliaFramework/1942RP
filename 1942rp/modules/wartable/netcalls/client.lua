@@ -9,7 +9,7 @@ netstream.Hook("UseWarTable", function(tableEnt, shouldAct)
         panel:ShowCloseButton(false)
         panel:MakePopup()
         panel:SetPos(ScrW() * 0.5 - (panel:GetWide() / 2), ScrH() - panel:GetTall() * 1.25)
-        panel.Paint = function(this, w, h) draw.RoundedBox(5, 0, h * 0.25, w, h * 0.75, Color(0, 0, 0, 150)) end
+        panel.Paint = function(_, w, h) draw.RoundedBox(5, 0, h * 0.25, w, h * 0.75, Color(0, 0, 0, 150)) end
         local clearButton = vgui.Create("DButton", panel)
         clearButton:Dock(TOP)
         clearButton:SetText("Clear out table")
