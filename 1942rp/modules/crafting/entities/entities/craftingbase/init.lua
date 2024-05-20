@@ -59,8 +59,6 @@ function ENT:DoCraft(client)
             return client:notifyLocalized("wrongBlueprint", table.concat(other_tables, " or "))
         end
 
-        -- Allowed to craft using the blueprint
-        -- Remove ingredients from inventory
         local items_to_remove = {}
         for _, req in ipairs(blueprint.requirements) do
             local item_count = our_inv:getItemCount(req[1])
@@ -75,7 +73,6 @@ function ENT:DoCraft(client)
             end
         end
 
-        -- Insert crafting result
         for _, item in ipairs(blueprint.result) do
             for _ = 1, item[2] do
                 local item_definition = lia.item.list[item[1]]
