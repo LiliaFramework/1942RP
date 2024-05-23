@@ -3,7 +3,7 @@ dying_storages = dying_storages or {}
 
 function MODULE:SaveData()
     local to_save = {}
-    for _, v in ipairs(ents.GetAll()) do
+    for _, v in ents.Iterator()  do
         if not v.IsCraftingTable then continue end
         to_save[#to_save + 1] = {
             class = v:GetClass(),
@@ -18,7 +18,7 @@ end
 
 
 function MODULE:LoadData()
-    for _, v in ipairs(ents.GetAll()) do
+    for _, v in ents.Iterator()  do
         if v.IsCraftingTable then v:Remove() end
     end
 
