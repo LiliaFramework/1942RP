@@ -13,7 +13,7 @@ netstream.Hook("SetWarTableMap", function(client, _, text)
     for _, imageType in pairs(MODULE.allowedImageTypes) do
         print(text, imageType)
         if string.find(text, string.lower(imageType)) then
-            netstream.Start(player.Iterator(), "SetWarTableMap", tableEnt, text)
+            netstream.Start(player.GetAll(), "SetWarTableMap", tableEnt, text)
             break
         end
     end
