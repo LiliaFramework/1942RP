@@ -10,7 +10,6 @@
     end
 end
 
-
 function MODULE:StartCommand(client, ucmd)
     if (client.nextDrunkCheck or 0) < CurTime() then
         client.nextDrunkCheck = CurTime() + 0.05
@@ -37,13 +36,10 @@ function MODULE:StartCommand(client, ucmd)
     end
 end
 
-
 function MODULE:PlayerLoadedChar(client)
     client:ResetBAC()
 end
 
-
 function MODULE:PostPlayerLoadout(client)
     client:ResetBAC()
 end
-
