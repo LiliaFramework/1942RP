@@ -1,6 +1,6 @@
 # 1942RP
 
-1942RP is a roleplay schema for [Lilia](https://github.com/Lilia-Framework/Lilia). Its aim is to provide a stable 1942RP schema to kickstart your server creation.
+1942RP is a roleplay schema for [Lilia](https://github.com/LiliaFramework/Lilia).
 
 # Contents
 - Alcoholic Drinks
