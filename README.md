@@ -1,7 +1,9 @@
-# 1942RP
+<h1 align="center">Lilia - 1942RP</h1>
 
-1942RP is a roleplay schema for [Lilia](https://github.com/LiliaFramework/Lilia).
-
+<p align="center">
+  <img src="https://i.imgur.com/yY3wT30.png" alt="Lilia Icon">
+</p>
+ 
 # Contents
 
 - Alcoholic Drinks
