@@ -14,7 +14,9 @@
 
 - Text Radios
   
-- Tying (Includes search functionality and custom animations)
+- Tying
+
+- Tying Search
   
 - Warrants
 
