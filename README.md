@@ -10,8 +10,6 @@
   
 - Door Kicking
   
-- Permanent Flags
-
 - Text Radios
   
 - Tying
@@ -21,9 +19,6 @@
 - Warrants
 
 - Wartable
-
-- Watermark
-
 
 # Support
 
