@@ -1,6 +1,8 @@
-﻿--- Configuration for Protection Module.
--- @configuration Temp
---- This table defines the default settings for the Protection Module.
+--- Configuration for War Table Module.
+-- @configuration WarTable
+
+--- This table defines the default settings for the War Table Module.
 -- @realm shared
 -- @table Configuration
--- @field TempValue TEMP VALUE | **bool**
+-- @field allowedImageTypes Allowed image types for the module | **table**
+-- @field  URL to the default image | **string**
