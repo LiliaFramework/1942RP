@@ -1,5 +1,4 @@
-﻿
-FACTION.name = "Deutsche Arbeitsfront"
+﻿FACTION.name = "Deutsche Arbeitsfront"
 FACTION.desc = "The German Workers Front"
 FACTION.color = Color(51, 117, 232)
 FACTION.isDefault = false
