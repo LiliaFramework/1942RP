@@ -2,13 +2,13 @@
 
 <html>
 	<head>
-		<title>Schema - 1942RP Documentation</title>
+		<title>Alcoholism - 1942RP Documentation</title>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Schema - 1942RP Documentation" />
+		<meta property="og:title" content="Alcoholism - 1942RP Documentation" />
 		<meta property="og:site_name" content="Lilia Documentation" />
 
-			<meta property="og:description" content="Schema configuration options." />
+			<meta property="og:description" content="Configuration for Alcoholism Module." />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
 		<link rel="stylesheet" href="../../ldoc.css" />
@@ -32,7 +32,7 @@
 
 					<ul>
 							<li>
-									<details >
+									<details open>
 									<summary><a href="../../configurations/alcoholism/">Alcoholism</a></summary>
 
 									<ul>
@@ -109,7 +109,7 @@
 									</details>
 							</li>
 							<li>
-									<details open>
+									<details >
 									<summary><a href="../../configurations/schema/">Schema</a></summary>
 
 									<ul>
@@ -149,27 +149,23 @@
 			<article>
 					<div class="wrapper">
 						<header class="module">
-	<h1>Schema</h1>
-	<h2>Schema configuration options.</h2>
+	<h1>Alcoholism</h1>
+	<h2>Configuration for Alcoholism Module.</h2>
 </header>
 
 <p>
 
-
-<pre><code>This is meant to define the Schema's default information.
-</code></pre>
 </p>
 
 	<h1 class="title">Tables</h1>
 
 		<section class="method">
 			<header>
-				<a class="anchor" id="Configurations">
-					<h1><span class="realm shared"></span></span>Configurations</h1>
+				<a class="anchor" id="Configuration">
+					<h1><span class="realm shared"></span></span>Configuration</h1>
 				</a>
 
-					<p>A list of schema fields that define the gamemode you are making.
- These options are defined by the 'SCHEMA' table.</p>
+					<p>This table defines the default settings for the Alcoholism Module.</p>
 			</header>
 
 
@@ -179,33 +175,55 @@
 					<ul>
 
 							<li>
-								<span class="tag parameter">name</span>
+								<span class="tag parameter">TickTime</span>
 
 
 
-								<p> Controls the name of the schema | <strong>string</strong></p>
+								<p> Specifies the tick time in seconds for alcohol effects | <strong>number</strong></p>
 							</li>
 					</ul>
 
 					<ul>
 
 							<li>
-								<span class="tag parameter">author</span>
+								<span class="tag parameter">DegradeRate</span>
 
 
 
-								<p> Specifies the author of the schema | <strong>string</strong></p>
+								<p> Specifies the rate at which alcohol effects degrade over time | <strong>number</strong></p>
 							</li>
 					</ul>
 
 					<ul>
 
 							<li>
-								<span class="tag parameter">desc</span>
+								<span class="tag parameter">AddAlpha</span>
 
 
 
-								<p> Defines the description of the schema | <strong>string</strong></p>
+								<p> Specifies the alpha value added to the screen for alcohol effects | <strong>number</strong></p>
+							</li>
+					</ul>
+
+					<ul>
+
+							<li>
+								<span class="tag parameter">EffectDelay</span>
+
+
+
+								<p> Specifies the delay in seconds before alcohol effects are applied | <strong>number</strong></p>
+							</li>
+					</ul>
+
+					<ul>
+
+							<li>
+								<span class="tag parameter">DrunkNotifyThreshold</span>
+
+
+
+								<p> Specifies the threshold value for notifying players of drunkenness | <strong>number</strong></p>
 							</li>
 					</ul>
 
