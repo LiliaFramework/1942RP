@@ -2,13 +2,13 @@
 
 <html>
 	<head>
-		<title>DoorKick - 1942RP Documentation</title>
+		<title>Crafting - 1942RP Documentation</title>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="DoorKick - 1942RP Documentation" />
+		<meta property="og:title" content="Crafting - 1942RP Documentation" />
 		<meta property="og:site_name" content="Lilia Documentation" />
 
-			<meta property="og:description" content="Configuration for Door Kick Module." />
+			<meta property="og:description" content="Meta Tables for Crafting." />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
 		<link rel="stylesheet" href="../../ldoc.css" />
@@ -103,7 +103,7 @@ ResetBAC											</a>
 									</details>
 							</li>
 							<li>
-									<details >
+									<details open>
 									<summary><a href="../../module meta/crafting/">Crafting</a></summary>
 
 									<ul>
@@ -205,7 +205,7 @@ ToggleWanted											</a>
 									</details>
 							</li>
 							<li>
-									<details open>
+									<details >
 									<summary><a href="../../configurations/doorkick/">DoorKick</a></summary>
 
 									<ul>
@@ -311,40 +311,100 @@ ToggleWanted											</a>
 			<article>
 					<div class="wrapper">
 						<header class="module">
-	<h1>DoorKick</h1>
-	<h2>Configuration for Door Kick Module.</h2>
+	<h1>Crafting</h1>
+	<h2>Meta Tables for Crafting.</h2>
 </header>
 
 <p>
 
 </p>
 
-	<h1 class="title">Tables</h1>
+	<h1 class="title">Functions</h1>
 
 		<section class="method">
 			<header>
-				<a class="anchor" id="Configuration">
-					<h1><span class="realm shared"></span></span>Configuration</h1>
+				<a class="anchor" id="CanCraft">
+					<h1><span class="realm shared"></span></span>meta:CanCraft()</h1>
 				</a>
 
-					<p>This table defines the default settings for the Door Kick Module.</p>
+					<p>Checks if the player can craft.</p>
 			</header>
 
 
-					<h3>Fields</h3>
+
+				<h3>Returns</h3>
+				<ul>
+
+							<li>
+									<span class="type">bool</span>
+
+								<p>True if the player is alive and has a character, false otherwise.</p>
+							</li>
+
+				</ul>
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="IsTableLocked">
+					<h1><span class="realm shared"></span></span>meta:IsTableLocked()</h1>
+				</a>
+
+					<p>Checks if a crafting table is locked.</p>
+			</header>
+
+
+
+				<h3>Returns</h3>
+				<ul>
+
+							<li>
+									<span class="type">bool</span>
+
+								<p>True if the table is locked, false otherwise.</p>
+							</li>
+
+				</ul>
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="LockTable">
+					<h1><span class="realm server"></span></span>meta:LockTable(locked)</h1>
+				</a>
+
+					<p>Locks or unlocks a crafting table.</p>
+			</header>
+
+
+					<h3>Parameters</h3>
 
 
 					<ul>
 
 							<li>
-								<span class="tag parameter">KickDoorBlacklistedFactions</span>
+								<span class="tag parameter">locked</span>
+
+									<span class="tag"><span class="type">Boolean</span></span>
 
 
-
-								<p> Specifies factions that are blacklisted from door kicking | <strong>table</strong></p>
+								<p> Whether the table should be locked or unlocked.</p>
 							</li>
 					</ul>
 
+
+				<h3>Returns</h3>
+				<ul>
+
+							<li>
+									<span class="type">bool</span>
+
+								<p>True if the operation was successful, false otherwise.</p>
+							</li>
+
+				</ul>
 
 
 		</section>

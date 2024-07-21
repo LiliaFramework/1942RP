@@ -2,13 +2,13 @@
 
 <html>
 	<head>
-		<title>DoorKick - 1942RP Documentation</title>
+		<title>Loyalism - 1942RP Documentation</title>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="DoorKick - 1942RP Documentation" />
+		<meta property="og:title" content="Loyalism - 1942RP Documentation" />
 		<meta property="og:site_name" content="Lilia Documentation" />
 
-			<meta property="og:description" content="Configuration for Door Kick Module." />
+			<meta property="og:description" content="Hook Documentation for Loyalism Module." />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
 		<link rel="stylesheet" href="../../ldoc.css" />
@@ -32,7 +32,7 @@
 
 					<ul>
 							<li>
-									<details >
+									<details open>
 									<summary><a href="../../hooks/loyalism/">Loyalism</a></summary>
 
 									<ul>
@@ -205,7 +205,7 @@ ToggleWanted											</a>
 									</details>
 							</li>
 							<li>
-									<details open>
+									<details >
 									<summary><a href="../../configurations/doorkick/">DoorKick</a></summary>
 
 									<ul>
@@ -238,7 +238,7 @@ ToggleWanted											</a>
 									</details>
 							</li>
 							<li>
-									<details >
+									<details open>
 									<summary><a href="../../configurations/loyalism/">Loyalism</a></summary>
 
 									<ul>
@@ -311,39 +311,32 @@ ToggleWanted											</a>
 			<article>
 					<div class="wrapper">
 						<header class="module">
-	<h1>DoorKick</h1>
-	<h2>Configuration for Door Kick Module.</h2>
+	<h1>Loyalism</h1>
+	<h2>Hook Documentation for Loyalism Module.</h2>
 </header>
 
 <p>
 
 </p>
 
-	<h1 class="title">Tables</h1>
+	<h1 class="title">Functions</h1>
 
 		<section class="method">
 			<header>
-				<a class="anchor" id="Configuration">
-					<h1><span class="realm shared"></span></span>Configuration</h1>
+				<a class="anchor" id="UpdatePartyTiers">
+					<h1><span class="realm server"></span></span>MODULE:UpdatePartyTiers()</h1>
 				</a>
 
-					<p>This table defines the default settings for the Door Kick Module.</p>
+					<div class="notice error">
+						<div class="title">Internal</div>
+						<p>This is an internal function! You are able to use it, but you risk unintended side effects if used incorrectly.</p>
+					</div>
+					<p>Updates the party tiers for all players.
+ This function iterates through all players and updates their party tiers based on the current data.
+ If a player has a character, the function retrieves their current party tier and updates it.
+ The update is applied to all players by setting the party tier data with the specified tier value.</p>
 			</header>
 
-
-					<h3>Fields</h3>
-
-
-					<ul>
-
-							<li>
-								<span class="tag parameter">KickDoorBlacklistedFactions</span>
-
-
-
-								<p> Specifies factions that are blacklisted from door kicking | <strong>table</strong></p>
-							</li>
-					</ul>
 
 
 

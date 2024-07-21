@@ -2,13 +2,13 @@
 
 <html>
 	<head>
-		<title>DoorKick - 1942RP Documentation</title>
+		<title>Warrant - 1942RP Documentation</title>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="DoorKick - 1942RP Documentation" />
+		<meta property="og:title" content="Warrant - 1942RP Documentation" />
 		<meta property="og:site_name" content="Lilia Documentation" />
 
-			<meta property="og:description" content="Configuration for Door Kick Module." />
+			<meta property="og:description" content="Meta Tables for Warrant." />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
 		<link rel="stylesheet" href="../../ldoc.css" />
@@ -150,7 +150,7 @@ StartHandcuffAnim											</a>
 									</details>
 							</li>
 							<li>
-									<details >
+									<details open>
 									<summary><a href="../../module meta/warrant/">Warrant</a></summary>
 
 									<ul>
@@ -205,7 +205,7 @@ ToggleWanted											</a>
 									</details>
 							</li>
 							<li>
-									<details open>
+									<details >
 									<summary><a href="../../configurations/doorkick/">DoorKick</a></summary>
 
 									<ul>
@@ -293,7 +293,7 @@ ToggleWanted											</a>
 									</details>
 							</li>
 							<li>
-									<details >
+									<details open>
 									<summary><a href="../../configurations/warrant/">Warrant</a></summary>
 
 									<ul>
@@ -311,37 +311,133 @@ ToggleWanted											</a>
 			<article>
 					<div class="wrapper">
 						<header class="module">
-	<h1>DoorKick</h1>
-	<h2>Configuration for Door Kick Module.</h2>
+	<h1>Warrant</h1>
+	<h2>Meta Tables for Warrant.</h2>
 </header>
 
 <p>
 
 </p>
 
-	<h1 class="title">Tables</h1>
+	<h1 class="title">Functions</h1>
 
 		<section class="method">
 			<header>
-				<a class="anchor" id="Configuration">
-					<h1><span class="realm shared"></span></span>Configuration</h1>
+				<a class="anchor" id="CanSeeWarrants">
+					<h1><span class="realm shared"></span></span>meta:CanSeeWarrants()</h1>
 				</a>
 
-					<p>This table defines the default settings for the Door Kick Module.</p>
+					<p>Checks if the player can see warrants.</p>
 			</header>
 
 
-					<h3>Fields</h3>
+
+				<h3>Returns</h3>
+				<ul>
+
+							<li>
+									<span class="type">bool</span>
+
+								<p>True if the player can see warrants, false otherwise.</p>
+							</li>
+
+				</ul>
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="CanSeeWarrantsIssued">
+					<h1><span class="realm server"></span></span>meta:CanSeeWarrantsIssued()</h1>
+				</a>
+
+					<p>Checks if the player can see issued warrants.</p>
+			</header>
+
+
+
+				<h3>Returns</h3>
+				<ul>
+
+							<li>
+									<span class="type">bool</span>
+
+								<p>True if the player can see issued warrants, false otherwise.</p>
+							</li>
+
+				</ul>
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="CanWarrantPlayers">
+					<h1><span class="realm server"></span></span>meta:CanWarrantPlayers()</h1>
+				</a>
+
+					<p>Checks if the player can warrant other players.</p>
+			</header>
+
+
+
+				<h3>Returns</h3>
+				<ul>
+
+							<li>
+									<span class="type">bool</span>
+
+								<p>True if the player can warrant others, false otherwise.</p>
+							</li>
+
+				</ul>
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="IsWanted">
+					<h1><span class="realm shared"></span></span>meta:IsWanted()</h1>
+				</a>
+
+					<p>Checks if the player is wanted.</p>
+			</header>
+
+
+
+				<h3>Returns</h3>
+				<ul>
+
+							<li>
+									<span class="type">bool</span>
+
+								<p>True if the player is wanted, false otherwise.</p>
+							</li>
+
+				</ul>
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="ToggleWanted">
+					<h1><span class="realm server"></span></span>meta:ToggleWanted(warranter)</h1>
+				</a>
+
+					<p>Toggles the wanted status of the player.</p>
+			</header>
+
+
+					<h3>Parameters</h3>
 
 
 					<ul>
 
 							<li>
-								<span class="tag parameter">KickDoorBlacklistedFactions</span>
+								<span class="tag parameter">warranter</span>
 
 
 
-								<p> Specifies factions that are blacklisted from door kicking | <strong>table</strong></p>
+								<p> The player who issued or removed the warrant.</p>
 							</li>
 					</ul>
 

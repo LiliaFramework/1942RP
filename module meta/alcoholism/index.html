@@ -2,13 +2,13 @@
 
 <html>
 	<head>
-		<title>DoorKick - 1942RP Documentation</title>
+		<title>Alcoholism - 1942RP Documentation</title>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="DoorKick - 1942RP Documentation" />
+		<meta property="og:title" content="Alcoholism - 1942RP Documentation" />
 		<meta property="og:site_name" content="Lilia Documentation" />
 
-			<meta property="og:description" content="Configuration for Door Kick Module." />
+			<meta property="og:description" content="Meta Tables for Alcoholism." />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
 		<link rel="stylesheet" href="../../ldoc.css" />
@@ -72,7 +72,7 @@ ShouldRadioBeep											</a>
 
 					<ul>
 							<li>
-									<details >
+									<details open>
 									<summary><a href="../../module meta/alcoholism/">Alcoholism</a></summary>
 
 									<ul>
@@ -194,7 +194,7 @@ ToggleWanted											</a>
 
 					<ul>
 							<li>
-									<details >
+									<details open>
 									<summary><a href="../../configurations/alcoholism/">Alcoholism</a></summary>
 
 									<ul>
@@ -205,7 +205,7 @@ ToggleWanted											</a>
 									</details>
 							</li>
 							<li>
-									<details open>
+									<details >
 									<summary><a href="../../configurations/doorkick/">DoorKick</a></summary>
 
 									<ul>
@@ -311,39 +311,101 @@ ToggleWanted											</a>
 			<article>
 					<div class="wrapper">
 						<header class="module">
-	<h1>DoorKick</h1>
-	<h2>Configuration for Door Kick Module.</h2>
+	<h1>Alcoholism</h1>
+	<h2>Meta Tables for Alcoholism.</h2>
 </header>
 
 <p>
 
 </p>
 
-	<h1 class="title">Tables</h1>
+	<h1 class="title">Functions</h1>
 
 		<section class="method">
 			<header>
-				<a class="anchor" id="Configuration">
-					<h1><span class="realm shared"></span></span>Configuration</h1>
+				<a class="anchor" id="AddBAC">
+					<h1><span class="realm server"></span></span>meta:AddBAC(amt)</h1>
 				</a>
 
-					<p>This table defines the default settings for the Door Kick Module.</p>
+					<p>Adds a specified amount to the player's BAC, clamping the value between 0 and 100.</p>
 			</header>
 
 
-					<h3>Fields</h3>
+					<h3>Parameters</h3>
 
 
 					<ul>
 
 							<li>
-								<span class="tag parameter">KickDoorBlacklistedFactions</span>
+								<span class="tag parameter">amt</span>
+
+									<span class="tag"><span class="type">Integer</span></span>
 
 
-
-								<p> Specifies factions that are blacklisted from door kicking | <strong>table</strong></p>
+								<p> The amount to add to the BAC.</p>
 							</li>
 					</ul>
+
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="GetBAC">
+					<h1><span class="realm shared"></span></span>meta:GetBAC()</h1>
+				</a>
+
+					<p>Retrieves the player's current BAC.</p>
+			</header>
+
+
+
+				<h3>Returns</h3>
+				<ul>
+
+							<li>
+									<span class="type">integer</span>
+
+								<p>The current BAC of the player.</p>
+							</li>
+
+				</ul>
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="IsDrunk">
+					<h1><span class="realm shared"></span></span>meta:IsDrunk()</h1>
+				</a>
+
+					<p>Checks if the player's BAC is above the drunk notification threshold.</p>
+			</header>
+
+
+
+				<h3>Returns</h3>
+				<ul>
+
+							<li>
+									<span class="type">bool</span>
+
+								<p>True if the player's BAC is above the drunk notification threshold, false otherwise.</p>
+							</li>
+
+				</ul>
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="ResetBAC">
+					<h1><span class="realm server"></span></span>meta:ResetBAC()</h1>
+				</a>
+
+					<p>Resets the player's blood alcohol content (BAC) to 0.</p>
+			</header>
+
 
 
 
