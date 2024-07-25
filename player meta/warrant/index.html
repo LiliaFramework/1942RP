@@ -2,13 +2,13 @@
 
 <html>
 	<head>
-		<title>Crafting - 1942RP Documentation</title>
+		<title>Warrant - 1942RP Documentation</title>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Crafting - 1942RP Documentation" />
+		<meta property="og:title" content="Warrant - 1942RP Documentation" />
 		<meta property="og:site_name" content="1942RP Documentation" />
 
-			<meta property="og:description" content="Meta Tables for Crafting." />
+			<meta property="og:description" content="Meta Tables for Warrant." />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
 		<link rel="stylesheet" href="../../ldoc.css" />
@@ -67,35 +67,64 @@ ShouldRadioBeep											</a>
 				</details>
 				<details class="category" open>
 					<summary>
-						<h2>Module Meta</h2>
+						<h2>Entity Meta</h2>
 					</summary>
 
 					<ul>
 							<li>
 									<details >
-									<summary><a href="../../module meta/alcoholism/">Alcoholism</a></summary>
+									<summary><a href="../../entity meta/crafting/">Crafting</a></summary>
+
+									<ul>
+
+
+										<li>
+											<span class="realm shared"></span>
+											<a href="../../entity meta/crafting/#IsTableLocked">
+IsTableLocked											</a>
+										</li>
+										<li>
+											<span class="realm server"></span>
+											<a href="../../entity meta/crafting/#LockTable">
+LockTable											</a>
+										</li>
+
+									</ul>
+									</details>
+							</li>
+					</ul>
+				</details>
+				<details class="category" open>
+					<summary>
+						<h2>Player Meta</h2>
+					</summary>
+
+					<ul>
+							<li>
+									<details >
+									<summary><a href="../../player meta/alcoholism/">Alcoholism</a></summary>
 
 									<ul>
 
 
 										<li>
 											<span class="realm server"></span>
-											<a href="../../module meta/alcoholism/#AddBAC">
+											<a href="../../player meta/alcoholism/#AddBAC">
 AddBAC											</a>
 										</li>
 										<li>
 											<span class="realm shared"></span>
-											<a href="../../module meta/alcoholism/#GetBAC">
+											<a href="../../player meta/alcoholism/#GetBAC">
 GetBAC											</a>
 										</li>
 										<li>
 											<span class="realm shared"></span>
-											<a href="../../module meta/alcoholism/#IsDrunk">
+											<a href="../../player meta/alcoholism/#IsDrunk">
 IsDrunk											</a>
 										</li>
 										<li>
 											<span class="realm server"></span>
-											<a href="../../module meta/alcoholism/#ResetBAC">
+											<a href="../../player meta/alcoholism/#ResetBAC">
 ResetBAC											</a>
 										</li>
 
@@ -103,26 +132,16 @@ ResetBAC											</a>
 									</details>
 							</li>
 							<li>
-									<details open>
-									<summary><a href="../../module meta/crafting/">Crafting</a></summary>
+									<details >
+									<summary><a href="../../player meta/crafting/">Crafting</a></summary>
 
 									<ul>
 
 
 										<li>
 											<span class="realm shared"></span>
-											<a href="../../module meta/crafting/#CanCraft">
+											<a href="../../player meta/crafting/#CanCraft">
 CanCraft											</a>
-										</li>
-										<li>
-											<span class="realm shared"></span>
-											<a href="../../module meta/crafting/#IsTableLocked">
-IsTableLocked											</a>
-										</li>
-										<li>
-											<span class="realm server"></span>
-											<a href="../../module meta/crafting/#LockTable">
-LockTable											</a>
 										</li>
 
 									</ul>
@@ -130,19 +149,19 @@ LockTable											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="../../module meta/tying/">Tying</a></summary>
+									<summary><a href="../../player meta/tying/">Tying</a></summary>
 
 									<ul>
 
 
 										<li>
 											<span class="realm server"></span>
-											<a href="../../module meta/tying/#EndHandcuffAnim">
+											<a href="../../player meta/tying/#EndHandcuffAnim">
 EndHandcuffAnim											</a>
 										</li>
 										<li>
 											<span class="realm server"></span>
-											<a href="../../module meta/tying/#StartHandcuffAnim">
+											<a href="../../player meta/tying/#StartHandcuffAnim">
 StartHandcuffAnim											</a>
 										</li>
 
@@ -150,35 +169,35 @@ StartHandcuffAnim											</a>
 									</details>
 							</li>
 							<li>
-									<details >
-									<summary><a href="../../module meta/warrant/">Warrant</a></summary>
+									<details open>
+									<summary><a href="../../player meta/warrant/">Warrant</a></summary>
 
 									<ul>
 
 
 										<li>
 											<span class="realm shared"></span>
-											<a href="../../module meta/warrant/#CanSeeWarrants">
+											<a href="../../player meta/warrant/#CanSeeWarrants">
 CanSeeWarrants											</a>
 										</li>
 										<li>
 											<span class="realm server"></span>
-											<a href="../../module meta/warrant/#CanSeeWarrantsIssued">
+											<a href="../../player meta/warrant/#CanSeeWarrantsIssued">
 CanSeeWarrantsIssued											</a>
 										</li>
 										<li>
 											<span class="realm server"></span>
-											<a href="../../module meta/warrant/#CanWarrantPlayers">
+											<a href="../../player meta/warrant/#CanWarrantPlayers">
 CanWarrantPlayers											</a>
 										</li>
 										<li>
 											<span class="realm shared"></span>
-											<a href="../../module meta/warrant/#IsWanted">
+											<a href="../../player meta/warrant/#IsWanted">
 IsWanted											</a>
 										</li>
 										<li>
 											<span class="realm server"></span>
-											<a href="../../module meta/warrant/#ToggleWanted">
+											<a href="../../player meta/warrant/#ToggleWanted">
 ToggleWanted											</a>
 										</li>
 
@@ -293,7 +312,7 @@ ToggleWanted											</a>
 									</details>
 							</li>
 							<li>
-									<details >
+									<details open>
 									<summary><a href="../../configurations/warrant/">Warrant</a></summary>
 
 									<ul>
@@ -311,8 +330,8 @@ ToggleWanted											</a>
 			<article>
 					<div class="wrapper">
 						<header class="module">
-	<h1>Crafting</h1>
-	<h2>Meta Tables for Crafting.</h2>
+	<h1>Warrant</h1>
+	<h2>Meta Tables for Warrant.</h2>
 </header>
 
 <p>
@@ -323,11 +342,11 @@ ToggleWanted											</a>
 
 		<section class="method">
 			<header>
-				<a class="anchor" id="CanCraft">
-					<h1><span class="realm shared"></span></span>meta:CanCraft()</h1>
+				<a class="anchor" id="CanSeeWarrants">
+					<h1><span class="realm shared"></span></span>playerMeta:CanSeeWarrants()</h1>
 				</a>
 
-					<p>Checks if the player can craft.</p>
+					<p>Checks if the player can see warrants.</p>
 			</header>
 
 
@@ -338,7 +357,7 @@ ToggleWanted											</a>
 							<li>
 									<span class="type">bool</span>
 
-								<p>True if the player is alive and has a character, false otherwise.</p>
+								<p>True if the player can see warrants, false otherwise.</p>
 							</li>
 
 				</ul>
@@ -347,11 +366,11 @@ ToggleWanted											</a>
 		</section>
 		<section class="method">
 			<header>
-				<a class="anchor" id="IsTableLocked">
-					<h1><span class="realm shared"></span></span>meta:IsTableLocked()</h1>
+				<a class="anchor" id="CanSeeWarrantsIssued">
+					<h1><span class="realm server"></span></span>playerMeta:CanSeeWarrantsIssued()</h1>
 				</a>
 
-					<p>Checks if a crafting table is locked.</p>
+					<p>Checks if the player can see issued warrants.</p>
 			</header>
 
 
@@ -362,7 +381,7 @@ ToggleWanted											</a>
 							<li>
 									<span class="type">bool</span>
 
-								<p>True if the table is locked, false otherwise.</p>
+								<p>True if the player can see issued warrants, false otherwise.</p>
 							</li>
 
 				</ul>
@@ -371,11 +390,59 @@ ToggleWanted											</a>
 		</section>
 		<section class="method">
 			<header>
-				<a class="anchor" id="LockTable">
-					<h1><span class="realm server"></span></span>meta:LockTable(locked)</h1>
+				<a class="anchor" id="CanWarrantPlayers">
+					<h1><span class="realm server"></span></span>playerMeta:CanWarrantPlayers()</h1>
 				</a>
 
-					<p>Locks or unlocks a crafting table.</p>
+					<p>Checks if the player can warrant other players.</p>
+			</header>
+
+
+
+				<h3>Returns</h3>
+				<ul>
+
+							<li>
+									<span class="type">bool</span>
+
+								<p>True if the player can warrant others, false otherwise.</p>
+							</li>
+
+				</ul>
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="IsWanted">
+					<h1><span class="realm shared"></span></span>playerMeta:IsWanted()</h1>
+				</a>
+
+					<p>Checks if the player is wanted.</p>
+			</header>
+
+
+
+				<h3>Returns</h3>
+				<ul>
+
+							<li>
+									<span class="type">bool</span>
+
+								<p>True if the player is wanted, false otherwise.</p>
+							</li>
+
+				</ul>
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="ToggleWanted">
+					<h1><span class="realm server"></span></span>playerMeta:ToggleWanted(warranter)</h1>
+				</a>
+
+					<p>Toggles the wanted status of the player.</p>
 			</header>
 
 
@@ -385,26 +452,14 @@ ToggleWanted											</a>
 					<ul>
 
 							<li>
-								<span class="tag parameter">locked</span>
-
-									<span class="tag"><span class="type">Boolean</span></span>
+								<span class="tag parameter">warranter</span>
 
 
-								<p> Whether the table should be locked or unlocked.</p>
+
+								<p> The player who issued or removed the warrant.</p>
 							</li>
 					</ul>
 
-
-				<h3>Returns</h3>
-				<ul>
-
-							<li>
-									<span class="type">bool</span>
-
-								<p>True if the operation was successful, false otherwise.</p>
-							</li>
-
-				</ul>
 
 
 		</section>
