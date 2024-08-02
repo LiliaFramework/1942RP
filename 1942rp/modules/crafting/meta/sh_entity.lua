@@ -1,5 +1,7 @@
-﻿--- Meta Tables for Crafting.
--- @metaentity Crafting
+<<<<<<< HEAD
+=======
+--- Meta Tables for Crafting.
+-- @entitymeta Crafting
 local entityMeta = FindMetaTable("Entity")
 if SERVER then
     --- Locks or unlocks a crafting table.
@@ -15,11 +17,4 @@ if SERVER then
         return false
     end
 end
-
---- Checks if a crafting table is locked.
--- @treturn bool True if the table is locked, false otherwise.
--- @realm shared
-function entityMeta:IsTableLocked()
-    if self:IsValid() and self.IsCraftingTable then return self:getNetVar("table_locked", false) end
-    return true
-end
+>>>>>>> 8366d2b6b1d2328b8748e3e5ddb1a96a75c60f7e
