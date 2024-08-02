@@ -43,10 +43,11 @@ jobs:
 
     - name: Lint
       working-directory: lilia
-      run: luacheck . --no-redefined
-          --no-global --no-self
-          --no-max-line-length --no-max-code-line-length
-          --no-max-string-line-length --no-max-comment-line-length
+      run: |
+        luacheck . --no-redefined \
+          --no-global --no-self \
+          --no-max-line-length --no-max-code-line-length \
+          --no-max-string-line-length --no-max-comment-line-length \
           --no-max-cyclomatic-complexity
 
   docs:
@@ -93,11 +94,42 @@ jobs:
   release:
     runs-on: ubuntu-latest
     needs: docs
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'LiliaFramework/1942RP' && success()
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
           path: 1942rp
+
+      - name: Delete old releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Fetching old releases..."
+          releases=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases")
+          
+          echo "Deleting old releases..."
+          for release_id in $(echo $releases | jq -r '.[].id'); do
+            echo "Deleting release $release_id"
+            curl -s -X DELETE -H "Authorization: token $GITHUB_TOKEN" \
+              "https://api.github.com/repos/${{ github.repository }}/releases/$release_id"
+          done
+
+      - name: Delete old tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Fetching old tags..."
+          tags=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/git/refs/tags")
+          
+          echo "Deleting old tags..."
+          for tag_ref in $(echo $tags | jq -r '.[].ref'); do
+            echo "Deleting tag $tag_ref"
+            curl -s -X DELETE -H "Authorization: token $GITHUB_TOKEN" \
+              "https://api.github.com/repos/${{ github.repository }}/git/refs/$tag_ref"
+          done
 
       - name: Compress 1942rp folder
         run: |
