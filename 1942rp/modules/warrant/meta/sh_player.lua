@@ -1,4 +1,4 @@
---- Meta Tables for Warrant.
+﻿--- Meta Tables for Warrant.
 -- @playermeta Warrant
 local MODULE = MODULE
 local playerMeta = FindMetaTable("Player")
