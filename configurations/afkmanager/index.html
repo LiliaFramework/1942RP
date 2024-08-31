@@ -2,17 +2,17 @@
 
 <html>
 	<head>
-		<title>1942RP Documentation</title>
+		<title>AFKManager - 1942RP Documentation</title>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="1942RP Documentation" />
+		<meta property="og:title" content="AFKManager - 1942RP Documentation" />
 		<meta property="og:site_name" content="1942RP Documentation" />
 
-			<meta property="og:description" content="Documentation and function reference for the Lilia Framework." />
+			<meta property="og:description" content="Configuration for AFK Manager Module." />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
-		<link rel="stylesheet" href="ldoc.css" />
-		<link rel="stylesheet" href="highlight.css" />
+		<link rel="stylesheet" href="../../ldoc.css" />
+		<link rel="stylesheet" href="../../highlight.css" />
 	</head>
 
 	<body>
@@ -20,6 +20,7 @@
 
 <nav>
 	<header>
+			<h1><a href="../../">1942RP Documentation</a></h1>
 		<input id="search" type="search" autocomplete="off" placeholder="Search..." />
 	</header>
 
@@ -31,8 +32,8 @@
 
 					<ul>
 							<li>
-									<details >
-									<summary><a href="hooks/afkmanager/">AFKManager</a></summary>
+									<details open>
+									<summary><a href="../../hooks/afkmanager/">AFKManager</a></summary>
 
 									<ul>
 
@@ -41,26 +42,26 @@
 											<span class="realm  client
  This function stops the AFK warning system by clearing alpha-related values and removing the hook
  that draws the warning on the HUD."></span>
-											<a href="hooks/afkmanager/#DisableWarning">
+											<a href="../../hooks/afkmanager/#DisableWarning">
 DisableWarning											</a>
 										</li>
 										<li>
 											<span class="realm  client
  This function starts the AFK warning system by setting the initial alpha value, recording the start time,
  playing a sound, and adding a hook to draw the warning on the HUD."></span>
-											<a href="hooks/afkmanager/#EnableWarning">
+											<a href="../../hooks/afkmanager/#EnableWarning">
 EnableWarning											</a>
 										</li>
 										<li>
 											<span class="realm server
  This function sends a network message to the player to remove the AFK warning and sets their `HasWarning` flag to false."></span>
-											<a href="hooks/afkmanager/#RemoveWarningclient">
+											<a href="../../hooks/afkmanager/#RemoveWarningclient">
 RemoveWarningclient											</a>
 										</li>
 										<li>
 											<span class="realm server
  This function sends a network message to the player to notify them of an AFK warning and sets their `HasWarning` flag to true."></span>
-											<a href="hooks/afkmanager/#WarnPlayer">
+											<a href="../../hooks/afkmanager/#WarnPlayer">
 WarnPlayer											</a>
 										</li>
 
@@ -69,14 +70,14 @@ WarnPlayer											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="hooks/loyalism/">Loyalism</a></summary>
+									<summary><a href="../../hooks/loyalism/">Loyalism</a></summary>
 
 									<ul>
 
 
 										<li>
 											<span class="realm server"></span>
-											<a href="hooks/loyalism/#UpdatePartyTiers">
+											<a href="../../hooks/loyalism/#UpdatePartyTiers">
 UpdatePartyTiers											</a>
 										</li>
 
@@ -85,14 +86,14 @@ UpdatePartyTiers											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="hooks/radio/">Radio</a></summary>
+									<summary><a href="../../hooks/radio/">Radio</a></summary>
 
 									<ul>
 
 
 										<li>
 											<span class="realm server"></span>
-											<a href="hooks/radio/#ShouldRadioBeep">
+											<a href="../../hooks/radio/#ShouldRadioBeep">
 ShouldRadioBeep											</a>
 										</li>
 
@@ -109,29 +110,29 @@ ShouldRadioBeep											</a>
 					<ul>
 							<li>
 									<details >
-									<summary><a href="player meta/alcoholism/">Alcoholism</a></summary>
+									<summary><a href="../../player meta/alcoholism/">Alcoholism</a></summary>
 
 									<ul>
 
 
 										<li>
 											<span class="realm server"></span>
-											<a href="player meta/alcoholism/#AddBAC">
+											<a href="../../player meta/alcoholism/#AddBAC">
 AddBAC											</a>
 										</li>
 										<li>
 											<span class="realm shared"></span>
-											<a href="player meta/alcoholism/#GetBAC">
+											<a href="../../player meta/alcoholism/#GetBAC">
 GetBAC											</a>
 										</li>
 										<li>
 											<span class="realm shared"></span>
-											<a href="player meta/alcoholism/#IsDrunk">
+											<a href="../../player meta/alcoholism/#IsDrunk">
 IsDrunk											</a>
 										</li>
 										<li>
 											<span class="realm server"></span>
-											<a href="player meta/alcoholism/#ResetBAC">
+											<a href="../../player meta/alcoholism/#ResetBAC">
 ResetBAC											</a>
 										</li>
 
@@ -140,19 +141,19 @@ ResetBAC											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="player meta/tying/">Tying</a></summary>
+									<summary><a href="../../player meta/tying/">Tying</a></summary>
 
 									<ul>
 
 
 										<li>
 											<span class="realm server"></span>
-											<a href="player meta/tying/#EndHandcuffAnim">
+											<a href="../../player meta/tying/#EndHandcuffAnim">
 EndHandcuffAnim											</a>
 										</li>
 										<li>
 											<span class="realm server"></span>
-											<a href="player meta/tying/#StartHandcuffAnim">
+											<a href="../../player meta/tying/#StartHandcuffAnim">
 StartHandcuffAnim											</a>
 										</li>
 
@@ -161,34 +162,34 @@ StartHandcuffAnim											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="player meta/warrant/">Warrant</a></summary>
+									<summary><a href="../../player meta/warrant/">Warrant</a></summary>
 
 									<ul>
 
 
 										<li>
 											<span class="realm shared"></span>
-											<a href="player meta/warrant/#CanSeeWarrants">
+											<a href="../../player meta/warrant/#CanSeeWarrants">
 CanSeeWarrants											</a>
 										</li>
 										<li>
 											<span class="realm server"></span>
-											<a href="player meta/warrant/#CanSeeWarrantsIssued">
+											<a href="../../player meta/warrant/#CanSeeWarrantsIssued">
 CanSeeWarrantsIssued											</a>
 										</li>
 										<li>
 											<span class="realm server"></span>
-											<a href="player meta/warrant/#CanWarrantPlayers">
+											<a href="../../player meta/warrant/#CanWarrantPlayers">
 CanWarrantPlayers											</a>
 										</li>
 										<li>
 											<span class="realm shared"></span>
-											<a href="player meta/warrant/#IsWanted">
+											<a href="../../player meta/warrant/#IsWanted">
 IsWanted											</a>
 										</li>
 										<li>
 											<span class="realm server"></span>
-											<a href="player meta/warrant/#ToggleWanted">
+											<a href="../../player meta/warrant/#ToggleWanted">
 ToggleWanted											</a>
 										</li>
 
@@ -204,8 +205,8 @@ ToggleWanted											</a>
 
 					<ul>
 							<li>
-									<details >
-									<summary><a href="configurations/afkmanager/">AFKManager</a></summary>
+									<details open>
+									<summary><a href="../../configurations/afkmanager/">AFKManager</a></summary>
 
 									<ul>
 
@@ -216,7 +217,7 @@ ToggleWanted											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="configurations/advert/">Advert</a></summary>
+									<summary><a href="../../configurations/advert/">Advert</a></summary>
 
 									<ul>
 
@@ -227,7 +228,7 @@ ToggleWanted											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="configurations/alcoholism/">Alcoholism</a></summary>
+									<summary><a href="../../configurations/alcoholism/">Alcoholism</a></summary>
 
 									<ul>
 
@@ -238,7 +239,7 @@ ToggleWanted											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="configurations/doorkick/">DoorKick</a></summary>
+									<summary><a href="../../configurations/doorkick/">DoorKick</a></summary>
 
 									<ul>
 
@@ -249,7 +250,7 @@ ToggleWanted											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="configurations/flashlight/">Flashlight</a></summary>
+									<summary><a href="../../configurations/flashlight/">Flashlight</a></summary>
 
 									<ul>
 
@@ -260,7 +261,7 @@ ToggleWanted											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="configurations/lilia/">Lilia</a></summary>
+									<summary><a href="../../configurations/lilia/">Lilia</a></summary>
 
 									<ul>
 
@@ -271,7 +272,7 @@ ToggleWanted											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="configurations/loyalism/">Loyalism</a></summary>
+									<summary><a href="../../configurations/loyalism/">Loyalism</a></summary>
 
 									<ul>
 
@@ -282,7 +283,7 @@ ToggleWanted											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="configurations/mapcleaner/">MapCleaner</a></summary>
+									<summary><a href="../../configurations/mapcleaner/">MapCleaner</a></summary>
 
 									<ul>
 
@@ -293,7 +294,7 @@ ToggleWanted											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="configurations/radio/">Radio</a></summary>
+									<summary><a href="../../configurations/radio/">Radio</a></summary>
 
 									<ul>
 
@@ -304,7 +305,7 @@ ToggleWanted											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="configurations/schema/">Schema</a></summary>
+									<summary><a href="../../configurations/schema/">Schema</a></summary>
 
 									<ul>
 
@@ -315,7 +316,7 @@ ToggleWanted											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="configurations/wartable/">WarTable</a></summary>
+									<summary><a href="../../configurations/wartable/">WarTable</a></summary>
 
 									<ul>
 
@@ -326,7 +327,7 @@ ToggleWanted											</a>
 							</li>
 							<li>
 									<details >
-									<summary><a href="configurations/warrant/">Warrant</a></summary>
+									<summary><a href="../../configurations/warrant/">Warrant</a></summary>
 
 									<ul>
 
@@ -341,50 +342,52 @@ ToggleWanted											</a>
 </nav>
 
 			<article>
-					<div class="landing">
-    <h1>1942RP Documentation</h1>
-</div>
+					<div class="wrapper">
+						<header class="module">
+	<h1>AFKManager</h1>
+	<h2>Configuration for AFK Manager Module.</h2>
+</header>
 
-<div class="wrapper">
-    <p style="text-align: center;">Welcome to the documentation for the 1942RP Schema.</p>
-    <p>The 1942RP Schema is a foundational template designed to support immersive role-playing experiences set in the historical context of the year 1942. It provides essential functionalities and a robust structure that can be customized and expanded to meet the specific needs of your game server.</p>
-    <p>To utilize this schema, ensure you have the <a href="https://github.com/LiliaFramework/Lilia" target="_blank">Lilia Framework</a> installed.</p>
+<p>
 
-    <h2>Developers</h2>
-    <p>The sidebar displays the entire contents of the documentation for this schema. They are all searchable using the search box at the top of the sidebar.</p>
+</p>
 
-    <h2>Server Owners</h2>
-    <p>If you're looking to get your server up and running as soon as possible, check out the <a href="https://liliaframework.github.io/manual/info_installation/" target="_blank">Installation Tutorial</a> guide in the manual. Remember that this schema is dependent on the <a href="https://github.com/LiliaFramework/Lilia" target="_blank">Lilia Framework</a>.</p>
-	<h2>Wikis</h2>
-	<p>Explore the various schemas available for Lilia:</p>
-	<ul>
-		<li><a href="https://github.com/LiliaFramework/Lilia" target="_blank">Framework</a></li>
+	<h1 class="title">Tables</h1>
 
-		<li><a href="https://github.com/LiliaFramework/Skeleton" target="_blank">Skeleton Schema</a></li>
+		<section class="method">
+			<header>
+				<a class="anchor" id="Configuration">
+					<h1><span class="realm shared"></span></span>Configuration</h1>
+				</a>
 
-		<li><a href="https://github.com/LiliaFramework/MafiaRP" target="_blank">MafiaRP Schema</a></li>
+					<p>This table defines the default settings for the AFK Manager Module.</p>
+			</header>
 
-		<li><a href="https://github.com/LiliaFramework/1942RP" target="_blank">1942RP Schema</a></li>
 
-		<li><a href="https://github.com/LiliaFramework/HL2RP" target="_blank">HL2RP Schema</a></li>
+					<h3>Fields</h3>
 
-		<li><a href="https://github.com/LiliaFramework/MetroRP" target="_blank">MetroRP Schema</a></li>
 
-		<li><a href="https://github.com/LiliaFramework/SCPRP" target="_blank">SCPRP Schema</a></li>
+					<ul>
 
-		<li><a href="https://github.com/LiliaFramework/KaiserReichRP" target="_blank">KaiserReichRP Schema</a></li>
+							<li>
+								<span class="tag parameter">WarningSub</span>
 
-		<li><a href="https://github.com/LiliaFramework/FalloutRP" target="_blank">FalloutRP Schema</a></li>
 
-		<li><a href="https://github.com/LiliaFramework/Modules" target="_blank">Public Modules</a></li>
-	</ul>
-</div>
 
+								<p> Specifies the subtext of the AFK warning message | <strong>string</strong></p>
+							</li>
+					</ul>
+
+
+
+		</section>
+
+					</div>
 			</article>
 		</main>
 
-		<script type="text/javascript" src="app.js"></script>
-		<script type="text/javascript" src="highlight.min.js"></script>
+		<script type="text/javascript" src="../../app.js"></script>
+		<script type="text/javascript" src="../../highlight.min.js"></script>
 		<script type="text/javascript">
 			var elements = document.querySelectorAll("pre code")
 

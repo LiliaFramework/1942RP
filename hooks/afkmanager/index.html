@@ -2,13 +2,13 @@
 
 <html>
 	<head>
-		<title>Loyalism - 1942RP Documentation</title>
+		<title>AFKManager - 1942RP Documentation</title>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Loyalism - 1942RP Documentation" />
+		<meta property="og:title" content="AFKManager - 1942RP Documentation" />
 		<meta property="og:site_name" content="1942RP Documentation" />
 
-			<meta property="og:description" content="Hook Documentation for Loyalism Module." />
+			<meta property="og:description" content="Hook Documentation for AFK Manager Module." />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
 		<link rel="stylesheet" href="../../ldoc.css" />
@@ -32,7 +32,7 @@
 
 					<ul>
 							<li>
-									<details >
+									<details open>
 									<summary><a href="../../hooks/afkmanager/">AFKManager</a></summary>
 
 									<ul>
@@ -69,7 +69,7 @@ WarnPlayer											</a>
 									</details>
 							</li>
 							<li>
-									<details open>
+									<details >
 									<summary><a href="../../hooks/loyalism/">Loyalism</a></summary>
 
 									<ul>
@@ -205,7 +205,7 @@ ToggleWanted											</a>
 
 					<ul>
 							<li>
-									<details >
+									<details open>
 									<summary><a href="../../configurations/afkmanager/">AFKManager</a></summary>
 
 									<ul>
@@ -271,7 +271,7 @@ ToggleWanted											</a>
 									</details>
 							</li>
 							<li>
-									<details open>
+									<details >
 									<summary><a href="../../configurations/loyalism/">Loyalism</a></summary>
 
 									<ul>
@@ -344,8 +344,8 @@ ToggleWanted											</a>
 			<article>
 					<div class="wrapper">
 						<header class="module">
-	<h1>Loyalism</h1>
-	<h2>Hook Documentation for Loyalism Module.</h2>
+	<h1>AFKManager</h1>
+	<h2>Hook Documentation for AFK Manager Module.</h2>
 </header>
 
 <p>
@@ -356,20 +356,96 @@ ToggleWanted											</a>
 
 		<section class="method">
 			<header>
-				<a class="anchor" id="UpdatePartyTiers">
-					<h1><span class="realm server"></span></span>MODULE:UpdatePartyTiers()</h1>
+				<a class="anchor" id="DisableWarning">
+					<h1><span class="realm  client
+ This function stops the AFK warning system by clearing alpha-related values and removing the hook
+ that draws the warning on the HUD."></span></span>MODULE:DisableWarning()</h1>
 				</a>
 
 					<div class="notice error">
 						<div class="title">Internal</div>
 						<p>This is an internal function! You are able to use it, but you risk unintended side effects if used incorrectly.</p>
 					</div>
-					<p>Updates the party tiers for all players.
- This function iterates through all players and updates their party tiers based on the current data.
- If a player has a character, the function retrieves their current party tier and updates it.
- The update is applied to all players by setting the party tier data with the specified tier value.</p>
+					<p>Called to disable the AFK warning system.</p>
 			</header>
 
+
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="EnableWarning">
+					<h1><span class="realm  client
+ This function starts the AFK warning system by setting the initial alpha value, recording the start time,
+ playing a sound, and adding a hook to draw the warning on the HUD."></span></span>MODULE:EnableWarning()</h1>
+				</a>
+
+					<div class="notice error">
+						<div class="title">Internal</div>
+						<p>This is an internal function! You are able to use it, but you risk unintended side effects if used incorrectly.</p>
+					</div>
+					<p>Called to enable the AFK warning system.</p>
+			</header>
+
+
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="RemoveWarningclient">
+					<h1><span class="realm server
+ This function sends a network message to the player to remove the AFK warning and sets their `HasWarning` flag to false."></span></span>MODULE:RemoveWarningclient(client)</h1>
+				</a>
+
+					<p>Removes the AFK warning notification from the specified player.</p>
+			</header>
+
+
+					<h3>Parameters</h3>
+
+
+					<ul>
+
+							<li>
+								<span class="tag parameter">client</span>
+
+									<span class="tag"><span class="type">Player</span></span>
+
+
+								<p> The player from whom the warning should be removed.</p>
+							</li>
+					</ul>
+
+
+
+		</section>
+		<section class="method">
+			<header>
+				<a class="anchor" id="WarnPlayer">
+					<h1><span class="realm server
+ This function sends a network message to the player to notify them of an AFK warning and sets their `HasWarning` flag to true."></span></span>MODULE:WarnPlayer(client)</h1>
+				</a>
+
+					<p>Sends a warning notification to the specified player.</p>
+			</header>
+
+
+					<h3>Parameters</h3>
+
+
+					<ul>
+
+							<li>
+								<span class="tag parameter">client</span>
+
+									<span class="tag"><span class="type">Player</span></span>
+
+
+								<p> The player to receive the warning.</p>
+							</li>
+					</ul>
 
 
 
