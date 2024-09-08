@@ -2,13 +2,13 @@
 
 <html>
 	<head>
-		<title>AFKManager - 1942RP Documentation</title>
+		<title>Crafting - 1942RP Documentation</title>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="AFKManager - 1942RP Documentation" />
+		<meta property="og:title" content="Crafting - 1942RP Documentation" />
 		<meta property="og:site_name" content="1942RP Documentation" />
 
-			<meta property="og:description" content="Configuration for AFK Manager Module." />
+			<meta property="og:description" content="Meta Tables for Crafting." />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
 		<link rel="stylesheet" href="../../ldoc.css" />
@@ -31,43 +31,6 @@
 					</summary>
 
 					<ul>
-							<li>
-									<details open>
-									<summary><a href="../../hooks/afkmanager/">AFKManager</a></summary>
-
-									<ul>
-
-
-										<li>
-											<span class="realm  client
- This function stops the AFK warning system by clearing alpha-related values and removing the hook
- that draws the warning on the HUD."></span>
-											<a href="../../hooks/afkmanager/#DisableWarning">
-DisableWarning											</a>
-										</li>
-										<li>
-											<span class="realm  client
- This function starts the AFK warning system by setting the initial alpha value, recording the start time,
- playing a sound, and adding a hook to draw the warning on the HUD."></span>
-											<a href="../../hooks/afkmanager/#EnableWarning">
-EnableWarning											</a>
-										</li>
-										<li>
-											<span class="realm server
- This function sends a network message to the player to remove the AFK warning and sets their `HasWarning` flag to false."></span>
-											<a href="../../hooks/afkmanager/#RemoveWarningclient">
-RemoveWarningclient											</a>
-										</li>
-										<li>
-											<span class="realm server
- This function sends a network message to the player to notify them of an AFK warning and sets their `HasWarning` flag to true."></span>
-											<a href="../../hooks/afkmanager/#WarnPlayer">
-WarnPlayer											</a>
-										</li>
-
-									</ul>
-									</details>
-							</li>
 							<li>
 									<details >
 									<summary><a href="../../hooks/loyalism/">Loyalism</a></summary>
@@ -95,6 +58,35 @@ UpdatePartyTiers											</a>
 											<span class="realm server"></span>
 											<a href="../../hooks/radio/#ShouldRadioBeep">
 ShouldRadioBeep											</a>
+										</li>
+
+									</ul>
+									</details>
+							</li>
+					</ul>
+				</details>
+				<details class="category" open>
+					<summary>
+						<h2>Entity Meta</h2>
+					</summary>
+
+					<ul>
+							<li>
+									<details open>
+									<summary><a href="../../entity meta/crafting/">Crafting</a></summary>
+
+									<ul>
+
+
+										<li>
+											<span class="realm shared"></span>
+											<a href="../../entity meta/crafting/#IsTableLocked">
+IsTableLocked											</a>
+										</li>
+										<li>
+											<span class="realm server"></span>
+											<a href="../../entity meta/crafting/#LockTable">
+LockTable											</a>
 										</li>
 
 									</ul>
@@ -134,6 +126,22 @@ IsDrunk											</a>
 											<span class="realm server"></span>
 											<a href="../../player meta/alcoholism/#ResetBAC">
 ResetBAC											</a>
+										</li>
+
+									</ul>
+									</details>
+							</li>
+							<li>
+									<details open>
+									<summary><a href="../../player meta/crafting/">Crafting</a></summary>
+
+									<ul>
+
+
+										<li>
+											<span class="realm shared"></span>
+											<a href="../../player meta/crafting/#CanCraft">
+CanCraft											</a>
 										</li>
 
 									</ul>
@@ -204,17 +212,6 @@ ToggleWanted											</a>
 					</summary>
 
 					<ul>
-							<li>
-									<details open>
-									<summary><a href="../../configurations/afkmanager/">AFKManager</a></summary>
-
-									<ul>
-
-
-
-									</ul>
-									</details>
-							</li>
 							<li>
 									<details >
 									<summary><a href="../../configurations/advert/">Advert</a></summary>
@@ -344,40 +341,37 @@ ToggleWanted											</a>
 			<article>
 					<div class="wrapper">
 						<header class="module">
-	<h1>AFKManager</h1>
-	<h2>Configuration for AFK Manager Module.</h2>
+	<h1>Crafting</h1>
+	<h2>Meta Tables for Crafting.</h2>
 </header>
 
 <p>
 
 </p>
 
-	<h1 class="title">Tables</h1>
+	<h1 class="title">Functions</h1>
 
 		<section class="method">
 			<header>
-				<a class="anchor" id="Configuration">
-					<h1><span class="realm shared"></span></span>Configuration</h1>
+				<a class="anchor" id="CanCraft">
+					<h1><span class="realm shared"></span></span>playerMeta:CanCraft()</h1>
 				</a>
 
-					<p>This table defines the default settings for the AFK Manager Module.</p>
+					<p>Checks if the player can craft.</p>
 			</header>
 
 
-					<h3>Fields</h3>
 
-
-					<ul>
+				<h3>Returns</h3>
+				<ul>
 
 							<li>
-								<span class="tag parameter">WarningSub</span>
+									<span class="type">bool</span>
 
-
-
-								<p> Specifies the subtext of the AFK warning message | <strong>string</strong></p>
+								<p>True if the player is alive and has a character, false otherwise.</p>
 							</li>
-					</ul>
 
+				</ul>
 
 
 		</section>
